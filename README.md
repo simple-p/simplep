@@ -18,45 +18,56 @@ Each member signing up can create a team. A team can create projects, and projec
 ## Demo-Centric User Stories
 
 #### General Functions
-* [x] User can search for tasks or projects they participate in
+
+* [ ] User can search for tasks or projects they participate in.
+
 #### Dashboard
-* [x] User can see a list of project tasks that passed the due date
-* [x] User can see a list of tasks
+
+* [ ] User can see a list of project tasks that passed the due date.
+* [ ] User can see a list of tasks.
+
 #### Team
-* [x] An user belongs to a Team
-* [x] An user can belongs to many teams
+
+* [ ] An user belongs to a Team.
+* [ ] An user can belongs to many teams.
+
 #### Users
-* [x] User can sign up for the service with Name, Email & Password
-* [x] User can login using an email and password.
-* [x] User can create a project
+
+* [ ] User can sign up for the service with Name, Email & Password.
+* [ ] User can login using an email and password.
+* [ ] User can create a project.
 
 #### Projects
-* [x] After logging in, the user is taken to a page that has a list of projects sorted in descending chronological order (newest projects at top), a “New Projects” link
-* [x] User can add tasks to the project it participate in
-* [x] User can have different views to view his tasks: Show All Tasks, Show Completed Tasks, Completed Tasks This Week...etc
+
+* [ ] After logging in, the user is taken to a page that has a list of projects sorted in descending chronological order (newest projects at top), a “New Projects” link.
+* [ ] User can add tasks to the project it participate in.
+* [ ] User can have different views to view his tasks: Show All Tasks, Show Completed Tasks, Completed Tasks This Week...etc
 
 #### Tasks
-* [x] Only project members can view the project tasks
-* [x] A task has only one “Owner” and can have many “Followers”
-* [x] Users can mark the task completed
-* [x] Users can create, update or delete subtasks
-* [x] Users can leave/edit/delete comments on the task
-* [x] Users can set a due date for the task
-* [x] Tasks out-of-date will be showed as red
-* [x] Users can edit the tasks
-* [x] User can “Like” other’s tasks
+
+* [ ] Only project members can view the project tasks.
+* [ ] A task has only one “Owner” and can have many “Followers”.
+* [ ] Users can mark the task completed.
+* [ ] Users can create, update or delete subtasks.
+* [ ] Users can leave/edit/delete comments on the task.
+* [ ] Users can set a due date for the task.
+* [ ] Tasks out-of-date will be showed as red.
+* [ ] Users can edit the tasks.
+* [ ] User can “Like” other’s tasks.
 
 #### Conversation
-* [x] A coversation belongs to a team
-* [x] User can send message to the team
-* [x] User can send private message to other members
+
+* [ ] A coversation belongs to a team.
+* [ ] User can send message to the team.
+* [ ] User can send private message to other members.
 
 #### Reporting
-* [x] User can see a calendar of tasks due date
+
+* [ ] User can see a calendar of tasks due date.
 
 ## License
 
-    Copyright [2016] [Khac Thanh]
+    Copyright [2016] [1000 Dollars Project Team]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
