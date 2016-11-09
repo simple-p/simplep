@@ -65,6 +65,11 @@ Each member signing up can create a team. A team can create projects, and projec
 
 * [ ] User can see a calendar of tasks due date.
 
+## Projects Wireframe
+![Wireframe](docs/wireframe/wireframe.png)
+
+## Models ER Diagram
+![ER Diagrams](docs/models/simplep.png)
 ## License
 
     Copyright [2016] [1000 Dollars Project Team]
