@@ -1,16 +1,31 @@
 .home {
+  min-height: 1000px;
+  #header{
+    background-color: red;
+  }
+
   #left{
-    width:200px;
     background-color: black;
+    ul > a {
+      float:left;
+      clear:left;
+      color: red;
+    }
   }
-  h1{
-    color:red;
-  }
+
   #main {
     background-color: lightblue;
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   #right {
     background-color: lightpink;
   }
+}
+
+
+#dashboard {
+  background-color: green;
+  padding-top: 25px;
 }
