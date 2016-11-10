@@ -1,0 +1,2 @@
+class TaskFollower < ApplicationRecord
+end
