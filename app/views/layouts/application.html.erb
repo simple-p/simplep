@@ -27,15 +27,13 @@
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
             <li>
+              <li><%= link_to "<i class='glyphicon glyphicon-user'></i>&nbsp; Dashboard".html_safe, dashboard_path, class: "#{'active' if current_page?(aboutus_path)}" %></li>
               <li><%= link_to "<i class='glyphicon glyphicon-envelope'></i>&nbsp; Contact Us".html_safe, contactus_path, class: "#{'active' if current_page?(contactus_path)}" %></li>
               <li><%= link_to "<i class='glyphicon glyphicon-user'></i>&nbsp; About Us".html_safe, aboutus_path, class: "#{'active' if current_page?(aboutus_path)}" %></li>
             </li>
           </ul>
         </div>
     </nav>
-
-    <div class="container">
       <%= yield %>
-    </div>
   </body>
 </html>
