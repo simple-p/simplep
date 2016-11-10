@@ -1,9 +1,8 @@
 .home {
   min-height: 1000px;
-  
+
   div {
     border-radius: 10px;
-    border-style: solid;
   }
 
   ul li{
@@ -37,10 +36,18 @@
   }
 }
 
-
 #dashboard {
   background-color: green;
   padding-top: 25px;
   border-radius: 10px;
+}
+.panel {
+  margin-top: 15px;
+  width: 100%;
+}
+.home > div {
+  border-radius: 10px;
   border-style: solid;
+  border-width: 1px;
+  border-color: white;
 }

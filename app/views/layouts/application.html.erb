@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Simplep</title>
+    <title>SimpleP</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,11 +11,11 @@
 
   <body>
 
-    <nav class="navbar navbar-default" role="navigation" id="navbar">
+    <nav class="navbar navbar-custom" role="navigation" id="mainNav">
       <div class="navbar-header">
         <%= link_to "<i class='glyphicon glyphicon-home'></i>&nbsp; Home".html_safe, root_path, class: "navbar-brand #{'active' if current_page?(root_path)}" %>
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" id="bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>

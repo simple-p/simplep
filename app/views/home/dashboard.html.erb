@@ -1,18 +1,40 @@
 <div class="<%= controller_name %> container-fluid" id="dashboard">
     <div class="row" id="header">
-        <button type="button" data-toggle="collapse" data-target="#left">Project</button>
-          <ul>
-            <li>Message</li>
-            <li>New Project</li>
-            <li>New Task</li>
-          </ul>
+      <ul>
+        <a href="">Test</a>
+        <a href="">One</a>
+      </ul>
     </div>
 
     <div class="col-xs-12 col-md-1" id="left">
       <ul>
-        <a href="#">New Project</a>
-        <a href="#">New Team</a>
-        <a href="#">New Task</a>
+        <div class="panel">
+          <div class="panel-heading">
+              <a data-toggle="collapse" href="#collapse2">Team</a>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">New Team</div>
+            <div class="panel-footer">View Teams</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+              <a data-toggle="collapse" href="#collapse3">Project</a>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">New Project</div>
+            <div class="panel-footer">View Projects</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+              <a data-toggle="collapse" href="#collapse4">Task</a>
+          </div>
+          <div id="collapse4" class="panel-collapse collapse">
+            <div class="panel-body">New Task</div>
+            <div class="panel-footer">View Tasks</div>
+          </div>
+        </div>
       </ul>
     </div>
 
