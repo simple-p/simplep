@@ -1,11 +1,24 @@
 .home {
   min-height: 1000px;
+  
+  div {
+    border-radius: 10px;
+    border-style: solid;
+  }
+
+  ul li{
+    display: inline;
+  }
   #header{
-    background-color: red;
+    background-color: red;;
   }
 
   #left{
     background-color: black;
+    ul {
+      padding-left: 0px;
+    }
+
     ul > a {
       float:left;
       clear:left;
@@ -28,4 +41,6 @@
 #dashboard {
   background-color: green;
   padding-top: 25px;
+  border-radius: 10px;
+  border-style: solid;
 }
