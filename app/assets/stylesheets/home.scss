@@ -1,3 +1,79 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html { // How to make the footer sticky
+    position: relative;
+    min-height: 100%;
+}
+
+body { // Styling the entire body element and all child elements.
+  background-color: lightblue;
+  margin: 0 0 100px;
+  font-family: verdana, Georgia, serif; // Everything in the body has this font.
+  font-size: 14px;
+  height: 100%;
+  padding: 25px;
+}
+.jumbotron > .btn {
+  margin-left: 20px;
+}
+
+#header { // The Header Styling
+  background-color: #7D9C9F;
+  font-family: verdana, Georgia, serif; // Everything in the body has this font.
+  font-size: 14px;
+  height: 90px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+#navbar { // Navbar Styling
+  background-color: lightblue;
+  font-family: verdana, Georgia, serif; // Everything in the body has this font.
+  font-size: 14px;
+
+  .nav {
+    background-color: lightblue;
+  }
+}
+
+.navbar-nav {
+  margin: 0;
+  border-color: black;
+}
+
+.navbar-toggle{
+  padding: 6px 10px;
+}
+
+h1 {
+  color: darkblue;
+  font-size: 300%;
+}
+
+h3 {
+  font-size: 120%;
+  color: darkblue;
+}
+
+.table > thead > tr > th{
+  text-align: center;
+  color: darkblue;
+  background-color: lightblue;
+}
+
+.footer{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  overflow:hidden;
+  background-color: white;
+}
+.panel-body{
+  background-color: white;
+}
+a.active{
+  border-style: solid;
+  border-width: 1px;
+}
