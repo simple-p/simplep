@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  description: MyText
+  owner_id: 1
+  due_date: 2016-11-11 01:41:11
+  section_id: 1
+  project_id: 1
+
+two:
+  name: MyText
+  description: MyText
+  owner_id: 1
+  due_date: 2016-11-11 01:41:11
+  section_id: 1
+  project_id: 1
