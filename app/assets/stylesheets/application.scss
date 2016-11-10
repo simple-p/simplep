@@ -784,3 +784,10 @@
  .navbar-default .navbar-brand {
   color: #fed136;
 }
+.navbar-custom .nav li a.active {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color:red;
+}
