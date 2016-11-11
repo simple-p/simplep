@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  require 'tasks_helper'
   def new 
     @project = Project.find(params[:project_id])
     @task = Task.new
