@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      track_activity @task, @comment
       respond_to do |format|
         format.html do
           if @comment.persisted?

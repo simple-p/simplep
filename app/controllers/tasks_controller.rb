@@ -11,8 +11,10 @@ class TasksController < ApplicationController
   def create
     load_project
     @task = @project.tasks.build task_params
+    @task.owner = current_user
     
     if @task.save
+      track_activity @project, @task
       redirect_to root_path 
     else
       redirect_to new_projects_task_path(@project) 

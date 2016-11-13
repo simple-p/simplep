@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :project
-  has_many :task_followers, dependent: destroy
+  belongs_to :owner, class_name: 'User'
+  has_many :task_followers
   has_many :followers, :through => :task_followers, :source => :user
-  has_many :comments, dependent: destroy
+  has_many :comments
+  has_many :activities, as: :trackable
 end
