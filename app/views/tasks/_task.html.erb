@@ -1,0 +1,15 @@
+<div class="card-block">
+  <p class="card-text"><%= task.name %></p>
+  <div class="row">
+  </div>
+  <hr>
+  <div class="comments-wrapper">
+    <div class="comments">
+      <%= render "task_comments", task: task %>
+    </div>
+    <%= form_for [task, Comment.new], remote: true do |f| %>
+      <%= f.text_field :content, placeholder: "Add a comment", autocomplete: 'off' %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<% if @task.persisted? %>
+    $(".comments").html("<%= j render 'tasks/task_comments', task: @task %>")
+<% else %>
+    $(".comments").append("Error: #{@task.errors.full_messages.to_sentence}")
+<% end %>
+

@@ -20,6 +20,28 @@ class TasksController < ApplicationController
 
   end
 
+  def show
+    load_project
+    @task = Task.find params[:id]
+    
+    respond_to do |format|
+      format.html do
+       redirect_to project_path(@project) 
+      end
+
+      format.js
+    end
+
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
   private
   def task_params
     params.require(:task).permit(:name)

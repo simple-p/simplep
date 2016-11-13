@@ -1,0 +1,18 @@
+<h1> <%= @project.name %> </h1>
+<div class="row placeholders">
+  <div class="center-container" id=<%= @project.id %> >
+    <table class="table">
+      <tbody class="tasks">
+        <% @project.tasks.each do |task| %>
+          <tr id=<%=task.id%> >
+            <td><%= link_to task.name, project_task_path(@project, task), remote:true%></td>
+          </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+  </div>
+  <div class="right-container">
+  </div>
+
+</div>
