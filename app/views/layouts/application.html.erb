@@ -24,37 +24,51 @@ $("#menu-toggle").click(function(e) {
       <div class="row">
         <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
           <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
-          <a class="navbar-brand" href="#">Hello Toan</a>
-          <div id="navbar">
-            <nav class="nav navbar-nav float-xs-left">
-              <a class="nav-item nav-link" href="#">My Tasks</a>
-              <a class="nav-item nav-link" href="#">Notifications</a>
-              <a class="nav-item nav-link" href="#">Project</a>
-              <a class="nav-item nav-link"><%= Date.today %></a>
+
+          <% if user_signed_in? %>
+            <a class="navbar-brand" href="#">Hello</a>
+            <div id="navbar">
+              <nav class="nav navbar-nav float-xs-left">
+                <a class="nav-item nav-link" href="#">My Tasks</a>
+                <a class="nav-item nav-link" href="#">Notifications</a>
+                <a class="nav-item nav-link" href="#">Project</a>
+                <a class="nav-item nav-link"><%= Date.today %></a>
+                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
               <img style="width:7%" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="" />
-            </nav>
-            <form class="form-inline float-xs-right">
-              <input type="text" class="form-control" placeholder="Search...">
-            </form>
-          </div>
+              </nav>
+              <form class="form-inline float-xs-right">
+                <input type="text" class="form-control" placeholder="Search...">
+              </form>
+            </div>
+          <% else %>
+
+            <ul class="nav navbar-nav pull-right">
+              <li class="nav-item" ><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
+              <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+            </ul>
+          <% end %>
         </nav>
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <div id="wrapper" class="active">
-        <div id = "sidebar-wrapper">
-          <ul class="sidebar-nav" id="sidebar">
-            <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; < ></a></li>
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Tasks</a></li>
-          </ul>
-        </div>
+        <%if user_signed_in? %>
+          <div id = "sidebar-wrapper">
+            <ul class="sidebar-nav" id="sidebar">
+              <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; < ></a></li>
+              <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Tasks</a></li>
+            </ul>
+          </div>
 
-        <div class="col-sm-9 main">
-          <%= yield %>
-        </div>
+          <div class="col-sm-9 main">
+            <%= yield %>
+          </div>
+          <%else %>
+            <%= yield %>
+            <%end%>
       </div>
     </div>
   </body>
