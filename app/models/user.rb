@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :activities
+  has_many :task_followers, class_name: 'TaskFollower'
+  has_many :following_tasks, :through => :task_followers, :source => :task 
+  has_many :task_news, :through => :following_tasks, :source => :activities
 end

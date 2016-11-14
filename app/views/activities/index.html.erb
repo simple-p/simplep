@@ -1,0 +1,4 @@
+<% @task_news.each do |new| %>
+  <p> <%= "#{new.user.email} #{new.action} #{new.trackable_type} in task #{new.subject.name}" %> </p> 
+<strong><%= render new.trackable %></strong>
+ <% end %>

@@ -4,5 +4,5 @@ class Task < ApplicationRecord
   has_many :task_followers
   has_many :followers, :through => :task_followers, :source => :user
   has_many :comments
-  has_many :activities, as: :trackable
+  has_many :activities, as: :subject
 end

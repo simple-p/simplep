@@ -1,0 +1,5 @@
+<% task.task_followers.each do |task_follower| %>
+  <%= div_for task_follower do %>
+    <%= render task_follower %>
+  <% end %>
+<% end %>

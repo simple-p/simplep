@@ -46,7 +46,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
-  def load_task
-    @task = Task.find params[:task_id]
-  end
 end

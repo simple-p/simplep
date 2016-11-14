@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'task_followers/create'
+
   resources :activities
   resources :projects do
     resources :tasks
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :tasks do
     resources :comments
+    resources :task_followers
   end
   resources :homes
   devise_for :users

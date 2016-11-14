@@ -11,5 +11,13 @@
       <%= f.text_field :content, placeholder: "Add a comment", autocomplete: 'off' %>
       <%= f.submit %>
     <% end %>
+    
+    <div class="followers">
+      <%= render "followers", task: task %>
+    </div>
+    <%= form_for [task, TaskFollower.new], remote: true do |f| %>
+      <%= f.select :user_id, options_from_collection_for_select(User.all, "id", "email"), class: 'form-control' %>
+      <%= f.submit %>
+    <% end %>
   </div>
 </div>
