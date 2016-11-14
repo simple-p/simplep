@@ -13,10 +13,10 @@
   <body>
     <!-- Sidebar Toggle -->
     <script>
-$("#menu-toggle").click(function(e) {
-  e.preventDefault();
-  $("#wrapper").toggleClass("active");
-});
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+      });
     </script>
     <!-- End Sidebar Toggle -->
 
@@ -31,14 +31,17 @@ $("#menu-toggle").click(function(e) {
               <nav class="nav navbar-nav float-xs-left">
                 <a class="nav-item nav-link" href="#">My Tasks</a>
                 <a class="nav-item nav-link" href="#">Notifications</a>
-                <a class="nav-item nav-link" href="#">Project</a>
-                <a class="nav-item nav-link"><%= Date.today %></a>
+                <a class="nav-item nav-link" href="<%= projects_path %>">Project</a>
                 <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+                <a class="nav-item nav-link"><%= Date.today %></a>
+
               <img style="width:7%" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="" />
-              </nav>
-              <form class="form-inline float-xs-right">
+              <form class="form-inline pull-right">
                 <input type="text" class="form-control" placeholder="Search...">
               </form>
+              <a class="nav-item nav-link fa fa-user fa-2x float-xs-right" href="#"></a>
+              </nav>
+
             </div>
           <% else %>
 

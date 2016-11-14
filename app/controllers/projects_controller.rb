@@ -1,15 +1,19 @@
 class ProjectsController < ApplicationController
-  def new 
+  def index
+
+  end
+
+  def new
     @project = Project.new
   end
 
   def create
     @project = Project.new project_params
-    
+
     if @project.save
-      redirect_to root_path 
+      redirect_to root_path
     else
-      redirect_to new_project_path 
+      redirect_to new_project_path
     end
 
   end

@@ -37,6 +37,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
+# gem font-awesome
+gem "font-awesome-rails"
+
 # add Devise
 gem 'devise'
 group :development, :test do
