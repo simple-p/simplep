@@ -28,24 +28,29 @@
           <% if user_signed_in? %>
             <a class="navbar-brand" href="#">Hello <%= current_user.name %></a>
             <div id="navbar">
-              <nav class="nav navbar-nav float-xs-left">
+              <nav class="nav navbar-nav">
                 <a class="nav-item nav-link" href="#">Dashboard</a>
                 <a class="nav-item nav-link" href="#">Activities</a>
-                <a class="nav-item nav-link" href="#">My Tasks</a>
-                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
-                <a class="nav-item nav-link"><%= Date.today %></a>
-
-              <img style="width:7%" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="" />
-              <form class="form-inline pull-right">
-                <input type="text" class="form-control" placeholder="Search...">
-              </form>
-              <a class="nav-item nav-link fa fa-user fa-2x float-xs-right" href="#"></a>
+                <a class="nav-item nav-link" href="#">Tasks</a>
+                <span class="navbar-text text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="height:25px" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" />&nbsp;This is the first company message!</span>
+              <div class="btn-group float-xs-right">
+                <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="fa fa-user"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <%= link_to 'Profile', "#", class: "dropdown-item" %>
+                  <a class="dropdown-item" href="#">Messages</a>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </div>
+              </div>
               </nav>
 
             </div>
           <% else %>
 
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav navbar-nav">
               <li class="nav-item" ><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
               <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
             </ul>
@@ -59,10 +64,9 @@
           <div id = "sidebar-wrapper">
             <ul class="sidebar-nav" id="sidebar">
               <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
-              <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Tasks</a></li>
+              <li><a href="<%= projects_path %>">Projects &nbsp;&nbsp;<span class="fa fa-product-hunt"></span></a></li>
+              <li><a href="#">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-users"></span></a></li>
+              <li><a href="#">Reporting<span class="fa fa-bar-chart"></span></a></li>
             </ul>
           </div>
 
