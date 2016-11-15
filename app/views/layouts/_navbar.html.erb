@@ -1,0 +1,28 @@
+<nav class="navbar navbar-custom" role="navigation" id="mainNav">
+	<div class="navbar-header">
+		<%= link_to "<i class='glyphicon glyphicon-home'></i>&nbsp; Home".html_safe, root_path, class: "navbar-brand #{'active' if current_page?(root_path)}" %>
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" id="bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+		<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-2">
+			<ul class="nav navbar-nav">
+				<%= li_link_to "<i class='glyphicon glyphicon-book'></i>&nbsp; Dashboard".html_safe, dashboard_path, class: "#{'active' if current_page?(dashboard_path)}" %>
+				<%= li_link_to "<i class='glyphicon glyphicon-send'></i>&nbsp; Contact Us".html_safe, contactus_path, class: "#{'active' if current_page?(contactus_path)}" %>
+				<%= li_link_to "<i class='glyphicon glyphicon-apple'></i>&nbsp; About Us".html_safe, aboutus_path, class: "#{'active' if current_page?(aboutus_path)}" %>
+
+				<% if user_signed_in? %>
+					<%= li_link_to "<i class='glyphicon glyphicon-user'></i>&nbsp; profile".html_safe, edit_user_registration_path %>
+					<%= li_link_to "log out", destroy_user_session_path, method: :delete %>
+				<% else %>
+					<%= li_link_to "register", new_user_registration_path %>
+					<%= li_link_to "log in", new_user_session_path %>
+				<% end %>
+
+			</ul>
+		</div>
+</nav>

@@ -7,4 +7,6 @@ class ApplicationController < ActionController::Base
   def load_task
     @task = Task.find params[:task_id]
   end
+
+  before_action :authenticate_user!
 end

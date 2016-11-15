@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 20161115094644) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "homes", force: :cascade do |t|
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +66,15 @@ ActiveRecord::Schema.define(version: 20161115094644) do
     t.integer  "project_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "owner_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["name"], name: "index_teams_on_name", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
