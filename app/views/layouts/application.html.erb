@@ -26,12 +26,12 @@
           <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
 
           <% if user_signed_in? %>
-            <a class="navbar-brand" href="#">Hello</a>
+            <a class="navbar-brand" href="#">Hello <%= current_user.name %></a>
             <div id="navbar">
               <nav class="nav navbar-nav float-xs-left">
+                <a class="nav-item nav-link" href="#">Dashboard</a>
+                <a class="nav-item nav-link" href="#">Activities</a>
                 <a class="nav-item nav-link" href="#">My Tasks</a>
-                <a class="nav-item nav-link" href="#">Notifications</a>
-                <a class="nav-item nav-link" href="<%= projects_path %>">Project</a>
                 <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
                 <a class="nav-item nav-link"><%= Date.today %></a>
 
@@ -58,7 +58,7 @@
         <%if user_signed_in? %>
           <div id = "sidebar-wrapper">
             <ul class="sidebar-nav" id="sidebar">
-              <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; < ></a></li>
+              <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
               <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
               <li><a href="#">Projects</a></li>
               <li><a href="#">Team</a></li>
