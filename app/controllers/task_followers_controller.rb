@@ -15,10 +15,16 @@ class TaskFollowersController < ApplicationController
         format.js
      end
    end    
-
-
   end
 
+  def destroy
+    load_task
+    @task_follower = TaskFollower.find params[:id]
+    @task_follower.destroy
+
+    respond_to {|format| format.js}
+
+  end
   private
   def task_follower_params
     params.require(:task_follower).permit(:user_id)
