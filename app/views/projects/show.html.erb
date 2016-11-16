@@ -1,4 +1,7 @@
 <h1> <%= @project.name %> </h1>
+<%= link_to "New task", new_project_task_path(@project), class: "btn btn-primary" %>
+
+
 <div class="row placeholders">
   <div class="center-container" id=<%= @project.id %> >
     <table class="table">
