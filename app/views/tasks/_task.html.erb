@@ -1,16 +1,20 @@
 <div class="card-block">
-  <p class="card-text"><%= task.name %></p>
+  <p class="card-text">
+  <%= task.name %> 
+  <%= link_to "", project_task_path(@project, task), :method => :delete, class: "fa fa-trash "%>
+  </p>
   <div class="row">
   </div>
   <hr>
-  <%= link_to "", project_task_path(@project, task), :method => :delete, class: "fa fa-trash "%>
   <div class="comments-wrapper">
     <div class="comments">
       <%= render "task_comments", task: task %>
     </div>
     <%= form_for [task, Comment.new], remote: true do |f| %>
-      <%= f.text_field :content, placeholder: "Add a comment", autocomplete: 'off' %>
-      <%= f.submit %>
+      <div class="form-group">
+        <%= f.text_field :content, placeholder: "Add a comment", autocomplete: 'off', rows: 5, class: "form-control" %>
+        <%= f.submit class: "btn btn-success btn-circle text-uppercase" %>
+      </div>
     <% end %>
     
     <div class="followers">
