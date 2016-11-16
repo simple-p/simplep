@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'record_tag_helper', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
+	gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 # gem font-awesome
@@ -59,3 +59,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.2'
 gem 'toastr_rails', '~> 2.1', '>= 2.1.1'
+gem 'pry', '~> 0.10.3'

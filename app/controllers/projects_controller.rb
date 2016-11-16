@@ -1,36 +1,36 @@
 class ProjectsController < ApplicationController
-  def index
+	def index
 
-  end
+	end
 
-  def new
-    @project = Project.new
-  end
+	def new
+		@project = Project.new
+	end
 
-  def create
-    @project = Project.new project_params
+	def create
+		@project = Project.new project_params
 
-    if @project.save
-      redirect_to root_path
-    else
-      redirect_to new_project_path
-    end
+		if @project.save
+			redirect_to root_path
+		else
+			redirect_to new_project_path
+		end
 
-  end
+	end
 
-  def show
-    @project = Project.find params[:id]
-  end
+	def show
+		@project = Project.find params[:id]
+	end
 
-  def update
+	def update
 
-  end
+	end
 
-  def destroy
+	def destroy
 
-  end
-  private
-  def project_params
-    params.require(:project).permit(:name)
-  end
+	end
+	private
+	def project_params
+		params.require(:project).permit(:name)
+	end
 end

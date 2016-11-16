@@ -1,55 +1,57 @@
 class TasksController < ApplicationController
-  def new 
-    @project = Project.find(params[:project_id])
-    @task = Task.new
-  end
+	def new
+		@project = Project.find(params[:project_id])
+		@task = Task.new
+	end
 
-  def index
+	def index
 
-  end
+	end
 
-  def create
-    load_project
-    @task = @project.tasks.build task_params
-    @task.owner = current_user
-    
-    if @task.save
-      track_activity @project, @task
-      redirect_to root_path 
-    else
-      redirect_to new_projects_task_path(@project) 
-    end
+	def create
+		load_project
+		@task = @project.tasks.build task_params
+		@task.owner = current_user
+		if @task.save
+			track_activity @project, @task
+			redirect_to root_path
+		else
+			redirect_to new_projects_task_path(@project)
+		end
 
-  end
+	end
 
-  def show
-    load_project
-    @task = Task.find params[:id]
-    
-    respond_to do |format|
-      format.html do
-       redirect_to project_path(@project) 
-      end
+	def show
+		load_project
+		load_task
+		respond_to do |format|
+			format.html do
+			 redirect_to project_path(@project)
+			end
 
-      format.js
-    end
+			format.js
+		end
 
 
-  end
+	end
 
-  def update
+	def update
 
-  end
+	end
 
-  def destroy
+	def destroy
 
-  end
-  private
-  def task_params
-    params.require(:task).permit(:name)
-  end
+	end
+	private
+	def task_params
+		params.require(:task).permit(:name)
+	end
 
-  def load_project
-    @project = Project.find params[:project_id]
-  end
+	def load_project
+		@project = Project.find params[:project_id]
+	end
+
+	def load_task
+		@task = Task.find params[:id]
+	end
 end
