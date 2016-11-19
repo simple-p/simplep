@@ -1,5 +1,33 @@
 <h1> <%= @project.name %> </h1>
-<div class="row placeholders">
+<style media="screen">
+#scrollcontent {
+  height: 1000px;
+}
+#left {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+}
+#right {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: auto;
+}
+</style>
+<div id="scrollcontent" class="row">
+    <div class="col-sm-12" id="left">
+      <% @project.tasks.each do |task| %>
+        <tr id=<%=task.id%> >
+          <%= link_to task.name, project_task_path(@project, task), remote:true%>
+        </tr>
+      <% end %>
+    </div>
+    <div class="col-sm-12" id="right">
+    </div>
+</div>
+<div class="row">
   <div class="center-container" id=<%= @project.id %> >
     <table class="table">
       <tbody class="tasks">
@@ -14,5 +42,4 @@
   </div>
   <div class="right-container">
   </div>
-
 </div>
