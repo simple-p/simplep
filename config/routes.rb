@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	resources :activities
 	resources :projects do
 		resources :tasks
+		resources :teams
 	end
 
 	resources :tasks do

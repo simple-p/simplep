@@ -1,1 +1,2 @@
-<span><strong><%= "#{current_user.name}: #{comment.content}" %></strong></span>
+<%= comment.content %>
+<%= link_to "del", task_comment_path(comment.task, comment), :method => :delete, remote: true %>

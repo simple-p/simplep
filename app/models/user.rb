@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	require 'identicon'
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
@@ -11,7 +12,19 @@ class User < ApplicationRecord
 	has_many :memberships, dependent: :destroy
 	has_many :teams, through: :memberships
 
+	# add avatar attachment
+	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
 	def is_member?(team_id)
 		Membership.where(team_id: team_id, member_id: id).take
+	end
+
+	def default_avatar
+		"https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
+	end
+
+	def my_team
+		Membership.where(:member_id => id)
 	end
 end

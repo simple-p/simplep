@@ -40,6 +40,8 @@ end
 # gem font-awesome
 gem "font-awesome-rails"
 
+# pry for debug
+gem 'pry', '~> 0.10.3'
 # add Devise
 group :development, :test do
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,4 +61,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.2'
 gem 'toastr_rails', '~> 2.1', '>= 2.1.1'
-gem 'pry', '~> 0.10.3'
+gem 'paperclip', '~> 5.1'
+gem 'identicon', '~> 0.0.5'

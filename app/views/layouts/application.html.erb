@@ -11,14 +11,6 @@
 	</head>
 
 	<body>
-		<!-- Sidebar Toggle -->
-		<script>
-			$("#menu-toggle").click(function(e) {
-				e.preventDefault();
-				$("#wrapper").toggleClass("active");
-			});
-		</script>
-		<!-- End Sidebar Toggle -->
 
 		<div class="container-fluid">
 			<div class="row">
@@ -30,21 +22,22 @@
 						<div id="navbar">
 							<nav class="nav navbar-nav">
 								<a class="nav-item nav-link" href="#">Dashboard</a>
-								<a class="nav-item nav-link" href="#">Activities</a>
+								<a class="nav-item nav-link" href="<%= activities_path %>">Activities</a>
 								<a class="nav-item nav-link" href="#">Tasks</a>
 								<span class="navbar-text text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="height:25px" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" />&nbsp;This is the first company message!</span>
-							<div class="btn-group float-xs-right">
-								<button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="fa fa-user"></span>
-									<span class="sr-only">Toggle Dropdown</span>
-								</button>
-								<div class="dropdown-menu dropdown-menu-right">
-									<%= link_to 'Profile', "#", class: "dropdown-item" %>
-									<a class="dropdown-item" href="#">Messages</a>
-									<div class="dropdown-divider"></div>
-									<%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+								<div class="btn-group float-xs-right">
+									<button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<span class="fa fa-user"></span>
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar.url(:thumb), class: 'round-image')%></div>
+										<%= link_to 'Profile', "#", class: "dropdown-item" %>
+										<a class="dropdown-item" href="#">Messages</a>
+										<div class="dropdown-divider"></div>
+										<%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+									</div>
 								</div>
-							</div>
 							</nav>
 
 						</div>
@@ -54,12 +47,12 @@
 							<li class="nav-item" ><%= link_to 'Log In', new_user_session_path, class: "nav-link" %></li>
 							<li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
 						</ul>
-
 					<% end %>
 				</nav>
 			</div>
 			<p class="notice"><%= notice %></p>
 			<p class="alert"><%= alert %></p>
+			<%= flash_messages %>
 			<div id="wrapper" class="active">
 				<%if user_signed_in? %>
 					<div id = "sidebar-wrapper">
@@ -70,14 +63,21 @@
 							<li><a href="#">Reporting<span class="fa fa-bar-chart"></span></a></li>
 						</ul>
 					</div>
-					<%= bootstrap_flash_toastr %>
+
 					<div class="col-sm-9 main">
 						<%= yield %>
 					</div>
-					<%else %>
-						<%= yield %>
-					<%end%>
+				<%else %>
+					<%= yield %>
+				<%end%>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("active");
+			});
+		</script>
 	</body>
 </html>

@@ -12,9 +12,10 @@ class TasksController < ApplicationController
 		load_project
 		@task = @project.tasks.build task_params
 		@task.owner = current_user
+
 		if @task.save
 			track_activity @project, @task
-			redirect_to root_path
+			redirect_to project_path(@project)
 		else
 			redirect_to new_projects_task_path(@project)
 		end
@@ -23,7 +24,8 @@ class TasksController < ApplicationController
 
 	def show
 		load_project
-		load_task
+		@task = Task.find params[:id]
+
 		respond_to do |format|
 			format.html do
 			 redirect_to project_path(@project)
@@ -40,7 +42,10 @@ class TasksController < ApplicationController
 	end
 
 	def destroy
-
+		@project = Project.find params[:project_id]
+		@task = Task.find params[:id]
+		@task.destroy
+		redirect_to project_path(@project)
 	end
 	private
 	def task_params
@@ -49,9 +54,5 @@ class TasksController < ApplicationController
 
 	def load_project
 		@project = Project.find params[:project_id]
-	end
-
-	def load_task
-		@task = Task.find params[:id]
 	end
 end

@@ -9,7 +9,17 @@ before_action :configure_sign_up_params, only: [:create]
 
 	# POST /resource
 	def create
-		super
+		@user = User.create configure_sign_up_params
+		a.avatar.url = Identicon.data_url_for params[:email]
+		if @user.save
+			respond_to do |format|
+				format.html do
+					flash[:success] = "Sign up success"
+					redirect_to root_path
+				end
+				format.json { render json: @user }
+			end
+		end
 	end
 
 	# GET /resource/edit
@@ -36,11 +46,11 @@ before_action :configure_sign_up_params, only: [:create]
 	#   super
 	# end
 
-	# protected
+	protected
 
 	# If you have extra params to permit, append them to the sanitizer.
 	def configure_sign_up_params
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation, :avatar])
 	end
 
 	# If you have extra params to permit, append them to the sanitizer.

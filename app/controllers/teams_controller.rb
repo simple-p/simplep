@@ -1,18 +1,22 @@
 class TeamsController < ApplicationController
 
 	def new
+		# load_project
 		@team = Team.new
 	end
 
 	def create
-		@team = Team.new team_params
+	# @team = @project.teams.build team_params
+		@team = Team.create team_params
 		@team.owner = current_user
-		if @team.save
+		@team.project_id = nil
+		if @team.persisted?
 			respond_to do |format|
 				format.html { redirect_to root_path }
 				format.json { render json: @team }
 			end
 		else
+			# redirect_to new_projects_team_path(@project)
 			redirect_to new_team_path
 		end
 	end
@@ -23,6 +27,7 @@ class TeamsController < ApplicationController
 	end
 
 	def update
+		# load_project
 		load_team
 		respond_to do |format|
 			format.html do
@@ -32,7 +37,18 @@ class TeamsController < ApplicationController
 		end
 	end
 
+	def destroy
+		# load_project
+		load_team
+		@team.destroy
+		redirect_to project_path(@project)
+	end
+
 	private
+
+	def load_project
+		@project = Project.find params[:project_id]
+	end
 
 	def load_team
 		@team = Team.find params[:id]
@@ -41,5 +57,4 @@ class TeamsController < ApplicationController
 	def team_params
 		params.require(:team).permit(:name, :user_id, :email)
 	end
-
 end
