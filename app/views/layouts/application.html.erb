@@ -58,12 +58,13 @@
 					<div id = "sidebar-wrapper">
 						<ul class="sidebar-nav" id="sidebar">
 							<li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
-							<li><a href="<%= projects_path %>">Projects &nbsp;&nbsp;<span class="fa fa-product-hunt"></span></a></li>
+							<li><a href="<%= projects_path %>">Projects &nbsp;&nbsp;</a>
+								<%= link_to "<span class='fa fa-plus-circle' style='color:white'></span>".html_safe, root_path, data: { toggle: "modal", target: "#ajax-modal-project" } %>
+							</li>
 							<li><a href="#">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-users"></span></a></li>
 							<li><a href="#">Reporting<span class="fa fa-bar-chart"></span></a></li>
 						</ul>
 					</div>
-
 					<div class="col-sm-9 main">
 						<%= yield %>
 					</div>
@@ -72,6 +73,7 @@
 				<%end%>
 			</div>
 		</div>
+		<%= render 'projects/dialog' %>
 
 		<script type="text/javascript">
 			$("#menu-toggle").click(function(e) {
