@@ -4,10 +4,10 @@
 	<div class="row placeholders">
 		<div class="center-container">
 			<table class="table">
-				<tbody class="tasks">
+				<tbody class="projects">
 					<% Project.all.each do |project| %>
 						<tr id=<%=project.id%> >
-							<td><%= link_to project.name, project_path(project)%></td>
+							<%= render 'project',project: project %>
 						</tr>
 					<% end %>
 				</tbody>

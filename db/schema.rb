@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120004759) do
+ActiveRecord::Schema.define(version: 20161120040924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20161120004759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+    t.integer  "team_id"
   end
 
   create_table "task_followers", force: :cascade do |t|
@@ -74,7 +75,6 @@ ActiveRecord::Schema.define(version: 20161120004759) do
     t.integer  "owner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "project_id"
     t.index ["name"], name: "index_teams_on_name", using: :btree
   end
 

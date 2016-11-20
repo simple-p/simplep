@@ -2,11 +2,14 @@ Rails.application.routes.draw do
 	get 'task_followers/create'
 
 	resources :activities
+	resources :teams do
+		resources :projects
+	end
 	resources :projects do
 		resources :tasks
-		resources :teams
 	end
-
+	delete 'projects/:id/' => "projects#destroy", as: "destroy_project"
+	delete 'teams/:id' => "teams#destroy", as: "destroy_team"
 	resources :tasks do
 		resources :comments
 		resources :task_followers

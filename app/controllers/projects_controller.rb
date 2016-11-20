@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+	before_action :set_project, only: [:edit, :show, :update, :destroy]
 	def index
 		@project = Project.all.order("created_at DESC")
 	end
@@ -8,10 +9,10 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = Project.new project_params
+		@project = Project.create project_params
 		respond_to do |format|
 			if @project.save
-				format.html { redirect_to root_path }
+				format.html { redirect_to project_path }
 				format.json { head :no_content }
 				format.js
 			else
@@ -22,18 +23,14 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
-		set_project
 	end
 
 	def show
-		set_project
 	end
 
 	def update
-		set_project
 		respond_to do |format|
 			if @project.update project_params
-				format.html { redirect_to project_path }
 				format.json { head :no_content }
 				format.js
 			else
@@ -44,12 +41,10 @@ class ProjectsController < ApplicationController
 	end
 
 	def destroy
-		set_project
 		@project.destroy
 		respond_to do |format|
-			format.html { redirect_to project_path }
+			format.html { redirect_to projects_path }
 			format.json { head :no_content }
-			format.js
 		end
 	end
 

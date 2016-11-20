@@ -1,5 +1,9 @@
 class TeamsController < ApplicationController
 
+	def index
+		@teams = Team.all
+	end
+
 	def new
 		# load_project
 		@team = Team.new
@@ -8,15 +12,14 @@ class TeamsController < ApplicationController
 	def create
 	# @team = @project.teams.build team_params
 		@team = Team.create team_params
-		@team.owner = current_user
-		@team.project_id = nil
-		if @team.persisted?
+		if @team.save
 			respond_to do |format|
-				format.html { redirect_to root_path }
+				format.html { redirect_to teams_path }
 				format.json { render json: @team }
+				format.js
 			end
 		else
-			# redirect_to new_projects_team_path(@project)
+			flash[:error] = "#{ @team.errors.full_messages.to_sentence }"
 			redirect_to new_team_path
 		end
 	end
@@ -30,10 +33,13 @@ class TeamsController < ApplicationController
 		# load_project
 		load_team
 		respond_to do |format|
-			format.html do
-				@team.update team_params
+			if @team.update team_params
+				format.json { head :no_content }
+				format.js
+			else
+				format.json { render json: @team.errors.full_messages,
+														status: :unprocessable_entity }
 			end
-			format.json { render json: @team }
 		end
 	end
 
@@ -41,20 +47,19 @@ class TeamsController < ApplicationController
 		# load_project
 		load_team
 		@team.destroy
-		redirect_to project_path(@project)
+		respond_to do |format|
+			format.html { redirect_to teams_path }
+			format.json { head :no_content }
+		end
 	end
 
 	private
-
-	def load_project
-		@project = Project.find params[:project_id]
-	end
 
 	def load_team
 		@team = Team.find params[:id]
 	end
 
 	def team_params
-		params.require(:team).permit(:name, :user_id, :email)
+		params.require(:team).permit(:name, :owner_id)
 	end
 end
