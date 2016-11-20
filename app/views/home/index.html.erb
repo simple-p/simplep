@@ -388,16 +388,13 @@ img::-moz-selection {
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#four">More</a>
                 </li>
-                <li class="nav-item">
-                  <%= link_to 'Log In', new_user_session_path, class: "nav-link page-scroll" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link page-scroll" %></li>
-                </li>
             </ul>
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" href="#aboutModal">About</a>
+                    <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" href="#logInModal">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" data-toggle="modal" title="A free Bootstrap theme" href="#signUpModal">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -1041,22 +1038,70 @@ img::-moz-selection {
         </div>
     </div>
 </div>
-<div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body text-xs-center">
-                <h2 class="text-xs-center">Bootstrap 4 Theme</h2>
-                <h6 class="text-xs-center">A free, responsive template</h6>
-                <p class="text-xs-center">
-                    This is a customized, single page example template that demonstrates some of the new features to check out in Bootstrap 4. Some of the features include Google Montserrat fonts, animation using Dan Eden's animate.css and the WOW jQuery plugin to watch the scrolling.
-                </p>
-                <p class="text-xs-center"><a href="http://bootstrap4.guide">Download at Bootstrap4.guide</a></p>
-                <br>
-                <button class="btn btn-primary btn-lg" data-dismiss="modal" aria-hidden="true"> OK </button>
-            </div>
+<!-- Login and Sign Up Modal -->
+<div id="logInModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-xs-center">
+        <div class="card-header">
+          <h2 class="form-signin-heading">Log in</h2>
         </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => "center-block" }) do |f| %>
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, :class=> "form-control" %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off", :class=> "form-control" %>
+
+          <% if devise_mapping.rememberable? -%>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+          <% end -%>
+          <div class="actions">
+            <%= f.submit "Log in", :class=> "btn btn-secondary" %>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
+  </div>
 </div>
+
+<div id="signUpModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-xs-center">
+        <div class="card-header">
+          <h2 class="form-signin-heading">Sign Up</h2>
+        </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
+
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true,:class=> "form-control" %>
+
+            <%= f.label :name %><br />
+            <%= f.text_field :name,:class=> "form-control" %>
+
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off",:class=> "form-control" %>
+
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off",:class=> "form-control" %></br>
+
+          <div class="actions">
+            <%= f.submit "Sign up", :class=> "btn btn-secondary"  %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="alertModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
