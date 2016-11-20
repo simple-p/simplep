@@ -364,7 +364,7 @@ img::-moz-selection {
         <div class="inner">
             <h1>What's New in Bootstrap 4</h1>
             <h5 class="wow fadeIn text-normal wow fadeIn">A free, one-page theme to highlight the new features</h5>
-            <a href="#one" class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3">Get Started</a>
+            <a href="<%= new_user_registration_path %>" class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3">Sign Up Now</a>
         </div>
     </div>
 </header>
@@ -527,7 +527,7 @@ img::-moz-selection {
                             <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample14.jpg" class="img-fluid">
                             <div class="card-img-overlay">
                                 <h4 class="card-title text-xs-center">
-                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample3.jpg">view</a>
+                                  <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="/users/sign_in">view</a>
                                 </h4>
                             </div>
                         </div>
@@ -923,7 +923,7 @@ img::-moz-selection {
     <div class="container text-xs-center">
         <div class="call-to-action">
             <h2 class="text-primary">Get Started</h2>
-            <a href="http://www.bootstrapzero.com" target="ext" class="btn btn-primary-outline btn-lg wow flipInX text-uppercase">Free Download</a>
+            <a href="<%= new_user_registration_path %>" target="ext" class="btn btn-primary-outline btn-lg wow flipInX text-uppercase">Sign Up Now</a>
         </div>
         <br>
         <hr>
@@ -1073,7 +1073,9 @@ img::-moz-selection {
     <!--scripts loaded here-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
-    <script>(function($) {
+    <script>
+
+    (function($) {
     "use strict";
 
     $('body').scrollspy({
