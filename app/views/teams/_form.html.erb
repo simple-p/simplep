@@ -1,4 +1,5 @@
-<%= form_for @team do |f| %>
+<%= form_for (@team) do |f| %>
 	<%= f.text_field :name, class: "form-control" %>
-	<%= f.submit %>
+	<%= f.hidden_field :owner_id, value: current_user.id %>
+	<%= f.submit 'Create', class: 'btn btn-primary' %>
 <% end %>

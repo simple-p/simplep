@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>SimpleP</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>SimpleP</title>
+		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="https://image.freepik.com/free-icon/social-media-collaboration_318-32157.jpg">
-  </head>
+		<link rel="icon" type="image/png" href="https://image.freepik.com/free-icon/social-media-collaboration_318-32157.jpg">
+	</head>
 
-  <body>
-    <!-- Sidebar Toggle -->
-    <script>
-$("#menu-toggle").click(function(e) {
-  e.preventDefault();
-  $("#wrapper").toggleClass("active");
-});
-    </script>
-    <!-- End Sidebar Toggle -->
+	<body>
 
+<<<<<<< HEAD
     <div class="container-fluid">
       <div class="row">
         <nav id="topNav" class="navbar navbar-default navbar-fixed-top bg-faded">
@@ -39,6 +32,7 @@ $("#menu-toggle").click(function(e) {
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
+                  <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar.url(:thumb), class: 'round-image')%></div>
                   <%= link_to 'Profile', "#", class: "dropdown-item" %>
                   <a class="dropdown-item" href="#">Messages</a>
                   <div class="dropdown-divider"></div>
@@ -51,13 +45,14 @@ $("#menu-toggle").click(function(e) {
       </div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      <%= flash_toastr %>
       <div id="wrapper" class="active">
         <%if user_signed_in? %>
           <div id = "sidebar-wrapper">
             <ul class="sidebar-nav" id="sidebar">
               <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
               <li><a href="<%= projects_path %>">Projects &nbsp;<span class="fa fa-product-hunt"></span></a></li>
-              <li><a href="#">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-users"></span></a></li>
+              <li><a href="<%= teams_path%>">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-users"></span></a></li>
               <li><a href="#">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
             </ul>
           </div>

@@ -3,7 +3,16 @@ class MembershipsController < ApplicationController
 	def create
 		@team = Team.find(params[:team_id])
 		@member = User.find_by_email params[:email]
-		if @team.owner != @member
+		if @member.nil?
+			flash[:notice] = "email was wrong or doesn't existed."
+			redirect_to @team
+		elsif @team.owner == @member
+			flash[:notice] = "You are owner"
+			redirect_to @team
+		elsif @member.is_member?(@team.id)
+			flash[:notice] = "#{@member.email} is already member"
+			redirect_to @team
+		else
 			@membership = Membership.new(:member_id => @member.id, :team_id => @team.id)
 			if @membership.save
 				respond_to do |format|
@@ -17,8 +26,6 @@ class MembershipsController < ApplicationController
 					format.json { render json: @membership }
 				end
 			end
-		else
-			flash[:notice] = "You are owner"
 		end
 	end
 
