@@ -22,20 +22,20 @@
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+        <nav id="topNav" class="navbar navbar-default navbar-fixed-top bg-faded">
           <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
 
           <% if user_signed_in? %>
-            <a class="navbar-brand" href="#">Hello <%= current_user.name %></a>
+            <a class="navbar-brand" href="/">Simple P</a>
             <div id="navbar">
               <nav class="nav navbar-nav">
-                <a class="nav-item nav-link" href="#">Dashboard</a>
-                <a class="nav-item nav-link" href="#">Activities</a>
-                <a class="nav-item nav-link" href="#">Tasks</a>
+                <a class="nav-item nav-link" href="#">DASHBOARD</a>
+                <a class="nav-item nav-link" href="#">ACTIVITIES</a>
+                <a class="nav-item nav-link" href="#">TASKS</a>
                 <span class="navbar-text text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="height:25px" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" />&nbsp;This is the first company message!</span>
               <div class="btn-group float-xs-right">
-                <button type="button" class="btn btn-default dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="fa fa-user"></span>
+                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="fa fa-user"></span> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -66,7 +66,7 @@
               <li><a href="#">Reporting<span class="fa fa-bar-chart"></span></a></li>
             </ul>
           </div>
-            <%= yield %>
+					<%= yield %>
           <%else %>
             <%= yield %>
           <%end%>

@@ -1,9 +1,13 @@
 /*
 *= require font-awesome
 */
-// Custom bootstrap variables must be set or imported before bootstrap itself.
- @import "bootstrap";
- @import "projects";
+
+// General Application SCSS
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+#topNav {
+    font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
+}
+// End General Application scss
 
  // Toan Ngo Sidebar togglable block
  #wrapper {
@@ -148,3 +152,5 @@
  }
  }
  // End toggleable block
+ // Custom bootstrap variables must be set or imported before bootstrap itself.
+ @import "bootstrap";
