@@ -30,4 +30,18 @@ module ApplicationHelper
 		end
 		flash_messages.join("\n").html_safe
 	end
+
+# Helper for Devise
+	def resource_name
+     :user
+   end
+
+   def resource
+     @resource ||= User.new
+   end
+
+   def devise_mapping
+     @devise_mapping ||= Devise.mappings[:user]
+   end
+# End helper for devise
 end

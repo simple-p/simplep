@@ -1,9 +1,13 @@
 /*
 *= require font-awesome
 */
-// Custom bootstrap variables must be set or imported before bootstrap itself.
-@import "bootstrap";
-@import 'bootstrap-datepicker';
+
+// General Application SCSS
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+#topNav {
+    font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
+}
+// End General Application scss
 
  // Toan Ngo Sidebar togglable block
  #wrapper {
@@ -30,6 +34,7 @@
      list-style: none;
      margin: 0;
      padding: 0;
+     font-family: Montserrat;
  }
  #page-content-wrapper {
      padding-left: 0;
@@ -148,3 +153,5 @@
  }
  }
  // End toggleable block
+ // Custom bootstrap variables must be set or imported before bootstrap itself.
+ @import "bootstrap";
