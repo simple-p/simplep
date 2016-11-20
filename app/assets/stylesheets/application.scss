@@ -2,7 +2,8 @@
 *= require font-awesome
 */
 // Custom bootstrap variables must be set or imported before bootstrap itself.
- @import "bootstrap";
+@import "bootstrap";
+@import 'bootstrap-datepicker';
 
  // Toan Ngo Sidebar togglable block
  #wrapper {

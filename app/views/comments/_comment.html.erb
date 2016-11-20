@@ -1,2 +1,3 @@
+<strong><%= comment.user.email %> </strong>
 <%= comment.content %>
 <%= link_to "del", task_comment_path(comment.task, comment), :method => :delete, remote: true %>

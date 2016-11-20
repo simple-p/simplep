@@ -38,7 +38,22 @@ class TasksController < ApplicationController
   end
 
   def update
+    load_project
+    @task = Task.find params[:id]
+    if params[:owner_id]
+      @task.owner_id = params[:owner_id]
+      @task.save
+    end
 
+    if params[:due_date]
+      @task.due_date = params[:due_date]
+      @task.save
+    end
+    
+    respond_to do |format|
+      format.html {redirect_to project_path(@project)}
+      format.js
+    end 
   end
 
   def destroy

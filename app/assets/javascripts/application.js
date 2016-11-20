@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require tether
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 //= require 'toastr'
 
@@ -32,3 +34,13 @@ toastr.options = {
 	"showMethod": "fadeIn",
 	"hideMethod": "fadeOut"
 };
+$(function(){
+      $('.datepicker').datepicker();
+});
+
+
+function handleChange(el)
+{
+  console.log("kkkk");
+  alert("click check obex");
+}
