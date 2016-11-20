@@ -10,9 +10,10 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create project_params
+    binding.pry
     respond_to do |format|
       if @project.save
-        format.html { redirect_to project_path }
+        format.html { redirect_to projects_path }
         format.json { head :no_content }
         format.js
       else
