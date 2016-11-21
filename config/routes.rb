@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 	end
 	resources :projects do
 		resources :tasks
+                post 'tasks/:id/owner' => "tasks#owner", as: "task_owner"
+                post 'tasks/:id/deadline' => "tasks#deadline", as: "task_deadline"
+                post 'tasks/:id/completed' => "tasks#completed", as: "task_completed"
 	end
+
 	delete 'projects/:id/' => "projects#destroy", as: "destroy_project"
 	delete 'teams/:id' => "teams#destroy", as: "destroy_team"
 	resources :tasks do
