@@ -11,14 +11,18 @@
 	</head>
 
 	<body>
-
-<<<<<<< HEAD
+		<% if user_signed_in? %>
+		<div class="alert alert-warning alert-dismissible fade in" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<strong>Team Message:</strong> Happy holiday! We're going to have a Christmas party at 7:00PM on Saturday, November 24th. Click <a href="#">here</a> to sign up
+		</div>
     <div class="container-fluid">
       <div class="row">
-        <nav id="topNav" class="navbar navbar-default navbar-fixed-top bg-faded">
-          <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
 
-          <% if user_signed_in? %>
+        <nav id="topNav" class="navbar nav navbar-default bg-faded">
+          <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
             <a class="navbar-brand" href="/">Simple P</a>
             <div id="navbar">
               <nav class="nav navbar-nav">
@@ -46,8 +50,8 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= flash_toastr %>
-      <div id="wrapper" class="active">
         <%if user_signed_in? %>
+				<div id="wrapper" class="active">
           <div id = "sidebar-wrapper">
             <ul class="sidebar-nav" id="sidebar">
               <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
