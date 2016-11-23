@@ -1,15 +1,16 @@
 <div class="card-block">
   <div class="form-check">
     <label class="form-check-label">
-      <input id="task_completed" onchange="handleChange(this);" class="form-check-input" type="checkbox" value="">
+      <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
+
       Mask as completed
     </label>
   </div>
-    <%= form_tag(project_task_path(task.project, task), :method => :put, class: "form-inline", remote: true) do %>
+    <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
       <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "email", task.owner_id), :include_blank => true, class: 'form-input'%>
     <%= submit_tag "Assign"%>
       <% end %>
-    <%= form_tag(project_task_path(task.project, task), :method => :put, class: "form-inline", remote: true) do %>
+    <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
     <%= text_field_tag :due_date, task.due_date ? time_ago_in_words(task.due_date) : nil, class: 'datepicker form-control'%>
     <%= submit_tag "Change due date" %>
     <%end%>

@@ -39,9 +39,3 @@ $(function(){
       $('.datepicker').datepicker();
 });
 
-
-function handleChange(el)
-{
-  console.log("kkkk");
-  alert("click check obex");
-}

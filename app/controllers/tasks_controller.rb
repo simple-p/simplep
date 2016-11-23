@@ -37,7 +37,24 @@ class TasksController < ApplicationController
 
   end
 
-  def update
+  def completed
+    load_project
+    @task = Task.find params[:id]
+    if params[:completed] == "true" 
+      @task.completed_at = Time.now
+      @task.save
+    elsif params[:completed] == "false"
+      @task.completed_at = nil
+      @task.save
+    end
+
+    respond_to do |format|
+      format.js
+      format.html {redirect_to project_path(@project)}
+    end 
+  end
+
+  def owner
     load_project
     @task = Task.find params[:id]
     if params[:owner_id]
@@ -45,6 +62,16 @@ class TasksController < ApplicationController
       @task.save
     end
 
+    respond_to do |format|
+      format.html {redirect_to project_path(@project)}
+      format.js
+    end 
+  end
+
+
+  def deadline
+    load_project
+    @task = Task.find params[:id]
     if params[:due_date]
       @task.due_date = params[:due_date]
       @task.save
@@ -54,6 +81,10 @@ class TasksController < ApplicationController
       format.html {redirect_to project_path(@project)}
       format.js
     end 
+  end
+
+  def update
+
   end
 
   def destroy
