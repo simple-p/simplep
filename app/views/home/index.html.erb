@@ -1045,6 +1045,7 @@ img::-moz-selection {
           <h2 class="form-signin-heading">Log in</h2>
         </div>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => "center-block" }) do |f| %>
+        <div class="form-group">
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, :class=> "form-control" %>
 
@@ -1060,6 +1061,7 @@ img::-moz-selection {
           </div>
         <% end %>
         <%= render "devise/shared/links" %>
+      </div>
       </div>
     </div>
   </div>

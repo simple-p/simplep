@@ -23,26 +23,25 @@
 
         <nav id="topNav" class="navbar nav navbar-default bg-faded">
           <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
-            <a class="navbar-brand" href="/">Simple P</a>
             <div id="navbar">
-              <nav class="nav navbar-nav">
+              <ul class="nav navbar-nav">
+								<a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:40px;"> Simple P</a>
                 <a class="nav-item nav-link" href="#">DASHBOARD</a>
                 <a class="nav-item nav-link" href="#">ACTIVITIES</a>
                 <a class="nav-item nav-link" href="#">TASKS</a>
-                <span class="navbar-text text-muted">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="height:25px" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" />&nbsp;This is the first company message!</span>
               <div class="btn-group float-xs-right">
                 <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="fa fa-user"></span> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-right">
+              	<div class="dropdown-menu dropdown-menu-right">
                   <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar.url(:thumb), class: 'round-image')%></div>
                   <%= link_to 'Profile', "#", class: "dropdown-item" %>
                   <a class="dropdown-item" href="#">Messages</a>
                   <div class="dropdown-divider"></div>
                   <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 </div>
-              </nav>
+              </ul>
             </div>
           <% end %>
         </nav>
