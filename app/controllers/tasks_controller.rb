@@ -6,6 +6,9 @@ class TasksController < ApplicationController
 
   def index
 
+    if current_user
+      @tasks = current_user.tasks
+    end
   end
 
   def create
