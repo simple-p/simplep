@@ -7,6 +7,8 @@ class Task < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :activities, as: :subject, dependent: :destroy
 
+  validates :name, presence: true,
+                    length: { minimum: 5 }
   def isCompleted?
     !!completed_at
   end
