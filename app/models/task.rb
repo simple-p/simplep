@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :project
+  belongs_to :user, optional: true
   belongs_to :owner, class_name: 'User'
   has_many :task_followers, dependent: :destroy
   has_many :followers, :through => :task_followers, :source => :user

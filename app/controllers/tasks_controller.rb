@@ -5,8 +5,15 @@ class TasksController < ApplicationController
   end
 
   def index
-    @search = Task.search(params[:q])
-    @tasks = @search.result
+      @search = Task.search(params[:q])
+    if params[:q]
+      @tasks = @search.result
+    else
+      if current_user
+        @tasks = current_user.tasks
+      end
+    end
+
   end
 
   def create
