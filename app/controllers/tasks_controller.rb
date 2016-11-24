@@ -25,7 +25,8 @@ class TasksController < ApplicationController
       track_activity @project, @task
       redirect_to project_path(@project)
     else
-      redirect_to new_projects_task_path(@project)
+      flash[:error] = 'Name must be 5 character minimum'
+      redirect_to new_project_task_path(@project)
     end
 
   end

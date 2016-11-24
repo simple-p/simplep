@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-9">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="form-signin-heading">New Project Blog</h2>
+      </div>
+    <div class="card-block">
+    <%= form_for([@project, @blog]) do |f| %>
+          <%= f.label :status %><br />
+          <%= f.select :status, options_for_select([ "Ahead","On Track", "Late" ], "On Track"),:class=> "form-control" %>
+          <%= f.label :title %><br />
+          <%= f.text_field :title, :class=> "form-control" %>
+          <%= f.label :content %><br />
+          <%= f.text_area :content, rows: 15, :class=> "form-control" %><br />
+        <div class="actions">
+          <%= f.submit "Create", :class=> "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
