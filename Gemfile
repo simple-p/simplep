@@ -38,6 +38,10 @@ source 'https://rails-assets.org' do
 	gem 'rails-assets-tether', '>= 1.1.0'
 end
 gem 'bootstrap-datepicker-rails'
+
+#ransack gem for advanced search
+gem 'ransack'
+
 # gem font-awesome
 gem "font-awesome-rails"
 
