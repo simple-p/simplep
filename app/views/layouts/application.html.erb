@@ -1,69 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>SimpleP</title>
-		<%= csrf_meta_tags %>
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>SimpleP</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="icon" type="image/png" href="https://image.freepik.com/free-icon/social-media-collaboration_318-32157.jpg">
-	</head>
+    <link rel="icon" type="image/png" href="https://image.freepik.com/free-icon/social-media-collaboration_318-32157.jpg">
+  </head>
 
-	<body>
-		<% if user_signed_in? %>
-		<div class="alert alert-warning alert-dismissible fade in" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<strong>Team Message:</strong> Happy holiday! We're going to have a Christmas party at 7:00PM on Saturday, November 24th. Click <a href="#">here</a> to sign up
-		</div>
-    <div class="container-fluid">
-      <div class="row">
+  <body>
+    <% if user_signed_in? %>
+      <div class="alert alert-warning alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Team Message:</strong> Happy holiday! We're going to have a Christmas party at 7:00PM on Saturday, November 24th. Click <a href="#">here</a> to sign up
+      </div>
+      <div class="container-fluid">
+        <div class="row">
 
-        <nav id="topNav" class="navbar nav navbar-default bg-faded">
-          <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
+          <nav id="topNav" class="navbar nav navbar-default bg-faded">
+            <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
             <div id="navbar">
               <ul class="nav navbar-nav">
-								<a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:40px;"> Simple P</a>
+                <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:40px;"> Simple P</a>
                 <a class="nav-item nav-link" href="#">DASHBOARD</a>
-                <a class="nav-item nav-link" href="#">ACTIVITIES</a>
-                <a class="nav-item nav-link" href="#">TASKS</a>
-              <div class="btn-group float-xs-right">
-                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="fa fa-user"></span> <%= current_user.name %>
+                <a class="nav-item nav-link" href="<%= tasks_path %>">SEARCH</a>
+                <a class="nav-item nav-link" href="/activities">INBOX</a>
+                <a class="nav-item nav-link" href="/tasks">MY TASKS</a>
+                <div class="btn-group float-xs-right">
+                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-user"></span> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
-                </button>
-              	<div class="dropdown-menu dropdown-menu-right">
-                  <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar.url(:thumb), class: 'round-image')%></div>
-                  <%= link_to 'Profile', "#", class: "dropdown-item" %>
-                  <a class="dropdown-item" href="#">Messages</a>
-                  <div class="dropdown-divider"></div>
-                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                </div>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar.url(:thumb), class: 'round-image')%></div>
+                    <%= link_to 'Profile', "#", class: "dropdown-item" %>
+                    <a class="dropdown-item" href="#">Messages</a>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  </div>
               </ul>
+                </div>
+              <% end %>
+          </nav>
             </div>
-          <% end %>
-        </nav>
-      </div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= flash_toastr %>
-        <%if user_signed_in? %>
-				<div id="wrapper" class="active">
-          <div id = "sidebar-wrapper">
-            <ul class="sidebar-nav" id="sidebar">
-              <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
-              <li><a href="<%= projects_path %>">Projects &nbsp;<span class="fa fa-product-hunt"></span></a></li>
-              <li><a href="<%= teams_path%>">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-users"></span></a></li>
-              <li><a href="#">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
-            </ul>
-          </div>
-					<%= yield %>
-          <%else %>
-            <%= yield %>
-          <%end%>
-      </div>
-    </div>
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+            <%= flash_toastr %>
+            <%if user_signed_in? %>
+              <div id="wrapper" class="active">
+                <div id = "sidebar-wrapper">
+                  <ul class="sidebar-nav" id="sidebar">
+                    <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
+                    <li><a href="<%= projects_path %>">Projects &nbsp;<span class="fa fa-product-hunt"></span></a></li>
+                    <li><a href="<%= teams_path%>">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="fa fa-users"></span></a></li>
+                    <li><a href="#">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
+                  </ul>
+                </div>
+                <%= yield %>
+              <%else %>
+                <%= yield %>
+              <%end%>
+              </div>
+        </div>
   </body>
 </html>

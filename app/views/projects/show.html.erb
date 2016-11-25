@@ -1,23 +1,13 @@
 <h1> <%= @project.name %> </h1>
+
 <%= link_to "New task", new_project_task_path(@project), class: "btn btn-primary" %>
+<%= link_to "Blog", project_blogs_path(@project), class: "btn btn-secondary" %>
 
 
 <div class="row placeholders">
   <div class="center-container col-md-6" id=<%= @project.id %> >
-    <table class="table table-striped">
-      <tbody class="tasks">
-        <% @project.tasks.each do |task| %>
-          <tr id=<%=task.id%> >
-            <td id=<%="completed-icon-#{task.id}"%>><%= task_completed_icon(task)%> </td>
-            <td><%= link_to task.name, project_task_path(@project, task), remote:true%></td>
-            <td id=<%="due-date-#{task.id}"%>><%= deadline_warning(task)%></td>
-          </tr>
-        <% end %>
-
-      </tbody>
-    </table>
   </div>
+  <%= render partial: "tasks/tasks", locals: {tasks: @project.tasks} %>
   <div class="right-container col-md-6">
   </div>
 </div>
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120043756) do
+ActiveRecord::Schema.define(version: 20161124140420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20161120043756) do
     t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id", using: :btree
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id", using: :btree
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string   "status"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_blogs_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_blogs_on_user_id", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -49,6 +61,11 @@ ActiveRecord::Schema.define(version: 20161120043756) do
     t.datetime "updated_at", null: false
     t.string   "name"
     t.integer  "team_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "task_followers", force: :cascade do |t|
@@ -102,4 +119,6 @@ ActiveRecord::Schema.define(version: 20161120043756) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "blogs", "projects"
+  add_foreign_key "blogs", "users"
 end
