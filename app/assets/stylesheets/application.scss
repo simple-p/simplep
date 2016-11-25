@@ -153,32 +153,32 @@
      width: 150px;
      transition: all .4s ease 0s;
  }
- 
+
 // Avatar
 .round-image {
-	background-color: white;
-	border: 1px solid #d9d9d9;
-	border-radius: 25px;
-	-moz-border-radius: 25px;
-	-webkit-border-radius: 25px;
-	height: 50px;
-	width: 50px;
-	overflow: hidden;
-	text-align: center;
-	img { width: 100% }
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  text-align: center;
+  img { width: 100% }
 }
 
-.round-image-16 {
-	background-color: white;
-	border: 1px solid #d9d9d9;
-	border-radius: 25px;
-	-moz-border-radius: 25px;
-	-webkit-border-radius: 25px;
-	height: 32px;
-	width: 32px;
-	overflow: hidden;
-	text-align: center;
-	img { width: 100% }
+.round-image-24 {
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  height: 24px;
+  width: 24px;
+  overflow: hidden;
+  text-align: center;
+  img { width: 100% }
 }
  // End toggleable block
  // Custom bootstrap variables must be set or imported before bootstrap itself.
