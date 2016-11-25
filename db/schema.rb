@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124140420) do
+ActiveRecord::Schema.define(version: 20161125094913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 20161124140420) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "member_id"
     t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notification_readers", force: :cascade do |t|
+    t.integer  "notification_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["notification_id"], name: "index_notification_readers_on_notification_id", using: :btree
+    t.index ["user_id"], name: "index_notification_readers_on_user_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,4 +132,6 @@ ActiveRecord::Schema.define(version: 20161124140420) do
   add_foreign_key "activities", "users"
   add_foreign_key "blogs", "projects"
   add_foreign_key "blogs", "users"
+  add_foreign_key "notification_readers", "notifications"
+  add_foreign_key "notification_readers", "users"
 end
