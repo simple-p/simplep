@@ -1,0 +1,11 @@
+<table class="table table-striped">
+  <tbody class="tasks">
+    <% tasks.each do |task| %>
+      <tr id=<%=task.id%> >
+        <td id=<%="completed-icon-#{task.id}"%>><%= task_completed_icon(task)%> </td>
+        <td><%= link_to task.name, project_task_path(task.project, task), remote:true%></td>
+        <td id=<%="due-date-#{task.id}"%>><%= deadline_warning(task)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont %>
+  </div>
+  <div class="field">
+    <%= f.label :description_cont, "Description contains" %>
+    <%= f.text_field :description_cont %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+<% if @tasks %>
+  <%= render partial: "tasks", locals: {tasks: @tasks} %>
+<% end %>
+

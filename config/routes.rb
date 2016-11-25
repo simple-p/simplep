@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'task_followers/create'
+  resources :blogs
 
   resources :activities
   resources :teams do
@@ -7,9 +8,10 @@ Rails.application.routes.draw do
   end
   resources :projects do
     resources :tasks
-                post 'tasks/:id/owner' => "tasks#owner", as: "task_owner"
-                post 'tasks/:id/deadline' => "tasks#deadline", as: "task_deadline"
-                post 'tasks/:id/completed' => "tasks#completed", as: "task_completed"
+    post 'tasks/:id/owner' => "tasks#owner", as: "task_owner"
+    post 'tasks/:id/deadline' => "tasks#deadline", as: "task_deadline"
+    post 'tasks/:id/completed' => "tasks#completed", as: "task_completed"
+    resources :blogs
   end
 
   delete 'projects/:id/' => "projects#destroy", as: "destroy_project"

@@ -11,14 +11,14 @@
     <%= submit_tag "Assign"%>
       <% end %>
     <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
-    <%= text_field_tag :due_date, task.due_date ? time_ago_in_words(task.due_date) : nil, class: 'datepicker form-control'%>
+    <%= date_field :due_date, task.due_date ? time_ago_in_words(task.due_date) : nil, class: 'datepicker form-control'%>
     <%= submit_tag "Change due date" %>
-    <%end%>
+    <% end %>
         <%= link_to "", project_task_path(@project, task), :method => :delete, class: "nav-link fa fa-trash "%>
   <div class="row">
   </div>
   <hr>
-  
+
   <%= task.name %>
   <hr>
   <div class="comments-wrapper">

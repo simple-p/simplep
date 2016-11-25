@@ -1,10 +1,18 @@
 class TasksController < ApplicationController
-  def new 
+  def new
     @project = Project.find(params[:project_id])
     @task = Task.new
   end
 
   def index
+      @search = Task.search(params[:q])
+    if params[:q]
+      @tasks = @search.result
+    else
+      if current_user
+        @tasks = current_user.tasks
+      end
+    end
 
   end
 
@@ -12,12 +20,13 @@ class TasksController < ApplicationController
     load_project
     @task = @project.tasks.build task_params
     @task.owner = current_user
-    
+
     if @task.save
       track_activity @project, @task
-      redirect_to project_path(@project) 
+      redirect_to project_path(@project)
     else
-      redirect_to new_projects_task_path(@project) 
+      flash[:error] = 'Name must be 5 character minimum'
+      redirect_to new_project_task_path(@project)
     end
 
   end
@@ -25,10 +34,10 @@ class TasksController < ApplicationController
   def show
     load_project
     @task = Task.find params[:id]
-    
+
     respond_to do |format|
       format.html do
-       redirect_to project_path(@project) 
+       redirect_to project_path(@project)
       end
 
       format.js
@@ -40,7 +49,7 @@ class TasksController < ApplicationController
   def completed
     load_project
     @task = Task.find params[:id]
-    if params[:completed] == "true" 
+    if params[:completed] == "true"
       @task.completed_at = Time.now
       @task.save
     elsif params[:completed] == "false"
@@ -51,7 +60,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.js
       format.html {redirect_to project_path(@project)}
-    end 
+    end
   end
 
   def owner
@@ -65,7 +74,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html {redirect_to project_path(@project)}
       format.js
-    end 
+    end
   end
 
 
@@ -76,11 +85,11 @@ class TasksController < ApplicationController
       @task.due_date = params[:due_date]
       @task.save
     end
-    
+
     respond_to do |format|
       format.html {redirect_to project_path(@project)}
       format.js
-    end 
+    end
   end
 
   def update
@@ -91,7 +100,7 @@ class TasksController < ApplicationController
     @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     @task.destroy
-    redirect_to project_path(@project) 
+    redirect_to project_path(@project)
   end
   private
   def task_params

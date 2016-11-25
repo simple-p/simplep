@@ -66,7 +66,7 @@
                     <li><a href="<%= teams_path%>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
-                        <%= image_tag(member.avatar, class: "round-image-24") %>
+                        <%= image_tag(member.avatar, class: "round-image-16") %>
                       <% end %>
                     <% end %>
                     <li><a href="#">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
