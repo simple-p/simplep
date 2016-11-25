@@ -63,11 +63,6 @@ ActiveRecord::Schema.define(version: 20161124140420) do
     t.integer  "team_id"
   end
 
-  create_table "searches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "task_followers", force: :cascade do |t|
     t.integer  "task_id"
     t.integer  "user_id"
