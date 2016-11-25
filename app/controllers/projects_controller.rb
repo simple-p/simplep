@@ -1,7 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :show, :update, :destroy]
   def index
-    @project = Project.all.order("created_at DESC")
+    if current_team != nil
+      @project = current_team.my_team_project
+    end
   end
 
   def new
@@ -10,7 +12,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.create project_params
-    binding.pry
+    @project.team = current_team
     respond_to do |format|
       if @project.save
         format.html { redirect_to projects_path }
@@ -56,6 +58,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :current_team_id)
   end
 end

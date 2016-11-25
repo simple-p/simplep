@@ -1,7 +1,8 @@
 class TeamsController < ApplicationController
-    def index
-      @teams = Team.all
-    end
+  before_action :load_team, only: [:show, :update, :destroy]
+  def index
+    @teams = current_user.my_team
+  end
 
   def new
     # load_project
@@ -12,6 +13,7 @@ class TeamsController < ApplicationController
     # @team = @project.teams.build team_params
     @team = Team.create team_params
     if @team.save
+      current_user.set_current_team(@team.id)
       respond_to do |format|
         format.html { redirect_to teams_path }
         format.json { render json: @team }
@@ -19,18 +21,16 @@ class TeamsController < ApplicationController
       end
     else
       flash[:error] = "#{ @team.errors.full_messages.to_sentence }"
-      redirect_to new_team_path
+      redirect_to teams_path
     end
   end
 
   def show
-    load_team
     @members = @team.memberships
   end
 
   def update
     # load_project
-    load_team
     respond_to do |format|
       if @team.update team_params
         format.json { head :no_content }
@@ -42,10 +42,15 @@ class TeamsController < ApplicationController
     end
   end
 
+  def switch
+    current_user.set_current_team(params[:team_id])
+    redirect_to teams_path
+  end
+
   def destroy
     # load_project
-    load_team
     @team.destroy
+    current_user.destroy_current_team
     respond_to do |format|
       format.html { redirect_to teams_path }
       format.json { head :no_content }
@@ -59,6 +64,6 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name, :owner_id)
+    params.require(:team).permit(:name, :owner_id, :team_id)
   end
 end

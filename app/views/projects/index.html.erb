@@ -1,19 +1,22 @@
 <div class="container">
-	<h2>Project</h2>
-	<%= link_to 'New Project', new_project_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-outline-primary'%>
-	<div class="row placeholders">
-		<div class="center-container">
-			<table class="table">
-				<tbody class="projects">
-					<% Project.all.each do |project| %>
-						<tr id=<%=project.id%> >
-							<%= render 'project',project: project %>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-		<div class="right-container">
-	</div>
-	<%= render 'dialog' %>
+  <h2>Project</h2>
+  <%= link_to 'New Project', new_project_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-outline-primary'%>
+  <div class="row placeholders">
+    <div class="center-container">
+      <table class="table">
+        <tbody class="projects">
+          <% if @projects.nil? %>
+            <p>Has No Project</p>
+          <% else %>
+            <% @project.each do |project| %>
+              <tr id=<%=project.id%> >
+                <%= render 'project',project: project %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="right-container">
+  </div>
 </div>

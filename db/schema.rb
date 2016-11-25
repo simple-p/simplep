@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124140420) do
+ActiveRecord::Schema.define(version: 20161125094913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,16 +56,26 @@ ActiveRecord::Schema.define(version: 20161124140420) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notification_readers", force: :cascade do |t|
+    t.integer  "notification_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["notification_id"], name: "index_notification_readers_on_notification_id", using: :btree
+    t.index ["user_id"], name: "index_notification_readers_on_user_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
     t.integer  "team_id"
-  end
-
-  create_table "searches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "task_followers", force: :cascade do |t|
@@ -114,6 +124,7 @@ ActiveRecord::Schema.define(version: 20161124140420) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "current_team"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -121,4 +132,6 @@ ActiveRecord::Schema.define(version: 20161124140420) do
   add_foreign_key "activities", "users"
   add_foreign_key "blogs", "projects"
   add_foreign_key "blogs", "users"
+  add_foreign_key "notification_readers", "notifications"
+  add_foreign_key "notification_readers", "users"
 end

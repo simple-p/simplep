@@ -1,18 +1,17 @@
 <h2>Team</h2>
 <%= link_to 'Create Your Team', new_team_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-outline-primary'%>
 <table class="table table-hover table-striped">
-	<thead>
-		<th>
-			Name
-		</th>
-		<th></th>
-	</thead>
-	<tbody class="teams">
-		<% Team.all.each do |team|%>
-		<tr id=<%= team.id %> >
-			<%= render 'team', team: team %>
-		</tr>
-		<% end %>
-	</tbody>
+  <thead>
+    <th>
+      Name
+    </th>
+    <th></th>
+  </thead>
+  <tbody class="teams">
+    <% @teams.each do |team|%>
+    <tr id=<%= team.id %> >
+      <%= render 'team', team: team %>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
-<%= render '/projects/dialog' %>

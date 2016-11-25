@@ -36,7 +36,7 @@ module ApplicationHelper
       content_tag(:div, "<i class='fa fa-check-circle' aria-hidden='true'></i>".html_safe)
     else
       content_tag(:div, "<i class='fa fa-circle-thin' aria-hidden='true'></i>".html_safe)
-    end 
+    end
   end
 
   def deadline_warning(task)
@@ -46,13 +46,12 @@ module ApplicationHelper
           date_color = 'red'
         else
           date_color = 'green'
-        end  
+        end
       else
         date_color = 'black'
       end
       content_tag(:div, "<font color=#{date_color}>#{time_ago_in_words(task.due_date)}</font>".html_safe);
     end
-
   end
   # Helper for Devise
   def resource_name

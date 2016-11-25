@@ -1,5 +1,6 @@
 <%= form_for(@project, remote: true, html: { :role => "form"}) do |f| %>
-	<%= f.text_field :name, class: 'form-control'%>
-        <hr>
-	<%= f.submit 'Create', class: 'btn btn-primary' %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control'%>
+  <hr>
+  <%= f.submit 'Create', class: 'btn btn-primary' %>
 <% end %>
