@@ -50,8 +50,12 @@ gem 'pry-rails', :group => :development
 
 # add Devise
 group :development, :test do
-	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
-	gem 'byebug', platform: :mri
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 group :development do
@@ -61,6 +65,14 @@ group :development do
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 	gem 'spring'
 	gem 'spring-watcher-listen', '~> 2.0.0'
+        gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'capybara', '~> 2.10', '>= 2.10.1'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

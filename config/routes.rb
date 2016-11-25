@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications
   get 'task_followers/create'
   resources :blogs
 
