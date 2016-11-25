@@ -49,5 +49,52 @@ RSpec.describe ApplicationController, type: :controller do
       expect(Notification.all.count).to eq(1)
       expect(NotificationReader.all.count).to eq(2)
     end
+
+    it "track_activity assing task" do
+      ApplicationController.new.track_activity(@user, @task, @user, 'assign')
+      expect(Activity.where(subject: @task, trackable: @user, action: 'assign').count).to eq(1)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(2)
+    end
+
+    it "Task comment Notification" do
+      comment = @task.comments.create! content: 'New comment', user: @user
+      @task.task_followers.create! user: @user
+      activity = @user.activities.new subject: @task, trackable: comment, action: 'comment'
+      ApplicationController.new.createTaskChangeNotification(activity)
+            
+      expect(Activity.where(subject: @task, trackable: comment, action: 'comment').count).to eq(1)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(1)
+    end
+
+    it "track_activity comment task" do
+      comment = @task.comments.create! content: 'New comment', user: @user
+      @task.task_followers.create! user: @user
+
+      ApplicationController.new.track_activity(@user, @task, comment , 'comment')
+      expect(Activity.where(subject: @task, trackable: comment, action: 'comment').count).to eq(1)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(1)
+    end
+    
+    it "Task completed notification" do
+      @task.task_followers.create! user: @user
+      activity = @user.activities.new subject: @task, trackable: nil, action: 'completed'
+      ApplicationController.new.createTaskChangeNotification(activity)
+            
+      expect(Activity.where(subject: @task, action: 'completed').count).to eq(1)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(1)
+    end
+
+    it "track_activity completed task" do
+      @task.task_followers.create! user: @user
+
+      ApplicationController.new.track_activity(@user, @task, nil , 'completed')
+      expect(Activity.where(subject: @task, action: 'completed').count).to eq(1)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(1)
+    end
   end
 end

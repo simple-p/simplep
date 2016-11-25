@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task.owner = current_user
 
     if @task.save
-      track_activity @project, @task
+      track_activity current_user, @project, @task
       redirect_to project_path(@project)
     else
       flash[:error] = 'Name must be 5 character minimum'
@@ -52,6 +52,7 @@ class TasksController < ApplicationController
     if params[:completed] == "true"
       @task.completed_at = Time.now
       @task.save
+      track_activity current_user, @task, nil, 'completed'
     elsif params[:completed] == "false"
       @task.completed_at = nil
       @task.save
@@ -67,8 +68,10 @@ class TasksController < ApplicationController
     load_project
     @task = Task.find params[:id]
     if params[:owner_id]
+      @owner = User.find params[:owner_id]
       @task.owner_id = params[:owner_id]
       @task.save
+      track_activity current_user, @task, @owner, 'assign'
     end
 
     respond_to do |format|

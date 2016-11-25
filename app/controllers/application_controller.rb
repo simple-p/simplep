@@ -23,14 +23,23 @@ class ApplicationController < ActionController::Base
         createProjectNotification(activity)        
       end
 
+    end
+
+    if action == 'comment'
       if subject.class.name == "Task" && trackable.class.name== "Comment"
-        createProjectNotification(activity)        
+        createTaskChangeNotification(activity)
       end
     end
 
     if action == 'assign'
       if subject.class.name == "Task" && trackable.class.name== "User"
         createAssignTaskNotification(activity)        
+      end
+    end
+
+    if action == 'completed'
+      if subject.class.name == "Task"  
+        createTaskChangeNotification(activity)
       end
     end
   end
