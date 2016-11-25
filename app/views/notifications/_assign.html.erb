@@ -1,0 +1,4 @@
+<h1><<%= "Noti #{notification.id}: #{notification.activities.count}"%></h1>
+<% notification.activities.each do |a| %>
+  <h2><%= a.action %></h2>>
+<% end %>

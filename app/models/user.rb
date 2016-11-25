@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :teams, through: :memberships, :source => :member
   has_many :notification_readers, dependent: :destroy
-  has_many :notifications, :through => :notification_readers, :source => :nofitication
+  has_many :notifications, :through => :notification_readers, :source => :notification
 
   # add avatar attachment
   attr_reader :default_avatar

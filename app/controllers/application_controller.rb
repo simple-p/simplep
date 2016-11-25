@@ -54,10 +54,17 @@ class ApplicationController < ActionController::Base
   end
 
   def createTaskChangeNotification(activity)
-    notification = Notification.create! news_type: "task_detail_change"  
-    activity.subject.followers.each do |follower|
-      notification.notification_readers.find_or_create_by! user: follower
-    end 
+    task_detail_activity = Activity.where(subject: activity.subject, action:['completed', 'comment']).first
+    if task_detail_activity
+      notification = task_detail_activity.notification
+    else
+      notification = Notification.create! news_type: "task_detail_change"  
+      activity.subject.followers.each do |follower|
+        notification.notification_readers.find_or_create_by! user: follower
+      end 
+    end
+
+    notification.save!
     activity.notification_id = notification.id 
     activity.save!
     return notification.id
@@ -74,6 +81,7 @@ class ApplicationController < ActionController::Base
       if notification_count.between?(1,4)
         activity.notification_id = last_activitiy.notification_id
         activity.save!
+        Notification.find(activity.notification_id).save!
       else
         notificationProject(activity)
       end

@@ -40,6 +40,16 @@ RSpec.describe ApplicationController, type: :controller do
       expect(NotificationReader.all.count).to eq(2)
     end
 
+    it "track_activity for multiple tasks on same project" do
+      taskB = @project.tasks.create! name: "TaskB"
+      ApplicationController.new.track_activity(@user, @project, taskB, 'create')
+      taskC = @project.tasks.create! name: "TaskC"
+      ApplicationController.new.track_activity(@user, @project, taskC, 'create')
+      expect(Activity.where(subject: @project, action: 'create').count).to eq(2)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(2)
+    end
+
     it "createAssignTaskNotification" do
       @task.owner = @user2
       activity = @user.activities.new subject: @task, trackable: @user, action: 'assign'
@@ -78,6 +88,17 @@ RSpec.describe ApplicationController, type: :controller do
       expect(NotificationReader.all.count).to eq(1)
     end
     
+    it "track_activity multiple comments" do
+      comment = @task.comments.create! content: 'New comment', user: @user
+      comment2 = @task.comments.create! content: 'New comment 2', user: @user
+      @task.task_followers.create! user: @user
+
+      ApplicationController.new.track_activity(@user, @task, comment , 'comment')
+      ApplicationController.new.track_activity(@user, @task, comment2 , 'comment')
+      expect(Activity.where(subject: @task, action: 'comment').count).to eq(2)
+      expect(Notification.all.count).to eq(1)
+      expect(NotificationReader.all.count).to eq(1)
+    end
     it "Task completed notification" do
       @task.task_followers.create! user: @user
       activity = @user.activities.new subject: @task, trackable: nil, action: 'completed'

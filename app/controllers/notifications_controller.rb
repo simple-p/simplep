@@ -1,5 +1,9 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = current_user.notifications 
+    if current_user
+      # reload user data
+      user = User.find current_user.id
+      @notifications = user.notifications 
+    end
   end
 end
