@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 20161124140420) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "homes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "member_id"
     t.integer  "team_id"
