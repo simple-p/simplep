@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
     if current_user
       # reload user data
       user = User.find current_user.id
-      @notifications = user.notifications 
+      @notifications = user.notifications.order("updated_at DESC") 
     end
   end
 end

@@ -1,4 +1,4 @@
-<h1><<%= "Noti #{notification.id}: #{notification.activities.count}"%></h1>
+<h1><%= "On task: #{notification.activities.first.subject.name}"%></h1>
 <% notification.activities.each do |a| %>
-  <h2><%= a.action %></h2>>
+  <h2><%= "#{a.user.name} assigned this task to #{a.trackable.name}" %></h2>
 <% end %>

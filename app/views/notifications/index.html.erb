@@ -1,1 +1,5 @@
-<%= renderNotifications(@notifications) %>
+<%  @notifications.each do |notification| %>
+  <% if notification.activities.count > 0 %>
+    <%= renderNotification(notification) %>
+  <% end %>
+<% end %>

@@ -1,18 +1,15 @@
 module NotificationsHelper
-  def renderNotifications(notifications)
-    notifications.each do |notification|
-      if notification.activities.count > 0
-        case 
-        when notification.news_type == 'task_detail_change' then 
-          render 'notifications/task_detail'
+  def renderNotification(notification)
+    case 
+    when notification.news_type == 'task_detail_change' then 
+      render partial: 'notifications/task_detail', locals: {notification: notification}
 
-        when notification.news_type == 'assign_change' then 
-          render 'notifications/assign'
+    when notification.news_type == 'assign_change' then 
+      render partial: 'notifications/assign', locals: {notification: notification}
 
-        when notification.news_type == 'project_list' then 
-          render 'notifications/project_news'
-        end
-      end
+    when notification.news_type == 'project_list' then 
+      render partial: 'notifications/project_news', locals: {notification: notification}
+
     end
   end
 end

@@ -1,0 +1,4 @@
+<h2><%= "New task on project: #{notification.activities.first.subject.name}"%></h2>
+<% notification.activities.each do |a| %>
+  <h3><%= a.trackable.name %></h3>
+<% end %>

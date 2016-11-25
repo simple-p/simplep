@@ -1,0 +1,4 @@
+<h1><%= "Task #{notification.activities.first.subject.name}"%></h1>
+<% notification.activities.each do |a| %>
+  <h2><%= a.action %></h2>
+<% end %>
