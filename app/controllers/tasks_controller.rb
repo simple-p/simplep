@@ -36,10 +36,6 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
 
     respond_to do |format|
-      format.html do
-       redirect_to project_path(@project)
-      end
-
       format.js
     end
 
@@ -60,7 +56,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html {redirect_to project_path(@project)}
+#      format.html {redirect_to project_path(@project)}
     end
   end
 
@@ -75,7 +71,7 @@ class TasksController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {redirect_to project_path(@project)}
+#      format.html {redirect_to project_path(@project)}
       format.js
     end
   end
@@ -86,11 +82,15 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     if params[:due_date]
       @task.due_date = params[:due_date]
-      @task.save
+      if @task.save
+        flash[:success] = "Change deadline successfully"
+      else
+        flash[:error] = "Change deadline failed"
+      end
     end
 
     respond_to do |format|
-      format.html {redirect_to project_path(@project)}
+#      format.html {redirect_to project_path(@project)}
       format.js
     end
   end

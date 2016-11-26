@@ -1,4 +1,4 @@
-<h2><%= "New task on project: #{notification.activities.first.subject.name}"%></h2>
-<% notification.activities.each do |a| %>
-  <h3><%= a.trackable.name %></h3>
-<% end %>
+<div class="inbox-thread-warper">
+  <h2><%= "New task on project: #{notification.activities.first.subject.name}"%></h2>
+  <%= render partial: "tasks/tasks", locals: {tasks: notification.activities.map {|a| a.trackable } } %>
+</div>

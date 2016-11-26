@@ -46,10 +46,13 @@ class ApplicationController < ActionController::Base
 
   def createAssignTaskNotification(activity)
       notification = Notification.create! news_type: "assign_change"
+
       notification.notification_readers.find_or_create_by! user: activity.trackable
       notification.notification_readers.find_or_create_by! user: activity.subject.owner
+
       activity.notification_id = notification.id 
       activity.save!
+
       return notification.id
   end
 
@@ -57,11 +60,13 @@ class ApplicationController < ActionController::Base
     task_detail_activity = Activity.where(subject: activity.subject, action:['completed', 'comment']).first
     if task_detail_activity
       notification = task_detail_activity.notification
+
       activity.subject.followers.each do |follower|
         notification.notification_readers.find_or_create_by! user: follower
       end 
     else
       notification = Notification.create! news_type: "task_detail_change"  
+
       activity.subject.followers.each do |follower|
         notification.notification_readers.find_or_create_by! user: follower
       end 
@@ -69,8 +74,10 @@ class ApplicationController < ActionController::Base
 
     notification.updated_at = Time.now
     notification.save!
+
     activity.notification_id = notification.id 
     activity.save!
+
     return notification.id
 
   end
@@ -85,6 +92,7 @@ class ApplicationController < ActionController::Base
       if notification_count.between?(1,4)
         activity.notification_id = last_activitiy.notification_id
         activity.save!
+
         notification = Notification.find(activity.notification_id)
         notification.updated_at = Time.now
         notification.save!
@@ -95,11 +103,14 @@ class ApplicationController < ActionController::Base
 
   def notificationProject(activity)
       notification = Notification.create! news_type: "project_list"
+      
       activity.subject.team.team_member.each do |member|
         notification.notification_readers.find_or_create_by! user: member
       end 
+
       activity.notification_id = notification.id 
       activity.save!
+
       return notification.id
   end
 

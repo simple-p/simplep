@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require_tree .
 //= require 'toastr'
+//= require bootstrap-datepicker/core
 
 // Toastr config
 toastr.options = {
@@ -33,7 +34,8 @@ toastr.options = {
 	"showMethod": "fadeIn",
 	"hideMethod": "fadeOut"
 };
-$(function(){
-      $('.datepicker').datepicker();
-});
+
+//$(document).on('turbolinks:load', function() {
+//      $('.datepicker').datepicker();
+//});
 
