@@ -1,0 +1,7 @@
+<% if @new_feeds.count > 0 %>
+    console.log("have news");
+$('.nav_link__badge').css('display', 'inline');
+<% else %>
+    console.log("no news");
+$('.nav_link__badge').css('display', 'none');
+<% end %>
