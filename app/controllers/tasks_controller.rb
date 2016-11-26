@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   end
 
   def index
-      @search = Task.search(params[:q])
+    @search = Task.search(params[:q])
     if params[:q]
       @tasks = @search.result
     else
@@ -13,7 +13,6 @@ class TasksController < ApplicationController
         @tasks = current_user.tasks
       end
     end
-
   end
 
   def create
@@ -28,7 +27,6 @@ class TasksController < ApplicationController
       flash[:error] = 'Name must be 5 character minimum'
       redirect_to new_project_task_path(@project)
     end
-
   end
 
   def show
@@ -38,8 +36,6 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.js
     end
-
-
   end
 
   def completed

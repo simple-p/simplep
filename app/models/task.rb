@@ -13,4 +13,13 @@ class Task < ApplicationRecord
   def isCompleted?
     !!completed_at
   end
+
+  def followers
+    @followers = []
+    @task_followers = TaskFollower.where(task_id: id)
+    @task_followers.each do |task_follower|
+      @followers << task_follower.user
+    end
+    @followers
+  end
 end

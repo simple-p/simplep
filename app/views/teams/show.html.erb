@@ -1,36 +1,39 @@
 <div class="containter">
-	<div class="row">
-		<div class="col-md-12">
-			<h1 class="text-center">
-				Team Management
-			</h1>
-		</div>
-		<div class="member-list">
-			<table class="col-md-9 col-md-offset-3 tble-bordered table-striped tablecondensed cf">
-				<thead class="cf">
-					<tr>
-						<th>Email</th>
-						<th>Role</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><%= @team.owner.email %></td>
-						<td>owner</td>
-					</tr>
-					<% @members.each do |m| %>
-					<tr>
-						<td data-title="Email"><%= m.member.email %></td>
-						<td data-title="Name"> member</td>
-					</tr>
-					<% end %>
-					<tr>
-						<td>
-							<%= render 'memberships/form' , locals: [@team, Membership.new]%>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">
+        Team Management
+      </h1>
+    </div>
+    <div class="member-list">
+      <table class="col-md-9 col-md-offset-3 tble-bordered table-striped tablecondensed cf">
+        <thead class="cf">
+          <tr>
+            <th></th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= image_tag(@team.owner.avatar, class: 'round-image-16') %></td>
+            <td><%= @team.owner.email %></td>
+            <td>owner</td>
+          </tr>
+          <% @members.each do |m| %>
+          <tr>
+            <td data-title="Avatar"><%= image_tag(m.member.avatar, class: 'round-image-16') %></td>
+            <td data-title="Email"><%= m.member.email %></td>
+            <td data-title="Name"> member</td>
+          </tr>
+          <% end %>
+          <tr>
+            <td>
+              <%= render 'memberships/form' , locals: [@team, Membership.new]%>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

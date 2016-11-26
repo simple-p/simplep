@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :teams do
     resources 'memberships'
     post 'memberships/create', as: 'add_member'
+    delete 'memberships/destroy', as: 'delete_member'
   end
 
   get 'switch' => "teams#switch"
