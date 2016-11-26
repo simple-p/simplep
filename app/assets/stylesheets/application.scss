@@ -180,6 +180,19 @@
   text-align: center;
   img { width: 100% }
 }
+
+/* Make the badge float in the top right corner of the button */
+.nav_link__badge {
+  border-radius: 2px;
+  color: red;
+ 
+  padding: 1px 3px;
+  font-size: 10px;
+  
+  position: relative; /* Position the badge within the relatively positioned button */
+  top: 5;
+  right: 0;
+}
 // End toggleable block
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";

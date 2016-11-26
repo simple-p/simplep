@@ -38,4 +38,7 @@ toastr.options = {
 //$(document).on('turbolinks:load', function() {
 //      $('.datepicker').datepicker();
 //});
-
+// app/assets/javascripts/messages.js
+window.checkFeedsViaJS = function() {
+  $.post({url: "/notifications/new_feeds.js"});
+}

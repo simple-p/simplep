@@ -51,6 +51,7 @@ class TasksController < ApplicationController
       track_activity current_user, @task, nil, 'completed'
     elsif params[:completed] == "false"
       @task.completed_at = nil
+      Activity.where(subject: @task, action: 'completed').each {|a| a.destroy!}
       @task.save
     end
 
