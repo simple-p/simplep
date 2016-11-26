@@ -55,10 +55,10 @@
                     <li><%= link_to "Projects<i class='fa fa-product float-xs-right'></i>".html_safe, new_project_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" }%></li>
                     <% if current_team %>
                       <% current_team.projects.each do |project| %>
-                        <li><a href="<%= project_path (project)%>" id="project_<%= project.id %>"><%= project.name%> </li>
+                        <li><a href="<%= project_path (project)%>" id="project_<%= project.id %>"><%= project.name %></li>
                       <% end %>
                     <% end %>
-                    <li><a href="<%= teams_path%>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
+                    <li><a href="<%= teams_path %>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
                         <%= link_to image_tag(member.avatar, class: "round-image-16"), "#" %>

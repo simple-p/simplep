@@ -655,7 +655,7 @@ img::-moz-selection {
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="row">
-                    <h6 class="wide-space text-xs-center text-uppercase">SimpleP is Built on these Standards</h6>
+                    <h6 class="wide-space text-xs-center text-uppercase">SimpleP is Built Using these Standards</h6>
                     <div class="col-sm-3 col-xs-6 text-xs-center">
                         <i class="icon-lg ion-social-html5-outline" title="html 5"></i>
                     </div>
@@ -677,33 +677,39 @@ img::-moz-selection {
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-xs-center">
-                <h2 class="margin-top-0 wow fadeIn">Get in Touch</h2>
-                <hr class="primary">
-                <p>We'd love to hear your feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
-            </div>
-            <div class="col-lg-10 offset-lg-1 text-xs-center">
-                <form class="contact-form row">
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="Name">
-                    </div>
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="Phone">
-                    </div>
-                    <div class="col-md-12">
-                        <label></label>
-                        <textarea class="form-control" rows="9" placeholder="Your message here.."></textarea>
-                    </div>
-                    <div class="col-md-4 offset-md-4">
-                        <label></label>
-                        <button type="button" data-toggle="modal" data-target="#alertModal" class="btn btn-primary btn-block btn-lg">Send <i class="ion-android-arrow-forward"></i></button>
-                    </div>
-                </form>
+              <form action="MAILTO:datloiboi@gmail.com" method="post" enctype="text/plain">
+
+                  <div class="row control-group">
+                      <div class="form-group col-xs-12">
+                        <div class="form-inline">
+                          <label>Full Name</label>
+                            <input type="text" class="form-control" placeholder="Name" id="name" required="" data-validation-required-message="Please   enter your name.">
+                          <label>Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number.">
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="row control-group">
+                      <div class="form-group col-xs-12">
+                          <label>Email Address</label>
+                          <input type="email" class="form-control" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address.">
+                          <p class="help-block text-danger"></p>
+                      </div>
+                  </div>
+                  <div class="row control-group">
+                      <div class="form-group col-xs-12 floating-label-form-group controls">
+                          <label>Message Content</label>
+                          <textarea rows="5" class="form-control" placeholder="Message" id="message" required="" data-validation-required-message="Please enter a message."></textarea>
+                          <p class="help-block text-danger"></p>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="form-group col-xs-12">
+                          <button type="submit" class="btn btn-success btn-lg" value="Send">Send Email</button>
+                      </div>
+                  </div>
+              </form>
             </div>
         </div>
     </div>
