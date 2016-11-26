@@ -12,12 +12,6 @@
 
   <body>
     <% if user_signed_in? %>
-      <div class="alert alert-warning alert-dismissible fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      <strong>Team Message:</strong> Happy holiday! We're going to have a Christmas party at 7:00PM on Saturday, November 24th. Click <a href="#">here</a> to sign up
-      </div>
       <div class="container-fluid">
         <div class="row">
 
@@ -52,7 +46,7 @@
             <p class="notice"><%= notice %></p>
             <p class="alert"><%= alert %></p>
             <%= flash_toastr %>
-            <%if user_signed_in? %>
+            <% if user_signed_in? %>
               <div id="wrapper" class="active">
                 <div id = "sidebar-wrapper">
                   <ul class="sidebar-nav" id="sidebar">
@@ -66,23 +60,22 @@
                     <li><a href="<%= teams_path%>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
-                        <%= image_tag(member.avatar, class: "round-image-16") %>
+                        <%= link_to image_tag(member.avatar, class: "round-image-16"), "#" %>
                       <% end %>
                     <% end %>
                     <li><a href="#">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
                   </ul>
                 </div>
                 <%= yield %>
-              <%else %>
+              <% else %>
                 <%= yield %>
-            <%end%>
+            <% end %>
               </div>
         </div>
         <%= render 'projects/dialog' %>
   <script>
     $('#teams').on('click', function(){
-
-    });
+      });
   </script>
   </body>
 </html>
