@@ -5,6 +5,9 @@
 
 // General Application SCSS
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+
+body {
+}
 #topNav {
   font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
 }
@@ -21,7 +24,7 @@
   margin-left: -150px;
   left: 50px;
   width: 150px;
-  background: #222;
+  background: #0275d8;
   position: fixed;
   height: 100%;
   z-index: 10000;
@@ -60,7 +63,7 @@
   float: left;
   text-decoration: none;
   width: 150px;
-  background: #252525;
+  background: #0275d8;
   border-top: 1px solid #373737;
   border-bottom: 1px solid #1A1A1A;
   -webkit-transition: background .5s;
@@ -81,7 +84,7 @@
 }
 
 .sidebar-nav li a {
-  color: #999999;
+  color: #ffffff;
   display: block;
   text-decoration: none;
 }
@@ -104,7 +107,7 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #999999;
+  color: #ffffff;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -143,7 +146,7 @@
   }
 }
 #sidebar-wrapper {
-  left: 70px;
+  left: 47px;
 }
 #wrapper.active {
   padding-left: 150px;
