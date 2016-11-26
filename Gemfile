@@ -48,6 +48,7 @@ gem 'ransack'
 # gem font-awesome
 gem "font-awesome-rails"
 
+gem 'faker'
 # pry for debug
 gem 'pry', '~> 0.10.3'
 gem 'pry-rails', :group => :development
@@ -57,7 +58,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'simplecov', :require => false, :group => :test
 end
