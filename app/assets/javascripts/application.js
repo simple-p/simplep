@@ -17,7 +17,6 @@
 //= require bootstrap
 //= require_tree .
 //= require 'toastr'
-//= require bootstrap-datepicker/core
 //= require Chart.min
 // Toastr config
 toastr.options = {

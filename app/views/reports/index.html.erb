@@ -1,10 +1,27 @@
-<div class="col-md-6">
-  <div class="card">
-    <div class="card-header">
-      Chart
-    </div>
-    <div class="card-block">
-      <%= chartjs_line_chart @data, @options %>
+<% if current_team %>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        Team <% current_team.name %>
+      </div>
+      <div class="card-block">
+        <%= chartjs_line_chart @team_data, @options %>
+      </div>
     </div>
   </div>
-</div>
+
+  <% @project_data.each do |key, value|  %>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        Project <%= key.to_s %>
+      </div>
+      <div class="card-block">
+        <%= chartjs_line_chart value, @options %>
+      </div>
+    </div>
+  </div>
+
+    <% end %>
+<% end %>
