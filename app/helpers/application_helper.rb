@@ -7,6 +7,13 @@ module ApplicationHelper
     end
   end
 
+  def new_feeds_icon(count)
+    if count > 0
+    content_tag(:span, nil, class: 'nav_link__badge fa fa-envelope')
+    else
+    content_tag(:span, nil, class: 'nav_link__badge fa fa-envelope', style: 'display:none')
+    end
+  end
   def bootstrap_class_for flash_type
     { success: 'alert-success', error: 'alert-error', notice: 'warning' }[flash_type.to_sym]
   end

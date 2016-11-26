@@ -6,15 +6,15 @@
       Mask as completed
     </label>
   </div>
-    <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
-      <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "email", task.owner_id), :include_blank => true, class: 'form-input'%>
+  <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
+    <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "email", task.owner_id), :include_blank => true, class: 'form-input'%>
     <%= submit_tag "Assign"%>
-      <% end %>
-    <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
+  <% end %>
+  <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
     <%= date_field :due_date, task.due_date ? time_ago_in_words(task.due_date) : nil, class: 'datepicker form-control'%>
     <%= submit_tag "Change due date" %>
-    <% end %>
-        <%= link_to "", project_task_path(@project, task), :method => :delete, class: "nav-link fa fa-trash "%>
+  <% end %>
+  <%= link_to "", project_task_path(@project, task), :method => :delete, class: "nav-link fa fa-trash "%>
   <div class="row">
   </div>
   <hr>
@@ -23,7 +23,7 @@
   <hr>
   <div class="comments-wrapper">
     <div class="comments">
-      <%= render "task_comments", task: task %>
+      <%= render "task_comments", comments: task.comments %>
     </div>
     <%= form_for [task, Comment.new], remote: true do |f| %>
       <div class="form-group">

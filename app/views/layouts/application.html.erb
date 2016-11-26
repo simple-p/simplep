@@ -12,46 +12,44 @@
 
   <body>
     <% if user_signed_in? %>
-      <div class="alert alert-warning alert-dismissible fade in" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      <strong>Team Message:</strong> Happy holiday! We're going to have a Christmas party at 7:00PM on Saturday, November 24th. Click <a href="#">here</a> to sign up
-      </div>
       <div class="container-fluid">
         <div class="row">
 
           <nav id="topNav" class="navbar nav navbar-default bg-faded">
             <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
-          <div id="navbar">
-            <ul class="nav navbar-nav">
-              <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:40px;"> Simple P</a>
-              <a class="nav-item nav-link" href="#">DASHBOARD</a>
-              <a class="nav-item nav-link" href="#">ACTIVITIES</a>
-              <a class="nav-item nav-link" href="#">TASKS</a>
-              <div class="btn-group float-xs-right">
-              <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="fa fa-user"></span> <%= current_user.name %>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar, class: 'round-image')%></div>
-                <%= link_to 'Profile', "#", class: "dropdown-item" %>
-                <a class="dropdown-item" href="#">Messages</a>
-                <% current_user.my_team.each do |team| %>
-                  <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
-                <% end %>
-                <div class="dropdown-divider"></div>
-                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </ul>
-          </div>
-        <% end %>
+            <div id="navbar">
+              <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:40px;"> Simple P</a>
+                <a class="nav-item nav-link" href="#">DASHBOARD</a>
+                <a class="nav-item nav-link" href="/activities">ACTIVITIES</a>
+                <a class="nav-item nav-link" href="/tasks">TASKS</a>
+                <div class="nav-item nav-link" >
+                  <a href="/notifications" id="inbox-link">INBOX</a>
+                  <%= new_feeds_icon(notification_count) %>
+                </div>
+                <div class="btn-group float-xs-right">
+                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-user"></span> <%= current_user.name %>
+                  <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar, class: 'round-image')%></div>
+                    <%= link_to 'Profile', "#", class: "dropdown-item" %>
+                    <a class="dropdown-item" href="#">Messages</a>
+                    <% current_user.my_team.each do |team| %>
+                      <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
+                    <% end %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  </div>
+              </ul>
+                </div>
+              <% end %>
           </nav>
             </div>
             <p class="notice"><%= notice %></p>
             <%= flash_toastr %>
-            <%if user_signed_in? %>
+            <% if user_signed_in? %>
               <div id="wrapper" class="active">
                 <div id = "sidebar-wrapper">
                   <ul class="sidebar-nav" id="sidebar">
@@ -65,29 +63,28 @@
                     <li><a href="<%= teams_path%>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
-                        <%= image_tag(member.avatar, class: "round-image-16") %>
+                        <%= link_to image_tag(member.avatar, class: "round-image-16"), "#" %>
                       <% end %>
                     <% end %>
                     <li><a href="#">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
                   </ul>
                 </div>
                 <%= yield %>
-              <%else %>
+              <% else %>
                 <%= yield %>
-            <%end%>
+              <% end %>
               </div>
         </div>
         <%= render 'projects/dialog' %>
-  <script>
-    $('#teams').on('click', function(){
+        <script>
+          // Toggle the sidebar
+          $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("active");
+          });
 
-    });
-
-// Toggle the sidebar
-$("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-});
-  </script>
+          $('#teams').on('click', function(){});
+          setInterval(checkFeedsViaJS, 30000);
+        </script>
   </body>
 </html>

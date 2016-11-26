@@ -1,0 +1,23 @@
+<div class="row placeholders">
+  <div class="center-container col-md-6" >
+    <div class="list-group">
+      <%  @notifications.each do |notification| %>
+      <% if notification.activities.count > 0 %>
+        <div class="list-group-item">
+          <%= renderNotification(notification) %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+  <div class="right-container col-md-6">
+  </div>
+</div>
+<script>
+$('.inbox-thread-warper').click(function()
+    {
+      console.log("clicked")
+        url = $(this).data('request-url') + '.js'
+        $.getScript(url);
+    });
+</script>

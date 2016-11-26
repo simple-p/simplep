@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125094913) do
+ActiveRecord::Schema.define(version: 20161126084636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 20161125094913) do
     t.string   "action"
     t.string   "trackable_type"
     t.integer  "trackable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "subject_type"
     t.integer  "subject_id"
+    t.integer  "notification_id"
     t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id", using: :btree
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id", using: :btree
     t.index ["user_id"], name: "index_activities_on_user_id", using: :btree
@@ -61,12 +62,13 @@ ActiveRecord::Schema.define(version: 20161125094913) do
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.datetime "read_at"
     t.index ["notification_id"], name: "index_notification_readers_on_notification_id", using: :btree
     t.index ["user_id"], name: "index_notification_readers_on_user_id", using: :btree
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string   "type"
+    t.string   "news_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

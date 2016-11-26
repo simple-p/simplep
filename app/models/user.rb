@@ -9,9 +9,10 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :task_followers, class_name: 'TaskFollower', dependent: :destroy
   has_many :following_tasks, :through => :task_followers, :source => :task
-  has_many :task_news, :through => :following_tasks, :source => :activities
   has_many :memberships, dependent: :destroy
-  has_many :teams, through: :memberships, dependent: :destroy
+  has_many :teams, through: :memberships, :source => :member
+  has_many :notification_readers, dependent: :destroy
+  has_many :notifications, :through => :notification_readers, :source => :notification
 
   # add avatar attachment
   attr_reader :default_avatar

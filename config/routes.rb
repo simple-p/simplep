@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  resources :reports
+  resources :notifications
   get 'task_followers/create'
+  post 'notifications/new_feeds', as: "new_feeds"
   resources :blogs
 
   resources :activities

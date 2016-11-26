@@ -20,7 +20,11 @@ gem 'sass-rails', '>= 3.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use date picker
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                                :git => 'https://github.com/Nerian/bootstrap-datepicker-rails.git'
 #gem 'jquery-ui-rails'
+gem 'chartjs-ror'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -50,8 +54,12 @@ gem 'pry-rails', :group => :development
 
 # add Devise
 group :development, :test do
-	# Call 'byebug' anywhere in the code to stop execution and get a debugger console
-	gem 'byebug', platform: :mri
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 group :development do
@@ -61,6 +69,14 @@ group :development do
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 	gem 'spring'
 	gem 'spring-watcher-listen', '~> 2.0.0'
+        gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'capybara', '~> 2.10', '>= 2.10.1'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
