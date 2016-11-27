@@ -1,0 +1,14 @@
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card card-block">
+        <h3 class="card-title"><%= @blog.title %></h3>
+        <p class="card-text"><b>Status: </b> <%= @blog.status %></p>
+        <p class="card-text"><%= @blog.content %></p>
+        <a href="<%= project_blogs_path(@project) %>" class="btn btn-primary">Back</a>
+        <a href="<%= edit_project_blog_path(@project, @blog) %>" class="btn btn-secondary">Edit</a>
+        <%= link_to 'Destroy', project_blog_path(@blog),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </div>

@@ -7,7 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="https://image.freepik.com/free-icon/social-media-collaboration_318-32157.jpg">
+    <link rel="icon" type="image/png" href="assets/logo.png">
   </head>
 
   <body>
@@ -19,14 +19,14 @@
             <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
             <div id="navbar">
               <ul class="nav navbar-nav">
-                <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:40px;"> Simple P</a>
-                <a class="nav-item nav-link" href="/reports">DASHBOARD</a>
-                <a class="nav-item nav-link" href="/activities">ACTIVITIES</a>
-                <a class="nav-item nav-link" href="/tasks">TASKS</a>
-                <div class="nav-item nav-link" >
-                  <a href="/notifications" id="inbox-link">INBOX</a>
+                <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
+                <a class="navbar-brand" href="/activities"><i class="fa fa-cogs fa-lg" aria-hidden="true"></i></a>
+                <a class="navbar-brand" href="/tasks"><i class="fa fa-tasks fa-lg" aria-hidden="true"></i></a>
+                <div class="navbar-brand" >
+                  <a href="/notifications" id="inbox-link"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a>
                   <%= new_feeds_icon(notification_count) %>
                 </div>
+                <a class="navbar-brand" href="/search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
                 <div class="btn-group float-xs-right">
                   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fa fa-user"></span> <%= current_user.name %>
@@ -36,6 +36,7 @@
                       <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar, class: 'round-image')%></div>
                     <%= link_to 'Profile', "#", class: "dropdown-item" %>
                     <a class="dropdown-item" href="#">Messages</a>
+                    <div class="dropdown-divider"></div>
                     <% current_user.my_team.each do |team| %>
                       <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
                     <% end %>
@@ -57,7 +58,7 @@
                     <li><%= link_to "Projects<i class='fa fa-product float-xs-right'></i>".html_safe, projects_path %></li>
                     <% if current_team %>
                       <% current_team.projects.each do |project| %>
-                        <li><a href="<%= project_path (project)%>" id="project_<%= project.id %>"><%= project.name %></li>
+                        <li style="font-size:12px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">- <%= project.name %></li>
                       <% end %>
                     <% end %>
                     <li><a href="<%= teams_path %>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>

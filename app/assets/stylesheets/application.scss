@@ -64,7 +64,7 @@ body {
   text-decoration: none;
   width: 150px;
   background: #0275d8;
-  border-top: 1px solid #373737;
+  #border-top: 1px solid #373737;
   border-bottom: 1px solid #1A1A1A;
   -webkit-transition: background .5s;
   -moz-transition: background .5s;
@@ -188,10 +188,10 @@ body {
 .nav_link__badge {
   border-radius: 2px;
   color: red;
- 
+
   padding: 1px 3px;
   font-size: 10px;
-  
+
   position: relative; /* Position the badge within the relatively positioned button */
   top: 5;
   right: 0;

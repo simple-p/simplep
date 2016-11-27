@@ -372,10 +372,10 @@ img::-moz-selection {
 </style>
     <header id="first">
     <div class="header-content">
-        <div class="inner">
+        <div class="inner" style="color:white;">
             <h1>Make Work Great Again</h1>
             <h5 class="wow fadeIn text-normal wow fadeIn">Essentials of Project Management</h5>
-            <a class="btn btn-primary-outline btn-xl page-scroll wow fadeInUp m-t-3" data-toggle="modal" href="#signUpModal">Do Work</a>
+            <a class="btn btn-outline-primary btn-xl page-scroll wow fadeInUp m-t-3" data-toggle="modal" href="#signUpModal"><span style="color:white">Get Started</span></a>
         </div>
     </div>
 </header>
@@ -395,6 +395,9 @@ img::-moz-selection {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#four">FrameWorks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#last">Contact</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-xs-right">
@@ -652,12 +655,9 @@ img::-moz-selection {
 <aside class="bg-alt">
     <div class="container text-xs-center">
         <div class="call-to-action">
-            <h2 class="text-primary">Get Started</h2>
-            <a href="<%= new_user_registration_path %>" target="ext" class="btn btn-primary-outline btn-lg wow flipInX text-uppercase">Sign Up Now</a>
+            <h2 class="text-primary">Technologies</h2>
         </div>
-        <br>
         <hr>
-        <br>
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="row">
@@ -777,7 +777,7 @@ img::-moz-selection {
 </div>
 <!-- Login and Sign Up Modal -->
 <div id="logInModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-body text-xs-center">
         <div class="card-header">
@@ -807,7 +807,7 @@ img::-moz-selection {
 </div>
 
 <div id="signUpModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-body text-xs-center">
         <div class="card-header">
