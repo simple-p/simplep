@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    load_project
     @blog = Blog.find(params[:id])
   end
 
