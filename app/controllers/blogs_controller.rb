@@ -24,7 +24,7 @@ class BlogsController < ApplicationController
     @blog.user = current_user
 
     if @blog.save
-      track_activity @project, @blog
+      track_activity current_user, @project, @blog
       redirect_to project_blogs_path(@project)
     else
       flash[:error] = 'Name must be 5 character minimum'

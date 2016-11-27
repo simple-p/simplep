@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'contactus' => "home#contactus"
   get 'aboutus' => "home#aboutus"
   get 'dashboard' => "home#dashboard"
+  get 'search' => "tasks#search"
   resources :teams do
     resources 'memberships'
     post 'memberships/create', as: 'add_member'

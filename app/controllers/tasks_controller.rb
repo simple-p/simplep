@@ -4,6 +4,11 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def search
+      @search = Task.search(params[:q])
+      @tasks = @search.result
+  end
+
   def index
       @search = Task.search(params[:q])
     if params[:q]
