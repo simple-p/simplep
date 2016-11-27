@@ -1,9 +1,9 @@
 /*
- *= require font-awesome
- *= require toastr
+ *= require jquery-ui/datepicker
  */
-
-// General Application SCSS
+@import "bootstrap";
+@import "font-awesome";
+@import "toastr";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 
 body {
@@ -198,4 +198,3 @@ body {
 }
 // End toggleable block
 // Custom bootstrap variables must be set or imported before bootstrap itself.
-@import "bootstrap";

@@ -18,6 +18,7 @@
 //= require_tree .
 //= require 'toastr'
 //= require Chart.min
+//= require jquery-ui/datepicker
 // Toastr config
 toastr.options = {
 	"closeButton": true,

@@ -83,6 +83,7 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     if params[:due_date]
       @task.due_date = params[:due_date]
+      #binding.pry
       if @task.save
         flash[:success] = "Change deadline successfully"
       else

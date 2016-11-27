@@ -45,6 +45,20 @@ module ApplicationHelper
       content_tag(:div, "<i class='fa fa-circle-thin' aria-hidden='true'></i>".html_safe)
     end
   end
+  
+  def custom_format(date)
+    if date == Date.today
+      "Today"
+    elsif date == Date.tomorrow
+      "Tomorrow"
+    elsif date == Date.yesterday
+      "Yesterday"
+    elsif (date > Date.today - 7) && (date < Date.yesterday)
+      date.strftime("%A")
+    else
+      date.strftime("%B %-d")
+    end
+  end
 
   def deadline_warning(task)
     if task.due_date
@@ -57,7 +71,7 @@ module ApplicationHelper
       else
         date_color = 'black'
       end
-      content_tag(:div, "<font color=#{date_color}>#{time_ago_in_words(task.due_date)}</font>".html_safe);
+      content_tag(:div, "<font color=#{date_color}>#{custom_format(task.due_date.to_date)}</font>".html_safe);
     end
   end
   # Helper for Devise
