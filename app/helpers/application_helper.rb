@@ -40,9 +40,9 @@ module ApplicationHelper
 
   def task_completed_icon(task)
     if task.isCompleted?
-      content_tag(:div, "<i class='fa fa-2x fa-check-circle' style='color:#00AA00' aria-hidden='true'></i>".html_safe)
+      content_tag(:div, "<i class='fa fa-lg fa-check-circle' style='color:#00AA00' aria-hidden='true'></i>".html_safe)
     else
-      content_tag(:div, "<i class='fa fa-2x fa-circle-o' aria-hidden='true'></i>".html_safe)
+      content_tag(:div, "<i class='fa fa-lg fa-circle-o' aria-hidden='true'></i>".html_safe)
     end
   end
   
