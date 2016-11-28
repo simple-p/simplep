@@ -1,8 +1,10 @@
-<div class="containter">
+<div class="container" style="background:lightblue">
 	<div class="row">
 		<div class="col-md-12">
 			<h1 class="text-center">
-				Team Management
+				<% if current_team %>
+					<h1><%= current_team.name %></h1>
+					<% end %>
 			</h1>
 		</div>
 		<div class="member-list">
