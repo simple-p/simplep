@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'aboutus' => "home#aboutus"
   get 'dashboard' => "home#dashboard"
   get 'search' => "tasks#search"
+  get 'termsandconditions' => "home#termsandconditions"  
   resources :teams do
     resources 'memberships'
     post 'memberships/create', as: 'add_member'
