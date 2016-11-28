@@ -55,8 +55,9 @@
                 <div id = "sidebar-wrapper">
                   <ul class="sidebar-nav" id="sidebar">
                     <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
-                    <li><%= link_to "Projects<i class='fa fa-product float-xs-right'></i>".html_safe, projects_path %></li>
                     <% if current_team %>
+                    <li><%= current_team.name %></li>                    
+                    <li><%= link_to "Projects<i class='fa fa-product float-xs-right'></i>".html_safe, projects_path %></li>
                       <% current_team.projects.each do |project| %>
                         <li style="font-size:12px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">- <%= project.name %></li>
                       <% end %>
