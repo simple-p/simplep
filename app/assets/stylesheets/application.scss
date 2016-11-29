@@ -1,6 +1,10 @@
 /*
  *= require jquery-ui/datepicker
  */
+@import "bootstrap";
+@import "font-awesome";
+@import "toastr";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 #topNav {
   font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
@@ -213,8 +217,3 @@
 }
 // End toggleable block
 // Custom bootstrap variables must be set or imported before bootstrap itself.
-
-@import "bootstrap";
-@import "font-awesome";
-@import "toastr";
-@import url(https://fonts.googleapis.com/css?family=Montserrat);

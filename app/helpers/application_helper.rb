@@ -9,9 +9,9 @@ module ApplicationHelper
 
   def new_feeds_icon(count)
     if count > 0
-    content_tag(:span, nil, class: 'nav_link__badge fa fa-envelope')
+    content_tag(:span, nil, class: 'nav_link__badge fa fa-circle')
     else
-    content_tag(:span, nil, class: 'nav_link__badge fa fa-envelope', style: 'display:none')
+    content_tag(:span, nil, class: 'nav_link__badge fa fa-circle', style: 'display:none')
     end
   end
   def bootstrap_class_for flash_type
@@ -40,9 +40,9 @@ module ApplicationHelper
 
   def task_completed_icon(task)
     if task.isCompleted?
-      content_tag(:div, "<i class='fa fa-check-circle' aria-hidden='true'></i>".html_safe)
+      content_tag(:div, "<i class='fa fa-lg fa-check-circle' style='color:#00AA00' aria-hidden='true'></i>".html_safe)
     else
-      content_tag(:div, "<i class='fa fa-circle-thin' aria-hidden='true'></i>".html_safe)
+      content_tag(:div, "<i class='fa fa-lg fa-circle-o' aria-hidden='true'></i>".html_safe)
     end
   end
   
