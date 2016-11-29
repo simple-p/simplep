@@ -15,7 +15,7 @@
       <div class="container-fluid">
         <div class="row">
 
-          <nav id="topNav" class="navbar nav navbar-default bg-faded">
+          <nav id="topNav" class="navbar nav navbar-default bg-faded navbar-fixed-top">
             <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
             <div id="navbar">
               <ul class="nav navbar-nav">
@@ -27,34 +27,37 @@
                   <%= new_feeds_icon(notification_count) %>
                 </div>
                 <a class="navbar-brand" href="/search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
+
                 <div class="btn-group float-xs-right">
                   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="fa fa-user"></span> <%= current_user.name %>
+                    <img src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=30" alt=""> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                      <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar, class: 'round-image')%></div>
-                    <%= link_to 'Profile', "#", class: "dropdown-item" %>
-                    <a class="dropdown-item" href="#">Messages</a>
+                      <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar, class: 'round-image')%></div><br />
+                      <%= link_to "#", :class => 'dropdown-item' do %>
+                        <i class="fa fa-user"></i> Profile
+                      <% end %>
+                    <a class="dropdown-item" href="#"><i class="fa fa-envelope"></i> Messages</a>
                     <div class="dropdown-divider"></div>
                     <% current_user.my_team.each do |team| %>
                       <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
                     <% end %>
                     <div class="dropdown-divider"></div>
-                    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                    <%= link_to destroy_user_session_path, :method=>'delete', :class => 'dropdown-item' do %>
+                      <i class="fa fa-power-off"></i> Log out
+                    <% end %>
                   </div>
               </ul>
                 </div>
-              <% end %>
           </nav>
-            </div>
-            <p class="notice"><%= notice %></p>
+        </div>
+        <div class="notice"><%= notice %></div>
             <%= flash_toastr %>
-            <% if user_signed_in? %>
               <div id="wrapper" class="active">
                 <div id = "sidebar-wrapper">
                   <ul class="sidebar-nav" id="sidebar">
-                    <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu &nbsp;&nbsp;&nbsp; <span class="fa fa-align-justify"></span></a></li>
+                    <li class="sidebar-brand"><a id="menu-toggle" href="#">Simple P<span class="fa fa-align-justify"></span></a></li>
                     <li><%= link_to "Projects<i class='fa fa-product float-xs-right'></i>".html_safe, projects_path %></li>
                     <% if current_team %>
                       <% current_team.projects.each do |project| %>
@@ -70,12 +73,17 @@
                     <li><a href="/reports">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
                   </ul>
                 </div>
-                <%= yield %>
-              <% else %>
-                <%= yield %>
-              <% end %>
+
+
+                <% end %>
+                <div class="row">
+                  <div class="col-sm-12" style="padding-top:65px;">
+                    <%= yield %>
+                  </div>
+                </div>
               </div>
-        </div>
+            </div>
+
         <%= render 'projects/dialog' %>
         <script>
           // Toggle the sidebar
@@ -85,7 +93,7 @@
           });
 
           $('#teams').on('click', function(){});
-         // setInterval(checkFeedsViaJS, 30000);
+          setInterval(checkFeedsViaJS, 30000);
         </script>
   </body>
 </html>
