@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'contactus' => "home#contactus"
   get 'aboutus' => "home#aboutus"
-  get 'dashboard' => "home#dashboard"
+  get 'dashboard' => "dashboards#index"
   get 'search' => "tasks#search"
   get 'termsandconditions' => "home#termsandconditions"  
   resources :teams do

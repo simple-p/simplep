@@ -4,12 +4,31 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "toastr";
-@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-body {
-}
 #topNav {
   font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
+}
+
+.dropdown-menu .dropdown-item {
+  display: block;
+  padding: 5px 12px;
+  clear: both;
+  font-weight: normal;
+  color: #4f5f6f;
+  white-space: nowrap;
+  -webkit-transition: none;
+          transition: none; }
+  .dropdown-menu .dropdown-item i {
+    margin-right: 2px; }
+  .dropdown-menu .dropdown-item:hover {
+    color: #2973ba !important;
+    background: none;
+    background-color: whitesmoke; }
+
+.dropdown-item i {
+  text-align: center;
+  width: 14px;
 }
 // End General Application scss
 
@@ -24,7 +43,7 @@ body {
   margin-left: -150px;
   left: 50px;
   width: 150px;
-  background: #0275d8;
+  background: #3a4651;
   position: fixed;
   height: 100%;
   z-index: 10000;
@@ -63,9 +82,9 @@ body {
   float: left;
   text-decoration: none;
   width: 150px;
-  background: #0275d8;
+  background: #3a4651;
   #border-top: 1px solid #373737;
-  border-bottom: 1px solid #1A1A1A;
+  #border-bottom: 1px solid grey;
   -webkit-transition: background .5s;
   -moz-transition: background .5s;
   -o-transition: background .5s;
@@ -84,7 +103,7 @@ body {
 }
 
 .sidebar-nav li a {
-  color: #ffffff;
+  color: #bdbdbd;
   display: block;
   text-decoration: none;
 }
@@ -107,7 +126,7 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #ffffff;
+  color: #bdbdbd;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
