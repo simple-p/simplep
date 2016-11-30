@@ -7,6 +7,13 @@ module ApplicationHelper
     end
   end
 
+  def new_feeds_icon(count)
+    if count > 0
+    content_tag(:span, nil, class: 'nav_link__badge fa fa-circle')
+    else
+    content_tag(:span, nil, class: 'nav_link__badge fa fa-circle', style: 'display:none')
+    end
+  end
   def bootstrap_class_for flash_type
     { success: 'alert-success', error: 'alert-error', notice: 'warning' }[flash_type.to_sym]
   end
@@ -33,9 +40,23 @@ module ApplicationHelper
 
   def task_completed_icon(task)
     if task.isCompleted?
-      content_tag(:div, "<i class='fa fa-check-circle' aria-hidden='true'></i>".html_safe)
+      content_tag(:div, "<i class='fa fa-lg fa-check-circle' style='color:#00AA00' aria-hidden='true'></i>".html_safe)
     else
-      content_tag(:div, "<i class='fa fa-circle-thin' aria-hidden='true'></i>".html_safe)
+      content_tag(:div, "<i class='fa fa-lg fa-circle-o' aria-hidden='true'></i>".html_safe)
+    end
+  end
+  
+  def custom_format(date)
+    if date == Date.today
+      "Today"
+    elsif date == Date.tomorrow
+      "Tomorrow"
+    elsif date == Date.yesterday
+      "Yesterday"
+    elsif (date > Date.today - 7) && (date < Date.yesterday)
+      date.strftime("%A")
+    else
+      date.strftime("%B %-d")
     end
   end
 
@@ -50,7 +71,7 @@ module ApplicationHelper
       else
         date_color = 'black'
       end
-      content_tag(:div, "<font color=#{date_color}>#{time_ago_in_words(task.due_date)}</font>".html_safe);
+      content_tag(:div, "<font color=#{date_color}>#{custom_format(task.due_date.to_date)}</font>".html_safe);
     end
   end
   # Helper for Devise

@@ -5,6 +5,6 @@
   <% task_changes = notification.activities - comment_activities%>
   <%= render partial: "tasks/task_comments", locals: {comments: comment_activities.map {|a| a.trackable }}%>
   <% task_changes.each do |a| %>
-    <%= "#{a.user.name} has #{a.action} on this task" %>
+    <strong> <%= "#{a.user.name} has #{a.action} on this task" %></strong>
   <% end %>
 </div>

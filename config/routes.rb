@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :reports
   resources :notifications
   get 'task_followers/create'
+  post 'notifications/new_feeds', as: "new_feeds"
   resources :blogs
 
   resources :activities
@@ -29,7 +31,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'contactus' => "home#contactus"
   get 'aboutus' => "home#aboutus"
-  get 'dashboard' => "home#dashboard"
+  get 'dashboard' => "dashboards#index"
+  get 'search' => "tasks#search"
+  get 'termsandconditions' => "home#termsandconditions"  
   resources :teams do
     resources 'memberships'
     post 'memberships/create', as: 'add_member'

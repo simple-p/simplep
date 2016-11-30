@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   helper_method :current_team
+  helper_method :notification_count
+
+  def notification_count
+    return NotificationReader.where(user: current_user, read_at: nil).count
+  end
 
   def load_task
     @task = Task.find params[:task_id]
@@ -45,15 +50,15 @@ class ApplicationController < ActionController::Base
   end
 
   def createAssignTaskNotification(activity)
-      notification = Notification.create! news_type: "assign_change"
+    notification = Notification.create! news_type: "assign_change"
 
-      notification.notification_readers.find_or_create_by! user: activity.trackable
-      notification.notification_readers.find_or_create_by! user: activity.subject.owner
+    notification.notification_readers.find_or_create_by! user: activity.trackable
+    notification.notification_readers.find_or_create_by! user: activity.subject.owner
 
-      activity.notification_id = notification.id
-      activity.save!
+    activity.notification_id = notification.id
+    activity.save!
 
-      return notification.id
+    return notification.id
   end
 
   def createTaskChangeNotification(activity)
@@ -63,6 +68,11 @@ class ApplicationController < ActionController::Base
 
       activity.subject.followers.each do |follower|
         notification.notification_readers.find_or_create_by! user: follower
+      end
+
+      notification.notification_readers.each do |feed|
+        feed.read_at = nil
+        feed.save!
       end
     else
       notification = Notification.create! news_type: "task_detail_change"
@@ -83,35 +93,39 @@ class ApplicationController < ActionController::Base
   end
 
   def createProjectNotification(activity)
-      last_activitiy = Activity.where(subject: activity.subject, action: 'create', trackable_type: 'Task').last
-      notification_count = 0
-      if last_activitiy && last_activitiy.notification_id != nil
-       notification_count = Activity.where(notification_id: last_activitiy.notification_id).count
-      end
+    last_activitiy = Activity.where(subject: activity.subject, action: 'create', trackable_type: 'Task').last
+    notification_count = 0
+    if last_activitiy && last_activitiy.notification_id != nil
+      notification_count = Activity.where(notification_id: last_activitiy.notification_id).count
+    end
 
-      if notification_count.between?(1,4)
-        activity.notification_id = last_activitiy.notification_id
-        activity.save!
+    if notification_count.between?(1,4)
+      activity.notification_id = last_activitiy.notification_id
+      activity.save!
 
-        notification = Notification.find(activity.notification_id)
-        notification.updated_at = Time.now
-        notification.save!
-      else
-        notificationProject(activity)
+      notification = Notification.find(activity.notification_id)
+      notification.updated_at = Time.now
+      notification.notification_readers.each do |feed|
+        feed.read_at = nil
+        feed.save!
       end
+      notification.save!
+    else
+      notificationProject(activity)
+    end
   end
 
   def notificationProject(activity)
-      notification = Notification.create! news_type: "project_list"
+    notification = Notification.create! news_type: "project_list"
 
-      activity.subject.team.team_member.each do |member|
-        notification.notification_readers.find_or_create_by! user: member
-      end
+    activity.subject.team.team_member.each do |member|
+      notification.notification_readers.find_or_create_by! user: member
+    end
 
-      activity.notification_id = notification.id
-      activity.save!
+    activity.notification_id = notification.id
+    activity.save!
 
-      return notification.id
+    return notification.id
   end
 
   protected

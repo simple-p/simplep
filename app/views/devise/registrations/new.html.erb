@@ -1,5 +1,10 @@
-<div class="authform">
-<h2>Sign up</h2>
+<div class="row">
+  <div class="col-sm-4 offset-sm-4">
+    <div class="card text-xs-center">
+      <div class="card-header">
+        <h2 class="form-signin-heading">Sign Up</h2>
+      </div>
+    <div class="card-block">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 	<%= devise_error_messages! %>
@@ -28,9 +33,12 @@
 	</div>
 
 	<div class="actions">
-		<%= f.submit "Sign up" %>
+		<%= f.submit "Sign up", :class =>"btn btn-primary" %>
 	</div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+			</div>
+		</div>
+	</div>
 </div>

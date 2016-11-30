@@ -1,17 +1,49 @@
-<h2>Team</h2>
-<%= link_to 'Create Your Team', new_team_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-outline-primary'%>
-<table class="table table-hover table-striped">
-  <thead>
-    <th>
-      Name
-    </th>
-    <th></th>
-  </thead>
-  <tbody class="teams">
-    <% @teams.each do |team|%>
-    <tr id=<%= team.id %> >
-      <%= render 'team', team: team %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="col-xl-12">
+  <div class="row sameheight-container">
+    <div class="card sameheight-item items">
+      <div class="card-header bordered">
+        <h2>Your Teams</h2>
+          <div class="header-block pull-right">
+            <%= link_to 'Create Team', new_team_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" }, class: 'btn btn-outline-primary', style: "float:right" %><br><br>
+          </div>
+        </div>
+          <table class="table table-hover table-striped">
+            <thead>
+              <th>
+                Name
+              </th>
+              <th></th>
+            </thead>
+            <tbody class="teams">
+              <% @teams.each do |team|%>
+              <tr id=<%= team.id %> >
+                <%= render 'team', team: team %>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ul class="item-list striped">
+  <li class="item item-list-header hidden-sm-down">
+    <div class="item-row">
+      <div class="item-col item-col-header fixed item-col-img xs">
+        <div class="item-col item-col-header item-col-title">
+          <span>Name</span>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="item">
+    <div class="item-row">
+      <div class="item-col fixed item-col-img xs">
+        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)">Test</div>
+      </div>
+    </div>
+  </li>
+</ul>

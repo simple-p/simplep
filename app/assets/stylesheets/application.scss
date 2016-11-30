@@ -1,12 +1,34 @@
 /*
- *= require font-awesome
- *= require toastr
+ *= require jquery-ui/datepicker
  */
+@import "bootstrap";
+@import "font-awesome";
+@import "toastr";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-// General Application SCSS
-@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 #topNav {
   font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
+}
+
+.dropdown-menu .dropdown-item {
+  display: block;
+  padding: 5px 12px;
+  clear: both;
+  font-weight: normal;
+  color: #4f5f6f;
+  white-space: nowrap;
+  -webkit-transition: none;
+          transition: none; }
+  .dropdown-menu .dropdown-item i {
+    margin-right: 2px; }
+  .dropdown-menu .dropdown-item:hover {
+    color: #2973ba !important;
+    background: none;
+    background-color: whitesmoke; }
+
+.dropdown-item i {
+  text-align: center;
+  width: 14px;
 }
 // End General Application scss
 
@@ -21,7 +43,7 @@
   margin-left: -150px;
   left: 50px;
   width: 150px;
-  background: #222;
+  background: #3a4651;
   position: fixed;
   height: 100%;
   z-index: 10000;
@@ -60,9 +82,9 @@
   float: left;
   text-decoration: none;
   width: 150px;
-  background: #252525;
-  border-top: 1px solid #373737;
-  border-bottom: 1px solid #1A1A1A;
+  background: #3a4651;
+  #border-top: 1px solid #373737;
+  #border-bottom: 1px solid grey;
   -webkit-transition: background .5s;
   -moz-transition: background .5s;
   -o-transition: background .5s;
@@ -81,7 +103,7 @@
 }
 
 .sidebar-nav li a {
-  color: #999999;
+  color: #bdbdbd;
   display: block;
   text-decoration: none;
 }
@@ -104,7 +126,7 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #999999;
+  color: #bdbdbd;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -143,7 +165,7 @@
   }
 }
 #sidebar-wrapper {
-  left: 70px;
+  left: 47px;
 }
 #wrapper.active {
   padding-left: 150px;
@@ -180,6 +202,18 @@
   text-align: center;
   img { width: 100% }
 }
+
+/* Make the badge float in the top right corner of the button */
+.nav_link__badge {
+  border-radius: 2px;
+  color: red;
+
+  padding: 1px 3px;
+  font-size: 10px;
+
+  position: relative; /* Position the badge within the relatively positioned button */
+  top: 5;
+  right: 0;
+}
 // End toggleable block
 // Custom bootstrap variables must be set or imported before bootstrap itself.
-@import "bootstrap";

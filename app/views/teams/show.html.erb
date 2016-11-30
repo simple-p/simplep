@@ -1,29 +1,26 @@
-<div class="containter">
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="text-center">
-        Team Management
-      </h1>
+<div class="col-xl-12">
+  <div class="row sameheight-container">
+    <div class="card-header bordered">
+      <% if current_team %>
+        <h1 class="title"><%= current_team.name %></h1>
+      <% end %>
     </div>
     <div class="member-list">
       <table class="col-md-9 col-md-offset-3 tble-bordered table-striped tablecondensed cf">
         <thead class="cf">
           <tr>
-            <th></th>
             <th>Email</th>
             <th>Role</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= image_tag(@team.owner.avatar, class: 'round-image-16') %></td>
             <td><%= @team.owner.email %></td>
             <td>owner</td>
           </tr>
           <% @members.each do |m| %>
           <tr>
-            <td data-title="Avatar"><%= image_tag(m.member.avatar, class: 'round-image-16') %></td>
-            <td data-title="Email"><%= m.member.email %></td>
+            <td data-title="Email"><%= image_tag(m.member.avatar, class: 'round-image-16') m.member.email %></td>
             <td data-title="Name"> member</td>
           </tr>
           <% end %>

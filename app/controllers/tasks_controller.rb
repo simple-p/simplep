@@ -4,14 +4,14 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
-  def index
-    @search = Task.search(params[:q])
-    if params[:q]
+  def search
+      @search = Task.search(params[:q])
       @tasks = @search.result
-    else
-      if current_user
-        @tasks = current_user.tasks
-      end
+  end
+
+  def index
+    if current_user
+      @tasks = current_user.tasks
     end
   end
 
@@ -47,6 +47,7 @@ class TasksController < ApplicationController
       track_activity current_user, @task, nil, 'completed'
     elsif params[:completed] == "false"
       @task.completed_at = nil
+      Activity.where(subject: @task, action: 'completed').each {|a| a.destroy!}
       @task.save
     end
 
@@ -78,6 +79,7 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     if params[:due_date]
       @task.due_date = params[:due_date]
+      #binding.pry
       if @task.save
         flash[:success] = "Change deadline successfully"
       else

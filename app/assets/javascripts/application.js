@@ -17,8 +17,8 @@
 //= require bootstrap
 //= require_tree .
 //= require 'toastr'
-//= require bootstrap-datepicker/core
-
+//= require Chart.min
+//= require jquery-ui/datepicker
 // Toastr config
 toastr.options = {
 	"closeButton": true,
@@ -38,4 +38,7 @@ toastr.options = {
 //$(document).on('turbolinks:load', function() {
 //      $('.datepicker').datepicker();
 //});
-
+// app/assets/javascripts/messages.js
+window.checkFeedsViaJS = function() {
+  $.post({url: "/notifications/new_feeds.js"});
+}

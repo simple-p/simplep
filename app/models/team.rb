@@ -7,7 +7,9 @@ class Team < ApplicationRecord
 
   def team_member
     @team_member = []
-    @team_member << owner
+    if owner
+      @team_member << owner
+    end
     Membership.where(team_id: id).each do |membership|
       @team_member << membership.member
     end
