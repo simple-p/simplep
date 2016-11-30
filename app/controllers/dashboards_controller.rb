@@ -1,6 +1,11 @@
 class DashboardsController < ApplicationController
+  helper_method :load_project
   def index
     @tasks = current_user.tasks
-    @team = current_user.current_team
+    @myProjects = current_team.projects
+  end
+
+  def load_project(task)
+    @project = Project.find task.project_id
   end
 end

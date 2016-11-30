@@ -149,202 +149,49 @@
                                                     <div> <span>Name</span> </div>
                                                 </div>
                                                 <div class="item-col item-col-header item-col-sales">
-                                                    <div> <span>Sales</span> </div>
+                                                    <div> <span>Project</span> </div>
                                                 </div>
                                                 <div class="item-col item-col-header item-col-stats">
-                                                    <div class="no-overflow"> <span>Stats</span> </div>
+                                                    <div class="no-overflow"> <span>Owner</span> </div>
                                                 </div>
                                                 <div class="item-col item-col-header item-col-date">
-                                                    <div> <span>Published</span> </div>
+                                                    <div> <span>Due Date</span> </div>
                                                 </div>
                                             </div>
                                         </li>
+                                        <% @tasks.each do |task|%>
+                                        <% load_project(task) %>
                                         <li class="item">
                                             <div class="item-row">
                                                 <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)"></div>
-                                                    </a>
-                                                </div>
+                                                  <input class="checkbox" type="checkbox"
+                                                  checked="checked"><span></span>
+                                           </div>
                                                 <div class="item-col item-col-title no-overflow">
                                                     <div>
                                                         <a href="" class="">
                                                             <h4 class="item-title no-wrap">
-            									12 Myths Uncovered About IT &amp; Software
-            								</h4> </a>
+                                                              <%= link_to task.name,project_task_path(load_project(task),task.id) %>
+                                                          </h4> </a>
                                                     </div>
                                                 </div>
                                                 <div class="item-col item-col-sales">
                                                     <div class="item-heading">Sales</div>
-                                                    <div> 4958 </div>
+                                                    <div> <%= link_to load_project(task).name, project_path(load_project(task)) %> </div>
                                                 </div>
                                                 <div class="item-col item-col-stats">
                                                     <div class="item-heading">Stats</div>
                                                     <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
+                                                      <div><%= task.owner.name %></div>
                                                     </div>
                                                 </div>
                                                 <div class="item-col item-col-date">
                                                     <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
+                                                    <div> <%= task.due_date %> </div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/_everaldo/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									50% of things doesn&#x27;t really belongs to you
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 192 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/eduardo_olv/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									Vestibulum tincidunt amet laoreet mauris sit sem aliquam cras maecenas vel aliquam.
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 2143 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/why_this/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									10 tips of Object Oriented Design
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 124 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/w7download/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									Sometimes friend tells it is cold
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 10214 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/pankogut/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									New ways of conceptual thinking
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 3217 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        <% end  %>
                                     </ul>
                                 </div>
                             </div>
@@ -357,7 +204,10 @@
              			</h3> </div>
                                     </div>
                                     <div class="card-block">
-                                        <div class="dashboard-sales-breakdown-chart" id="dashboard-sales-breakdown-chart"></div>
+                                      <div><% @myProjects.each do |project| %>
+                                        <%= link_to project.name, project_path(project)%></br>
+                                        <% end %>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
