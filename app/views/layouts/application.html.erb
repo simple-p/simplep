@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="/assets/dashboards.css">
   </head>
 
   <body>
@@ -63,7 +64,7 @@
                     <% else %>
                         <li><%= link_to "Project", projects_path %></li>
                     <% end %>
-                    
+
                     <li><a href="<%= teams_path %>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
