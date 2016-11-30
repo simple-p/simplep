@@ -13,11 +13,13 @@
           <div class="row placeholders">
             <div class="center-container">
               <table class="table">
+                <th>Name</th>
+                <th>Tasks</th>
                 <tbody class="projects">
                   <% if current_team %>
                     <% current_team.projects.each do |project| %>
-                    <tr id=<%=project.id%> >
-                      <%= render 'project',project: project %>
+                    <tr id="<%= project.id %>" >
+                      <%= render 'project', project: project %>
                     </tr>
                     <% end %>
                   <% end %>

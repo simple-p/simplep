@@ -1,5 +1,9 @@
 <table class="table table-striped">
   <tbody class="tasks">
+    <th>Status</th>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Update</th>
     <% tasks.each do |task| %>
       <tr id=<%=task.id%> >
         <td id=<%="completed-icon-#{task.id}"%>><%= task_completed_icon(task)%> </td>
@@ -10,10 +14,10 @@
             <% if task.completed_at == nil %>
             <label class="form-check-label">
               <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
-              Task Complete
+              Complete Task
             </label>
               <% else %>
-              <p style="color:green">Done!</p>
+              <b><p style="color:green">Task Completed!</p></b>
             <% end %>
           </div>
         </td>

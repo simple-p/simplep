@@ -10,7 +10,7 @@
 users = []
 2.times do
   email = Faker::Internet.email
-  user = User.create!(name: Faker::Name.name, email:email, password: "123456")
+  user = User.create!(name: Faker::Name.name, email:email, password: "asdfas")
   user.default_avatar
   users << user
 end
