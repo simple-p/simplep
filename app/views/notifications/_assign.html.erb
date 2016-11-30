@@ -1,6 +1,6 @@
 <div class="inbox-thread-warper">
-  <h2><%= "On task: #{notification.activities.first.subject.name}"%></h3>
+  <h2><%= "#{notification.activities.first.subject.name}"%></h3>
   <% notification.activities.each do |a| %>
-    <h3><%= "#{a.user.name} assigned this task to #{a.trackable.name}" %></h3>
+    <p><%= "#{a.user.name} assigned this task to #{a.trackable.name}" %></p>
   <% end %>
 </div>
