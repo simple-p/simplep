@@ -20,7 +20,7 @@
         <%= render "task_comments", comments: task.comments %>
       </div>
       <hr>
-      
+
       <%= form_for [task, Comment.new], remote: true do |f| %>
         <div class="form-group">
           <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control" %><br />
@@ -45,7 +45,7 @@
         Mask as completed
       </label>
     </div>
-    <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "nav-link fa fa-trash "%>
+    <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "btn btn-danger"%>
   </div>
   <script>
   $(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
