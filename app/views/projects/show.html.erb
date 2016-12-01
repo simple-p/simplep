@@ -4,7 +4,7 @@
       <div class="card-header bordered">
         <h1> <%= @project.name %> </h1>
           <div class="header-block pull-right">
-            <%= link_to "New task", new_project_task_path(@project), class: "btn btn-primary" %>
+            <%= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary'%>
             <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-secondary" %>
           </div>
       </div>
@@ -19,3 +19,4 @@
     </div>
   </div>
 </div>
+<%= render '/projects/dialog'%>

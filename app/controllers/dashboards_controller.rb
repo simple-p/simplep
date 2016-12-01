@@ -2,8 +2,12 @@ class DashboardsController < ApplicationController
   helper_method :load_project
   def index
     @tasks = current_user.tasks
-    @myProjects = current_team.projects
-    @task_news = current_user.activities 
+    @task_news = current_user.activities
+    if current_team
+      @myProjects = current_team.projects
+    else
+      @myProjects = nil
+    end
   end
 
   def load_project(task)
