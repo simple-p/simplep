@@ -16,6 +16,10 @@ class Team < ApplicationRecord
     @team_member
   end
 
+  def other_member
+    team_member - current_user
+  end
+
   def my_team_project
     Project.where(team_id: id)
   end
