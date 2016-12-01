@@ -3,45 +3,20 @@
     <div class="card sameheight-item items">
       <div class="card-header bordered">
         <h1> <%= @project.name %> </h1>
-          <div class="header-block pull-right">
-            <%= link_to "New task", new_project_task_path(@project), class: "btn btn-primary" %>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-            <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-secondary" %>
-          </div>
+        <div class="header-block pull-right">
+          <%= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary'%>
+          <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-secondary" %>
+        </div>
       </div>
-        <div class="row placeholders">
-          <div class="center-container col-md-6" id=<%= @project.id %> >
-            <%= render partial: "tasks/tasks", locals: {tasks: @project.tasks} %>
-          </div>
-          <div class="right-container col-md-6">
-          </div>
+      <div class="row placeholders">
+        <div class="center-container col-md-6" id=<%= @project.id %> >
+          <%= render partial: "tasks/tasks", locals: {tasks: @project.tasks} %>
+        </div>
+        <div class="right-container col-md-6">
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <%= render partial: 'tasks/form', locals: {project: @project, task: Task.new}%>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
+<%= render '/projects/dialog'%>

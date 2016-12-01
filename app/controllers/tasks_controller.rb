@@ -22,10 +22,14 @@ class TasksController < ApplicationController
 
     if @task.save
       track_activity current_user, @project, @task
-      redirect_to project_path(@project)
+      respond_to do |format|
+        format.html { redirect_to @project }
+        format.json { render json: @project }
+        format.js
+      end
     else
-      flash[:error] = 'Name must be 5 character minimum'
-      redirect_to new_project_task_path(@project)
+      flash[:error] = "#{ @project.errors.full_messages.to_sentence }"
+      redirect_to teams_path
     end
   end
 

@@ -1,0 +1,4 @@
+var row = $('*[data-role="task<%= @task.id%>"]');
+var new_row_html = '<%= j render @tasks %>'
+
+row.replaceWith(new_row_html);
