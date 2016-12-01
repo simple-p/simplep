@@ -1,20 +1,32 @@
-<div class="container">
-  <h2>Project</h2>
-  <div class="row placeholders">
-    <div class="center-container">
-      <table class="table">
-        <tbody class="projects">
+<div class="col-xl-12">
+  <div class="row sameheight-container">
+    <div class="card sameheight-item items">
+      <div class="card-header bordered">
           <% if current_team %>
-            <% current_team.projects.each do |project| %>
-            <tr id=<%=project.id%> >
-              <%= render 'project',project: project %>
-            </tr>
-            <% end %>
+            <h1><%= current_team.name %> Projects</h1>
           <% end %>
-          <tr> <td><%= link_to 'New Project', new_project_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-outline-primary'%></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="right-container">
-  </div>
+            <div class="header-block pull-right">
+              <%= link_to 'New Project', new_project_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary'%>
+            </div>
+          </div>
+
+          <div class="row placeholders">
+            <div class="center-container">
+              <table class="table">
+                <tbody class="projects">
+                  <% if current_team %>
+                    <% current_team.projects.each do |project| %>
+                    <tr id=<%=project.id%> >
+                      <%= render 'project',project: project %>
+                    </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+      </div>
+		</div>
+	</div>
 </div>

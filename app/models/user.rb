@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :task_followers, class_name: 'TaskFollower', dependent: :destroy
   has_many :following_tasks, :through => :task_followers, :source => :task
-  has_many :memberships, dependent: :destroy
+  has_many :memberships
   has_many :teams, through: :memberships, :source => :member
   has_many :notification_readers, dependent: :destroy
   has_many :notifications, :through => :notification_readers, :source => :notification
@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def destroy_current_team
-    if Team.nil?
+    if Team.all.count == 0
       self.current_team = nil
     else
       team = Team.last

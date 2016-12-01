@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
 
   def track_activity(user, subject, trackable, action = params[:action])
     activity = user.activities.new action: action, trackable: trackable, subject: subject
-    if action == 'create'  
+    if action == 'create'
       if subject.class.name == "Project" && trackable.class.name== "Task"
-        createProjectNotification(activity)        
+        createProjectNotification(activity)
       end
 
     end
@@ -38,12 +38,12 @@ class ApplicationController < ActionController::Base
 
     if action == 'assign'
       if subject.class.name == "Task" && trackable.class.name== "User"
-        createAssignTaskNotification(activity)        
+        createAssignTaskNotification(activity)
       end
     end
 
     if action == 'completed'
-      if subject.class.name == "Task"  
+      if subject.class.name == "Task"
         createTaskChangeNotification(activity)
       end
     end
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     notification.notification_readers.find_or_create_by! user: activity.trackable
     notification.notification_readers.find_or_create_by! user: activity.subject.owner
 
-    activity.notification_id = notification.id 
+    activity.notification_id = notification.id
     activity.save!
 
     return notification.id
@@ -68,24 +68,24 @@ class ApplicationController < ActionController::Base
 
       activity.subject.followers.each do |follower|
         notification.notification_readers.find_or_create_by! user: follower
-      end 
+      end
 
       notification.notification_readers.each do |feed|
         feed.read_at = nil
         feed.save!
       end
     else
-      notification = Notification.create! news_type: "task_detail_change"  
+      notification = Notification.create! news_type: "task_detail_change"
 
       activity.subject.followers.each do |follower|
         notification.notification_readers.find_or_create_by! user: follower
-      end 
+      end
     end
 
     notification.updated_at = Time.now
     notification.save!
 
-    activity.notification_id = notification.id 
+    activity.notification_id = notification.id
     activity.save!
 
     return notification.id
@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
     last_activitiy = Activity.where(subject: activity.subject, action: 'create', trackable_type: 'Task').last
     notification_count = 0
     if last_activitiy && last_activitiy.notification_id != nil
-      notification_count = Activity.where(notification_id: last_activitiy.notification_id).count 
+      notification_count = Activity.where(notification_id: last_activitiy.notification_id).count
     end
 
     if notification_count.between?(1,4)
@@ -120,9 +120,9 @@ class ApplicationController < ActionController::Base
 
     activity.subject.team.team_member.each do |member|
       notification.notification_readers.find_or_create_by! user: member
-    end 
+    end
 
-    activity.notification_id = notification.id 
+    activity.notification_id = notification.id
     activity.save!
 
     return notification.id

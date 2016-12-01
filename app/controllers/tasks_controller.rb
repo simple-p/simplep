@@ -10,9 +10,9 @@ class TasksController < ApplicationController
   end
 
   def index
-      if current_user
-        @tasks = current_user.tasks
-      end
+    if current_user
+      @tasks = current_user.tasks
+    end
   end
 
   def create
@@ -27,7 +27,6 @@ class TasksController < ApplicationController
       flash[:error] = 'Name must be 5 character minimum'
       redirect_to new_project_task_path(@project)
     end
-
   end
 
   def show
@@ -37,8 +36,6 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.js
     end
-
-
   end
 
   def completed
@@ -108,7 +105,7 @@ class TasksController < ApplicationController
   end
   private
   def task_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name, :description)
   end
 
   def load_project
