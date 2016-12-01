@@ -37,7 +37,7 @@
     </div>
     <% if current_team %>
       <%= form_for [task, TaskFollower.new], remote: true, class: "form-group" do |f| %>
-        <%= f.select :user_id, options_from_collection_for_select(current_team.members, "id", "name"), class: 'form-control' %>
+        <%= f.select :user_id, options_from_collection_for_select(current_team.team_member, "id", "name"), class: 'form-control' %>
         <%= f.submit "Assign Follower", class: "btn-success"  %>
       <% end %>
     <% end %>
