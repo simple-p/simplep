@@ -1,3 +1,14 @@
-<strong><%= comment.user.email %> </strong>
-<%= comment.content %>
-<%= link_to "Delete", task_comment_path(comment.task, comment), :method => :delete, remote: true, class: "btn-danger" %>
+<li class="comment">
+  <a class="pull-left" href="#">
+    <%= image_tag(comment.user.avatar, class: 'round-image-16')%>
+  </a>
+  <div class="comment-body">
+    <div class="comment-heading">
+      <h4 class="user"><%= comment.user.name%></h4>
+      <h5 class="time"><%= time_ago_in_words(comment.created_at)%></h5>
+    </div>
+    <p>
+      <%= comment.content %>
+    </p>
+  </div>
+</li> 

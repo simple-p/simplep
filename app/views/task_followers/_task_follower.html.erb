@@ -1,2 +1,2 @@
-<%= image_tag(task_follower.user.avatar, class: 'round-image-16')%>
+<%= render task_follower.user %>
 <%= link_to "remove", task_task_follower_path(task_follower.task, task_follower), :method => :delete, remote: true %>

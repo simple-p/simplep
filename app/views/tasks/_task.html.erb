@@ -2,7 +2,7 @@
   <div class="card-block">
     <h3>Team Members:</h3>
       <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
-        <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "email", task.owner_id), :include_blank => true, class: 'form-input'%>
+        <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "name", task.owner_id), :include_blank => true, class: 'form-input'%>
         <%= submit_tag "Assign", class: "btn-success" %>
       <% end %>
       <hr>
@@ -13,9 +13,13 @@
         <%= submit_tag "Due Date", class: "btn-success" %>
       <% end %>
       <hr>
+      
+      <%= task.description %>
+
+      <hr>
 
     <div class="comments-wrapper">
-      <div class="comments">
+      <div class="comments post-footer">
         <h3>Comments:</h3>
         <%= render "task_comments", comments: task.comments %>
       </div>
@@ -34,7 +38,7 @@
         <%= render "followers", task: task %>
       </div>
       <%= form_for [task, TaskFollower.new], remote: true, class: "form-group" do |f| %>
-        <%= f.select :user_id, options_from_collection_for_select(User.all, "id", "email"), class: 'form-control' %>
+        <%= f.select :user_id, options_from_collection_for_select(User.all, "id", "name"), class: 'form-control' %>
         <%= f.submit "Assign Follower", class: "btn-success"  %>
       <% end %>
     </div>
