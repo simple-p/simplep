@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
   def index
     @tasks = current_user.tasks
     @myProjects = current_team.projects
+    @task_news = current_user.activities 
   end
 
   def load_project(task)
