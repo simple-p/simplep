@@ -107,7 +107,7 @@
                                     <div class="card-block">
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane active fade in" id="visits">
-                                                <p class="title-description"> Number of unique visits last 30 days </p>
+                                                <p class="title-description">123</p>
                                                 <div id="dashboard-visits-chart"></div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="downloads">
@@ -220,11 +220,11 @@
                                     <div class="card-header">
                                         <div class="header-block">
                                             <h3 class="title">
-            	            Notifications
+            	            Team Report
             	        </h3> </div>
                                     </div>
                                     <div class="card-block">
-                                        <div id="dashboard-sales-map" style="width: 100%; height: 400px;"></div>
+                                        <div id="dashboard-sales-map" style="width:100%;"><%= chartjs_line_chart @team_data, @options %> </div>
                                     </div>
                                 </div>
                             </div>
