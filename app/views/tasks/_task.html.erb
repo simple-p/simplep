@@ -2,7 +2,7 @@
 <div class="card-block">
   <h3>Team Members:</h3>
   <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
-    <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "name", task.owner_id), :include_blank => true, class: 'form-input'%>
+    <%= select_tag :owner_id, options_from_collection_for_select(current_team.team_member-[task.owner], "id", "name", task.owner_id), :include_blank => true, class: 'form-input'%>
     <%= submit_tag "Assign", class: "btn-success" %>
   <% end %>
   <hr>
@@ -37,7 +37,7 @@
     </div>
     <% if current_team %>
       <%= form_for [task, TaskFollower.new], remote: true, class: "form-group" do |f| %>
-        <%= f.select :user_id, options_from_collection_for_select(current_team.members, "id", "name"), class: 'form-control' %>
+        <%= f.select :user_id, options_from_collection_for_select(current_team.team_member - task.followers, "id", "name"), class: 'form-control' %>
         <%= f.submit "Assign Follower", class: "btn-success"  %>
       <% end %>
     <% end %>
