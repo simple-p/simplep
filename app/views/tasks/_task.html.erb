@@ -1,57 +1,57 @@
 <h1><%= task.name %></h1>
-  <div class="card-block">
-    <h3>Team Members:</h3>
-      <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
-        <%= select_tag :owner_id, options_from_collection_for_select(User.all, "id", "name", task.owner_id), :include_blank => true, class: 'form-input'%>
-        <%= submit_tag "Assign", class: "btn-success" %>
-      <% end %>
-      <hr>
+<div class="card-block">
+  <h3>Team Members:</h3>
+  <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
+    <%= select_tag :owner_id, options_from_collection_for_select(current_team.team_member-[task.owner], "id", "name", task.owner_id), :include_blank => true, class: 'form-input'%>
+    <%= submit_tag "Assign", class: "btn-success" %>
+  <% end %>
+  <hr>
 
-    <h3>Due Date:</h3>
-      <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
-        <%= text_field_tag :due_date, task.due_date ? task.due_date.to_date.to_s : Date.today.to_s, class: 'datepicker form-control'%>
-        <%= submit_tag "Due Date", class: "btn-success" %>
-      <% end %>
-      <hr>
-      
-      <%= task.description %>
+  <h3>Due Date:</h3>
+  <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
+    <%= text_field_tag :due_date, task.due_date ? task.due_date.to_date.to_s : Date.today.to_s, class: 'datepicker form-control'%>
+    <%= submit_tag "Due Date", class: "btn-success" %>
+  <% end %>
+  <hr>
 
-      <hr>
+  <%= task.description %>
 
-    <div class="comments-wrapper">
-      <div class="comments post-footer">
-        <h3>Comments:</h3>
-        <%= render "task_comments", comments: task.comments %>
+  <hr>
+
+  <div class="comments-wrapper">
+    <div class="comments">
+      <%= render "task_comments", comments: task.comments %>
+    </div>
+
+    <%= form_for [task, Comment.new], remote: true do |f| %>
+      <div class="form-group">
+        <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control" %><br />
+        <%= f.submit "Submit", class: "btn-success" %>
       </div>
-      <hr>
+    <% end %>
+    <hr>
 
-      <%= form_for [task, Comment.new], remote: true do |f| %>
-        <div class="form-group">
-          <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control" %><br />
-          <%= f.submit "Submit", class: "btn-success" %>
-        </div>
-      <% end %>
-      <hr>
-
-      <div class="followers">
-        <h3>Followers:</h3>
-        <%= render "followers", task: task %>
-      </div>
+    <div class="followers">
+      <h3>Followers:</h3>
+      <%= render "followers", task: task %>
+    </div>
+    <% if current_team %>
       <%= form_for [task, TaskFollower.new], remote: true, class: "form-group" do |f| %>
-        <%= f.select :user_id, options_from_collection_for_select(User.all, "id", "name"), class: 'form-control' %>
+        <%= f.select :user_id, options_from_collection_for_select(current_team.team_member - task.followers, "id", "name"), class: 'form-control' %>
         <%= f.submit "Assign Follower", class: "btn-success"  %>
       <% end %>
-    </div>
-
-    <div class="form-check">
-      <label class="form-check-label">
-        <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
-        Mask as completed
-      </label>
-    </div>
-    <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "btn btn-danger"%>
+    <% end %>
   </div>
-  <script>
-  $(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
 
-  </script>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
+      Mask as completed
+    </label>
+  </div>
+  <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "btn btn-danger"%>
+</div>
+<script>
+$(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
+
+</script>

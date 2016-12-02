@@ -107,7 +107,7 @@
                                     <div class="card-block">
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane active fade in" id="visits">
-                                                <p class="title-description"> Number of unique visits last 30 days </p>
+                                                <p class="title-description">123</p>
                                                 <div id="dashboard-visits-chart"></div>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="downloads">
@@ -149,215 +149,65 @@
                                                     <div> <span>Name</span> </div>
                                                 </div>
                                                 <div class="item-col item-col-header item-col-sales">
-                                                    <div> <span>Sales</span> </div>
+                                                    <div> <span>Project</span> </div>
                                                 </div>
                                                 <div class="item-col item-col-header item-col-stats">
-                                                    <div class="no-overflow"> <span>Stats</span> </div>
+                                                    <div class="no-overflow"> <span>Owner</span> </div>
                                                 </div>
                                                 <div class="item-col item-col-header item-col-date">
-                                                    <div> <span>Published</span> </div>
+                                                    <div> <span>Due Date</span> </div>
                                                 </div>
                                             </div>
                                         </li>
+                                        <% @tasks.each do |task|%>
+                                        <% load_project(task) %>
                                         <li class="item">
                                             <div class="item-row">
                                                 <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)"></div>
-                                                    </a>
-                                                </div>
+                                                  <input class="checkbox" type="checkbox"
+                                                  checked="checked"><span></span>
+                                           </div>
                                                 <div class="item-col item-col-title no-overflow">
                                                     <div>
                                                         <a href="" class="">
                                                             <h4 class="item-title no-wrap">
-            									12 Myths Uncovered About IT &amp; Software
-            								</h4> </a>
+                                                              <%= link_to task.name,project_task_path(load_project(task),task.id) %>
+                                                          </h4> </a>
                                                     </div>
                                                 </div>
                                                 <div class="item-col item-col-sales">
                                                     <div class="item-heading">Sales</div>
-                                                    <div> 4958 </div>
+                                                    <div> <%= link_to load_project(task).name, project_path(load_project(task)) %> </div>
                                                 </div>
                                                 <div class="item-col item-col-stats">
                                                     <div class="item-heading">Stats</div>
                                                     <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
+                                                      <div><%= task.owner.name %></div>
                                                     </div>
                                                 </div>
                                                 <div class="item-col item-col-date">
                                                     <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
+                                                    <div> <%= task.due_date %> </div>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/_everaldo/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									50% of things doesn&#x27;t really belongs to you
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 192 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/eduardo_olv/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									Vestibulum tincidunt amet laoreet mauris sit sem aliquam cras maecenas vel aliquam.
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 2143 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/why_this/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									10 tips of Object Oriented Design
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 124 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/w7download/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									Sometimes friend tells it is cold
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 10214 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-row">
-                                                <div class="item-col fixed item-col-img xs">
-                                                    <a href="">
-                                                        <div class="item-img xs rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/pankogut/128.jpg)"></div>
-                                                    </a>
-                                                </div>
-                                                <div class="item-col item-col-title no-overflow">
-                                                    <div>
-                                                        <a href="" class="">
-                                                            <h4 class="item-title no-wrap">
-            									New ways of conceptual thinking
-            								</h4> </a>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-sales">
-                                                    <div class="item-heading">Sales</div>
-                                                    <div> 3217 </div>
-                                                </div>
-                                                <div class="item-col item-col-stats">
-                                                    <div class="item-heading">Stats</div>
-                                                    <div class="no-overflow">
-                                                        <div class="item-stats sparkline" data-type="bar"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="item-col item-col-date">
-                                                    <div class="item-heading">Published</div>
-                                                    <div> 21 SEP 10:45 </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        <% end  %>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-xl-4">
                                 <div class="card sameheight-item sales-breakdown" data-exclude="xs,sm,lg">
-                                    <div class="card-header">
+                                    <div class="card-header bordered">
                                         <div class="header-block">
                                             <h3 class="title">
              				Projects
              			</h3> </div>
                                     </div>
                                     <div class="card-block">
-                                        <div class="dashboard-sales-breakdown-chart" id="dashboard-sales-breakdown-chart"></div>
+                                      <div><% @myProjects.each do |project| %>
+                                        <li><%= link_to project.name, project_path(project)%></li>
+                                        <% end %>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
@@ -370,11 +220,11 @@
                                     <div class="card-header">
                                         <div class="header-block">
                                             <h3 class="title">
-            	            Sales by countries
+            	            Team Report
             	        </h3> </div>
                                     </div>
                                     <div class="card-block">
-                                        <div id="dashboard-sales-map" style="width: 100%; height: 400px;"></div>
+                                        <div id="dashboard-sales-map" style="width:100%;"><%= chartjs_line_chart @team_data, @options %> </div>
                                     </div>
                                 </div>
                             </div>
@@ -383,418 +233,23 @@
                                     <div class="card-header bordered">
                                         <div class="header-block">
                                             <h3 class="title">
-                           Tasks
+                           My Activities
                         </h3> </div>
                                         <div class="header-block pull-right"> <a href="" class="btn btn-primary btn-sm rounded pull-right">
-                            Add new
+                            See All
                         </a> </div>
                                     </div>
                                     <div class="card-block">
                                         <div class="tasks-block">
                                             <ul class="item-list">
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                checked="checked">
-                                                <span>Meeting with embassador</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                checked="checked">
-                                                <span>Confession</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Time to start building an ark</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Beer time with dudes</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                checked="checked">
-                                                <span>Meeting new girls</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Remember damned home address</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Get home before you got sleep</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                checked="checked">
-                                                <span>Meeting with embassador</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                checked="checked">
-                                                <span>Confession</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Time to start building an ark</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Beer time with dudes</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                checked="checked">
-                                                <span>Meeting new girls</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="item">
-                                                    <div class="item-row">
-                                                        <div class="item-col item-col-title"> <label>
-                                                <input class="checkbox" type="checkbox"
-                                                >
-                                                <span>Remember damned home address</span>
-                                            </label> </div>
-                                                        <div class="item-col fixed item-col-actions-dropdown">
-                                                            <div class="item-actions-dropdown">
-                                                                <a class="item-actions-toggle-btn"> <span class="inactive">
-                                                        <i class="fa fa-cog"></i>
-                                                    </span> <span class="active">
-                                                    <i class="fa fa-chevron-circle-right"></i>
-                                                    </span> </a>
-                                                                <div class="item-actions-block">
-                                                                    <ul class="item-actions-list">
-                                                                        <li>
-                                                                            <a class="remove" href="#" data-toggle="modal" data-target="#confirm-modal"> <i class="fa fa-trash-o "></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="check" href="#"> <i class="fa fa-check"></i> </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a class="edit" href="item-editor.html"> <i class="fa fa-pencil"></i> </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                              <% @task_news.each do |new| %>
+                                                <div class="alert alert-success">
+                                                  <button data-dismiss="alert" class="close close-sm" type="button">
+                                                      <i class="fa fa-times"></i>
+                                                  </button>
+                                                <%= "#{new.user.email} #{new.action} #{new.trackable_type} in task #{new.subject.name}" %>
+                                                </div>
+                                              <% end %>
                                             </ul>
                                         </div>
                                     </div>

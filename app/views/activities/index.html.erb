@@ -1,5 +1,8 @@
 <% @task_news.each do |new| %>
   <div class="alert alert-success">
-  <p> <%= "#{new.user.email} #{new.action} #{new.trackable_type} in task #{new.subject.name}" %> </p> 
+    <button data-dismiss="alert" class="close close-sm" type="button">
+        <i class="fa fa-times"></i>
+    </button>
+  <%= "#{new.user.email} #{new.action} #{new.trackable_type} in task #{new.subject.name}" %>
   </div>
 <% end %>

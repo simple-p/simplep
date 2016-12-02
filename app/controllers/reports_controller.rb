@@ -1,13 +1,13 @@
 class ReportsController < ApplicationController
   def index
     if current_team
-      @project_data = {} 
+      @project_data = {}
         current_team.projects.each do |p|
           l, t, c = project_report(p, 1.days)
           d = make_chart_data(l, t, c)
           @project_data[p.name.to_sym] = d
         end
-          
+
        l, t, c = team_report(current_team,  1.days)
        @team_data = make_chart_data(l, t, c)
     end
@@ -16,7 +16,7 @@ class ReportsController < ApplicationController
 
   def make_chart_data(labels, dataset1, dataset2)
     data = {
-      labels: labels, 
+      labels: labels,
       datasets: [
         {
           label: "Total tasks",
@@ -40,13 +40,13 @@ class ReportsController < ApplicationController
 
     start_date = team.created_at
 
-    end_date = start_date 
+    end_date = start_date
     labels = [start_date.strftime("%B %d, %Y")]
 
     total_task_count = [0]
     completed_task_count = [0]
 
-    begin 
+    begin
       end_date += interval
       labels << end_date.strftime("%B %d, %Y")
 
@@ -61,10 +61,10 @@ class ReportsController < ApplicationController
         completed_count += completed_tasks.count
       end
 
-      total_task_count << total_count 
-      completed_task_count << completed_count 
+      total_task_count << total_count
+      completed_task_count << completed_count
 
-    end until end_date > Time.now 
+    end until end_date > Time.now
 
     return labels, total_task_count, completed_task_count
   end
@@ -73,21 +73,21 @@ class ReportsController < ApplicationController
 
     start_date = project.created_at
 
-    end_date = start_date 
+    end_date = start_date
     labels = [start_date.strftime("%B %d, %Y")]
 
     total_task_count = [0]
     completed_task_count = [0]
 
-    begin 
+    begin
       end_date += interval
       labels << end_date.strftime("%B %d, %Y")
       tasks = project.tasks.where("created_at < ?", end_date)
       completed_tasks = tasks.where("completed_at < ?", end_date)
       total_task_count << tasks.count
-      completed_task_count << completed_tasks.count 
+      completed_task_count << completed_tasks.count
 
-    end until end_date > Time.now 
+    end until end_date > Time.now
 
     return labels, total_task_count, completed_task_count
   end

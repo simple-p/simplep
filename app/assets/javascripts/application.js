@@ -19,20 +19,21 @@
 //= require 'toastr'
 //= require Chart.min
 //= require jquery-ui/datepicker
+//= require html.sortable
 // Toastr config
 toastr.options = {
-	"closeButton": true,
-	"debug": false,
-	"progressBar": true,
-	"positionClass": "toast-bottom-right",
-	"ShowDuration": "300",
-	"hideDuration": "1000",
-	"timeOut": "5000",
-	"extendedTimeOut": "1000",
-	"showEasing": "swing",
-	"hideEasing": "linear",
-	"showMethod": "fadeIn",
-	"hideMethod": "fadeOut"
+  "closeButton": true,
+  "debug": false,
+  "progressBar": true,
+  "positionClass": "toast-bottom-right",
+  "ShowDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
 };
 
 //$(document).on('turbolinks:load', function() {
