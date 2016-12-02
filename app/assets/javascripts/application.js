@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
-//= require_tree .
 //= require 'toastr'
 //= require Chart.min
 //= require jquery-ui/datepicker

@@ -94,7 +94,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col col-xs-12 col-sm-12 col-md-6 col-xl-7 history-col">
+                            <div class="col col-xs-12 col-sm-12 col-md-6 col-xl-7 history-col" style="height:305px;overflow:auto">
                                 <div class="card sameheight-item" data-exclude="xs">
                                     <div class="card-header card-header-sm bordered">
                                         <div class="header-block">
@@ -107,12 +107,25 @@
                                     <div class="card-block">
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane active fade in" id="visits">
-                                                <p class="title-description">123</p>
-                                                <div id="dashboard-visits-chart"></div>
+                                              <%  @notifications.each do |notification| %>
+                                                <% if notification.activities.count > 0 %>
+                                                <div class="title-description">
+                                                  <li>
+                                                      <a href="" class="notification-item">
+                                                          <div class="img-col">
+                                                              <div class="img" style="background-image: url('assets/faces/3.jpg')"></div>
+                                                          </div>
+                                                          <div class="body-col">
+                                                              <p><%= renderNotification(notification) %></p>
+                                                          </div>
+                                                      </a>
+                                                  </li>
+                                                </div>
+                                                <% end %>
+                                              <% end %>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="downloads">
                                                 <p class="title-description"> Number of downloads last 30 days </p>
-                                                <div id="dashboard-downloads-chart"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -262,7 +275,7 @@
                     <div class="footer-block buttons"> <iframe class="footer-github-btn" src="https://ghbtns.com/github-btn.html?user=modularcode&repo=modular-admin-html&type=star&count=true" frameborder="0" scrolling="0" width="140px" height="20px"></iframe> </div>
                     <div class="footer-block author">
                         <ul>
-                            <li> created by <a href="https://github.com/simple-p">1000Team</a> </li>
+                            <li> Created by <a href="https://github.com/simple-p">1000Team</a> </li>
                         </ul>
                     </div>
                 </footer>
