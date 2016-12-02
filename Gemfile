@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'record_tag_helper', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
-	gem 'rails-assets-tether', '>= 1.1.0'
+  gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 #ransack gem for advanced search
@@ -62,12 +62,12 @@ group :development, :test do
 end
 
 group :development do
-	# Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-	gem 'web-console'
-	gem 'listen', '~> 3.0.5'
-	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-	gem 'spring'
-	gem 'spring-watcher-listen', '~> 2.0.0'
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console'
+  gem 'listen', '~> 3.0.5'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
         gem 'guard-rspec', require: false
 end
 
@@ -84,3 +84,5 @@ gem 'devise', '~> 4.2'
 gem 'toastr_rails', '~> 2.1', '>= 2.1.1'
 gem 'paperclip', '~> 5.1'
 gem 'identicon', '~> 0.0.5'
+gem 'acts_as_list', '~> 0.8.2'
+gem 'ranked-model'

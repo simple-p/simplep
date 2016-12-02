@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery-ui/sortable
 //= require turbolinks
 //= require tether
 //= require bootstrap
@@ -19,7 +21,7 @@
 //= require 'toastr'
 //= require Chart.min
 //= require jquery-ui/datepicker
-//= require html.sortable
+
 // Toastr config
 toastr.options = {
   "closeButton": true,
@@ -42,4 +44,9 @@ toastr.options = {
 // app/assets/javascripts/messages.js
 window.checkFeedsViaJS = function() {
   $.post({url: "/notifications/new_feeds.js"});
+}
+
+function handleChange(el) {
+  url = $(el).data('request-url') + '.js'
+  $.post(url, {completed: $(el).prop('checked')});
 }

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :comments
     resources :task_followers
+    post :sort, on: :collection
   end
 
   resources :homes
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   get 'aboutus' => "home#aboutus"
   get 'dashboard' => "dashboards#index"
   get 'search' => "tasks#search"
-  get 'termsandconditions' => "home#termsandconditions"  
+  get 'termsandconditions' => "home#termsandconditions"
   resources :teams do
     resources 'memberships'
     post 'memberships/create', as: 'add_member'

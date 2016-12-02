@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @tasks = @project.tasks.order('position desc')
   end
 
   def update

@@ -1,4 +1,8 @@
 class Task < ApplicationRecord
+
+  include RankedModel
+  ranks :position
+
   belongs_to :project
   belongs_to :user, optional: true
   belongs_to :owner, class_name: 'User'
@@ -10,6 +14,7 @@ class Task < ApplicationRecord
 
   validates :name, presence: true,
                     length: { minimum: 5 }
+
   def isCompleted?
     !!completed_at
   end

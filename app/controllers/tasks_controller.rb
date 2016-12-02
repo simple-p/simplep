@@ -9,9 +9,17 @@ class TasksController < ApplicationController
       @tasks = @search.result
   end
 
+  def sort
+    params[:ids].each_with_index do |id, index|
+      Task.where(id: id).update(position: index + 1)
+    end
+
+    render nothing: true
+  end
+
   def index
     if current_user
-      @tasks = current_user.tasks
+      @tasks = current_user.tasks.order('position')
     end
   end
 
@@ -109,7 +117,7 @@ class TasksController < ApplicationController
   end
   private
   def task_params
-    params.require(:task).permit(:name, :description)
+    params.require(:task).permit(:task_id, :name, :description, :position)
   end
 
   def load_project
