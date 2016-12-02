@@ -1,3 +1,9 @@
+.task_follower {
+  display: inline-block;
+  border-radius: 20px;
+  border: 2px solid #73AD21;
+  padding: 4px; 
+}
 .comments {
   padding-bottom: 10px;
 }
