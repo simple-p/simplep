@@ -27,6 +27,6 @@ class TaskFollowersController < ApplicationController
   end
   private
   def task_follower_params
-    params.require(:task_follower).permit(:user_id)
+    params.permit(:user_id)
   end
 end

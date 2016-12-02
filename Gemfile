@@ -23,6 +23,8 @@ gem 'jquery-rails'
 
 gem 'jquery-ui-rails'
 
+gem 'twitter-typeahead-rails', '~> 0.11.1'
+
 gem 'chartjs-ror'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

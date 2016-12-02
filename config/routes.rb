@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :blogs
   end
 
+  get 'tasks/user_team'
+
   delete 'projects/:id/' => "projects#destroy", as: "destroy_project"
   delete 'teams/:id' => "teams#destroy", as: "destroy_team"
   resources :tasks do

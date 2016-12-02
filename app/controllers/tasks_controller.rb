@@ -33,6 +33,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def user_team
+    if current_team
+      @users = current_team.team_member
+    end
+
+    respond_to do |format|
+      format.json {render json: @users}
+    end
+
+  end
   def show
     load_project
     @task = Task.find params[:id]
