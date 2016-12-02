@@ -20,9 +20,9 @@
 //= require 'toastr'
 //= require Chart.min
 //= require jquery-ui/datepicker
-//= require html.sortable
 //= require twitter/typeahead.min
 //= require_tree .
+
 // Toastr config
 toastr.options = {
   "closeButton": true,
@@ -47,7 +47,3 @@ window.checkFeedsViaJS = function() {
   $.post({url: "/notifications/new_feeds.js"});
 }
 
-function handleChange(el) {
-  url = $(el).data('request-url') + '.js'
-  $.post(url, {completed: $(el).prop('checked')});
-}

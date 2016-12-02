@@ -20,7 +20,8 @@ function renumber_table(tableID) {
     count = $(this).parent().children().index($(this)) + 1;
     $(this).find('.task').html(count);
   });
-}
+};
+
 function handleChange(el) {
   url = $(el).data('request-url') + '.js'
   $.post(url, {completed: $(el).prop('checked')});
