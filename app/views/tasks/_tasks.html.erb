@@ -1,5 +1,52 @@
+<article class="content items-list-page">
+    <div class="card items">
+        <ul class="item-list striped">
+            <li class="item item-list-header hidden-sm-down">
+                <div class="item-row">
+                    <div class="item-col fixed item-col-check"></div>
+                    <div class="item-col item-col-header fixed item-col-stats">
+                        <div> <span>Owner</span> </div>
+                    </div>
+                    <div class="item-col item-col-header item-col-title">
+                        <div> <span>Name</span> </div>
+                    </div>
+                    <div class="item-col item-col-header item-col-date">
+                        <div> <span>Due Date</span> </div>
+                    </div>
+                </div>
+            </li>
+            <% tasks.each do |task| %>
+            <li class="item">
+                <div class="item-row">
+                    <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
+<%= task_completed_icon(task) %><span></span>
+</label> </div>
+                    <div class="item-col fixed item-col-stats">
+                          <% if task.owner %>
+                            <%= image_tag(task.owner.avatar, class: "round-image-16",:align=> "middle") %>
+                          <% end %>
+                    </div>
+                    <div class="item-col fixed pull-left item-col-title">
+                        <div class="item-heading">Name</div>
+                        <div>
+                            <a href="item-editor.html" class="">
+                                <h4 class="item-title"><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4> </a>
+                        </div>
+                    </div>
+                    <div class="item-col item-col-date">
+                        <div class="item-heading">Due Date</div>
+                        <div class="no-overflow"><%= deadline_warning(task) %></div>
+                    </div>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</article>
+
+<% if false %>
 <table class="table table-striped" id="tasks_list">
-  <tbody>
+  <tbody class="tasks">
     <% tasks.each do |task| %>
       <tr class="task" id="task_<%= task.id %>" data-item-id=<%= task.id %>>
         <td id=<%="completed-icon-#{task.id}"%>><%= task_completed_icon(task) %> </td>
@@ -14,3 +61,4 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
