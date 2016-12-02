@@ -3,9 +3,34 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_params, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :set_notifications, if: :user_signed_in?
 
   helper_method :current_team
   helper_method :notification_count
+  helper_method :notificationBell
+# Notifications for navbar
+
+  def set_notifications
+    if current_user
+      # reload user data
+      user = User.find current_user.id
+      @notifications = user.notifications.order("updated_at DESC")
+
+      new_feeds = user.notification_readers.select {|feed| !feed.isRead?}
+      new_feeds.each do |feed|
+        feed.read_at = Time.now
+        feed.save!
+      end
+    end
+  end
+
+  def new_feeds
+    @new_feeds = NotificationReader.where(user: current_user, read_at: nil)
+    respond_to do |format|
+      format.js
+    end
+  end
+# End notification for navbar
 
   def notification_count
     return NotificationReader.where(user: current_user, read_at: nil).count

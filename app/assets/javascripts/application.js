@@ -17,11 +17,12 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
-//= require_tree .
 //= require 'toastr'
 //= require Chart.min
 //= require jquery-ui/datepicker
-
+//= require html.sortable
+//= require twitter/typeahead.min
+//= require_tree .
 // Toastr config
 toastr.options = {
   "closeButton": true,
