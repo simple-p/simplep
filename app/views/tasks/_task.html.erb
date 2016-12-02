@@ -1,17 +1,11 @@
 <h1><%= task.name %></h1>
 <div class="card-block">
   <h3>Team Members:</h3>
-  <%= form_tag(project_task_owner_path(task.project, task), class: "form-inline", remote: true) do %>
-    <%= select_tag :owner_id, options_from_collection_for_select(current_team.team_member-[task.owner], "id", "name", task.owner_id), :include_blank => true, class: 'form-input'%>
-    <%= submit_tag "Assign", class: "btn-success" %>
-  <% end %>
-  <hr>
+  <div id="remote" style="display:inline-block; padding:3px">
+    <input class="typeahead owner_select" type="text" placeholder="Oscar winners for Best Picture" value="<%= task.owner.name if task.owner %>">
+  </div>
 
-  <h3>Due Date:</h3>
-  <%= form_tag(project_task_deadline_path(task.project, task), class: "form-inline", remote: true) do %>
-    <%= text_field_tag :due_date, task.due_date ? task.due_date.to_date.to_s : Date.today.to_s, class: 'datepicker form-control'%>
-    <%= submit_tag "Due Date", class: "btn-success" %>
-  <% end %>
+  <input type="text" class="datepicker" style="display:inline-block" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
   <hr>
 
   <%= task.description %>
@@ -36,10 +30,10 @@
       <%= render "followers", task: task %>
     </div>
     <% if current_team %>
-      <%= form_for [task, TaskFollower.new], remote: true, class: "form-group" do |f| %>
-        <%= f.select :user_id, options_from_collection_for_select(current_team.team_member - task.followers, "id", "name"), class: 'form-control' %>
-        <%= f.submit "Assign Follower", class: "btn-success"  %>
-      <% end %>
+
+      <div id="remote">
+        <input class="typeahead follower_select" type="text" placeholder="Oscar winners for Best Picture" value="<%= task.owner.name if task.owner %>">
+      </div>
     <% end %>
   </div>
 
@@ -53,5 +47,41 @@
 </div>
 <script>
 $(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
+var bestPictures = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+    url: '/tasks/user_team.json',
+  }
+});
 
+$('#remote .typeahead').typeahead(null, {
+  name: 'best-pictures',
+  display: 'name',
+  source: bestPictures
+});
+
+$('.owner_select').bind('typeahead:select', function(ev, suggestion) {
+  console.log('Selection: ' + suggestion.email);
+
+  url = '<%= project_task_owner_path(task.project, task)%>' + '.js';
+  console.log('Post to url: ' + url);
+  $.post(url, {
+    owner_id: suggestion.id,
+    project_id: <%= task.project.id %>,
+    task_id: <%= task.id %>
+}
+);
+  });
+$('.follower_select').bind('typeahead:select', function(ev, suggestion) {
+  console.log('Follower Selection: ' + suggestion.email);
+
+  url = '<%= task_task_followers_path(task, TaskFollower.new)%>' + '.js';
+  console.log('Post to url: ' + url);
+  $.post(url, {
+    user_id: suggestion.id,
+    task_id: <%= task.id %>
+}
+);
+  });
 </script>
