@@ -19,6 +19,7 @@
 //= require Chart.min
 //= require jquery-ui/datepicker
 //= require html.sortable
+//= require twitter/typeahead.min
 // Toastr config
 toastr.options = {
   "closeButton": true,
