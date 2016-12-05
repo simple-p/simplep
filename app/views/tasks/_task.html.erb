@@ -3,7 +3,7 @@
 <div class="card-block">
   <h5>Team Members:</h5>
   <div id="remote" style="display:inline-block; padding:3px">
-    <input class="typeahead owner_select" type="text" placeholder="Oscar winners for Best Picture" value="<%= task.owner.name if task.owner %>">
+    <input class="typeahead owner_select" type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>">
   </div>
 
   <input type="text" class="datepicker" style="display:inline-block" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
@@ -33,7 +33,7 @@
     <% if current_team %>
 
       <div id="remote">
-        <input class="typeahead follower_select" type="text" placeholder="Oscar winners for Best Picture" value="<%= task.owner.name if task.owner %>">
+        <input class="typeahead follower_select" type="text" placeholder="Add followers" value="<%= task.owner.name if task.owner %>">
       </div>
     <% end %>
   </div>

@@ -21,6 +21,7 @@
 //= require Chart.min
 //= require jquery-ui/datepicker
 //= require twitter/typeahead.min
+//= require chosen-jquery
 //= require_tree .
 
 // Toastr config

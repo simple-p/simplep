@@ -63,6 +63,10 @@ GEM
       rails (>= 3.1)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     chunky_png (1.3.8)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -305,6 +309,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.10, >= 2.10.1)
   chartjs-ror
+  chosen-rails
   coffee-rails (~> 4.2)
   database_cleaner
   devise (~> 4.2)
