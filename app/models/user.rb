@@ -45,10 +45,11 @@ class User < ApplicationRecord
   end
 
   def destroy_current_team
-    if Team.all.count == 0
+    @my_team = my_team
+    if @my_team == []
       self.current_team = nil
     else
-      team = Team.last
+      team = @my_team.first
       self.current_team = team.id
     end
     save!

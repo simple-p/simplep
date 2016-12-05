@@ -2,13 +2,14 @@ class DashboardsController < ApplicationController
   helper_method :load_project
   def index
     @tasks = current_user.tasks
-    @myProjects = current_team.projects
     @task_news = current_user.activities
-
-#chartjs reporting
-    l, t, c = team_report(current_team,  1.days)
-    @team_data = make_chart_data(l, t, c)
-    @options =  {responsive: true, width: 759, height: 400}
+    if current_team
+      @myProjects = current_team.projects
+  #chartjs reporting
+      l, t, c = team_report(current_team,  1.days)
+      @team_data = make_chart_data(l, t, c)
+      @options =  {responsive: true, width: 759, height: 400}
+    end
 
   end
 

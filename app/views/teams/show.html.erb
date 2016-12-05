@@ -15,12 +15,12 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= @team.owner.email %></td>
+            <td data-title="Email"><%= image_tag(@team.owner.avatar, class: 'round-image-16')%> <%= @team.owner.email %></td>
             <td>owner</td>
           </tr>
           <% @members.each do |m| %>
           <tr>
-            <td data-title="Email"><%= image_tag(m.member.avatar, class: 'round-image-16') m.member.email %></td>
+            <td data-title="Email"><%= image_tag(m.member.avatar, class: 'round-image-16')%> <%= m.member.email %></td>
             <td data-title="Name"> member</td>
           </tr>
           <% end %>
