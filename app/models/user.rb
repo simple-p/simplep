@@ -45,9 +45,10 @@ class User < ApplicationRecord
   end
 
   def destroy_current_team
-    @my_team = my_team
-    if @my_team == []
-      self.current_team = nil
+    if my_team == []
+      Team.create(name: "Personal Team", owner_id: self.id)
+      @team = Team.last
+      self.current_team = @team.id
     else
       team = @my_team.first
       self.current_team = team.id
