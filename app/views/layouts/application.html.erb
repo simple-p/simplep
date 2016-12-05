@@ -7,11 +7,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="stylesheet" href="/assets/dashboards.css">
-    <link rel="stylesheet" href="/assets/task-followers.css">
-    <link rel="stylesheet" href="/assets/comments.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+      <link rel="icon" type="image/png" href="assets/logo.png">
+    <% if user_signed_in? %>
+      <link rel="stylesheet" href="/assets/dashboards.css">
+      <link rel="stylesheet" href="/assets/task-followers.css">
+      <link rel="stylesheet" href="/assets/comments.css">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    <% end %>
+
   </head>
 
   <body>
@@ -29,54 +32,54 @@
                 <a class="navbar-brand" href="/search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
                 <div class="btn-group float-xs-right">
                   <li class="navbar-brand notifications new">
-                                                  <a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i><sup><span class="counter"><%= new_feeds_icon(notification_count) %></span></sup></a>
-                                                  <div class="dropdown-menu dropdown-menu-left animated flipInX">
-                                                      <ul class="notifications-container">
-                                                        <%  @notifications.each do |notification| %>
-                                                        <% if notification.activities.count > 0 %>
-                                                          <li>
-                                                              <a href="" class="notification-item">
-                                                                  <div class="img-col">
-                                                                      <div class="img" style="background-image: url('assets/faces/3.jpg')"></div>
-                                                                  </div>
-                                                                  <div class="body-col">
-                                                                      <p><%= renderNotification(notification) %></p>
-                                                                  </div>
-                                                              </a>
-                                                          </li>
-                                                      <% end %>
-                                                    <% end %>
 
-                                                          <li>
-                                                              <a href="" class="notification-item">
-                                                                  <div class="img-col">
-                                                                      <div class="img" style="background-image: url('assets/faces/5.jpg')"></div>
-                                                                  </div>
-                                                                  <div class="body-col">
-                                                                      <p> <span class="accent">Amaya Hatsumi</span> started new task: <span class="accent">Dashboard UI design.</span>. </p>
-                                                                  </div>
-                                                              </a>
-                                                          </li>
-                                                          <li>
-                                                              <a href="" class="notification-item">
-                                                                  <div class="img-col">
-                                                                      <div class="img" style="background-image: url('assets/faces/8.jpg')"></div>
-                                                                  </div>
-                                                                  <div class="body-col">
-                                                                      <p> <span class="accent">Andy Nouman</span> deployed new version of <span class="accent">NodeJS REST Api V3</span> </p>
-                                                                  </div>
-                                                              </a>
-                                                          </li>
-                                                      </ul>
-                                                      <footer>
-                                                          <ul>
-                                                              <li> <a href="">
-                      			            View All
-                      			          </a> </li>
-                                                          </ul>
-                                                      </footer>
-                                                  </div>
-                                              </li>
+                    <a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i><sup><span class="counter"><%= new_feeds_icon(notification_count) %></span></sup></a>
+                    <div class="dropdown-menu dropdown-menu-left animated flipInX">
+                        <ul class="notifications-container">
+                          <%  @notifications.each do |notification| %>
+                          <% if notification.activities.count > 0 %>
+                            <li>
+                                <a href="" class="notification-item">
+                                    <div class="img-col">
+                                        <div class="img" style="background-image: url('assets/faces/3.jpg')"></div>
+                                    </div>
+                                    <div class="body-col">
+                                        <p><%= renderNotification(notification) %></p>
+                                    </div>
+                                </a>
+                            </li>
+                        <% end %>
+                      <% end %>
+                            <li>
+                                <a href="" class="notification-item">
+                                    <div class="img-col">
+                                        <div class="img" style="background-image: url('assets/faces/5.jpg')"></div>
+                                    </div>
+                                    <div class="body-col">
+                                        <p> <span class="accent">Amaya Hatsumi</span> started new task: <span class="accent">Dashboard UI design.</span>. </p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="notification-item">
+                                    <div class="img-col">
+                                        <div class="img" style="background-image: url('assets/faces/8.jpg')"></div>
+                                    </div>
+                                    <div class="body-col">
+                                        <p> <span class="accent">Andy Nouman</span> deployed new version of <span class="accent">NodeJS REST Api V3</span> </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <footer>
+                            <ul>
+                                <li> <a href="">View All</a> </li>
+                            </ul>
+                        </footer>
+                    </div>
+                </li>
+
                   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=30" alt=""> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
