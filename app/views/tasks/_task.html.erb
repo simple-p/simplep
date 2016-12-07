@@ -8,7 +8,6 @@
 
   <input type="text" class="datepicker" style="display:inline-block" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
   <hr>
-
   <%= task.description %>
 
   <hr>
@@ -85,4 +84,6 @@ $('.follower_select').bind('typeahead:select', function(ev, suggestion) {
 }
 );
   });
+
+$('.chosen-select').chosen();
 </script>
