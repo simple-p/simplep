@@ -30,7 +30,11 @@
                         <div class="item-heading">Name</div>
                         <div>
                             <a href="item-editor.html" class="">
+                              <% if task.isCompleted? %>
+                                <h4 class="item-title"><strike><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4></strike> </a>
+                              <% else %>
                                 <h4 class="item-title"><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4> </a>
+                              <% end %>
                         </div>
                     </div>
                     <div class="item-col item-col-date">
@@ -43,22 +47,3 @@
         </ul>
     </div>
 </article>
-
-<% if false %>
-<table class="table table-striped" id="tasks_list">
-  <tbody class="tasks">
-    <% tasks.each do |task| %>
-      <tr class="task" id="task_<%= task.id %>" data-item-id=<%= task.id %>>
-        <td id=<%="completed-icon-#{task.id}"%>><%= task_completed_icon(task) %> </td>
-        <td><%= link_to task.name, project_task_path(task.project, task), remote:true%></td>
-        <td id=<%="due-date-#{task.id}"%>><%= deadline_warning(task) %></td>
-        <td class="float-xs-right">
-          <% if task.owner %>
-            <%= image_tag(task.owner.avatar, class: "round-image-16") %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>

@@ -110,6 +110,7 @@
                                               <%  @notifications.each do |notification| %>
                                                 <% if notification.activities.count > 0 %>
                                                 <div class="title-description">
+                                                  <ul>
                                                   <li>
                                                       <a href="" class="notification-item">
                                                           <div class="img-col">
@@ -120,6 +121,7 @@
                                                           </div>
                                                       </a>
                                                   </li>
+                                                </ul>
                                                 </div>
                                                 <% end %>
                                               <% end %>
@@ -200,7 +202,7 @@
                                                 </div>
                                                 <div class="item-col item-col-date">
                                                     <div class="item-heading">Published</div>
-                                                    <div> <%= task.due_date %> </div>
+                                                    <div> <%= deadline_warning(task) %> </div>
                                                 </div>
                                             </div>
                                         </li>
