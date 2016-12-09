@@ -47,10 +47,10 @@
 </div>
 <script>
 
-bestPictures = new Bloodhound({
+var bestPictures = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  remote : 
+  prefetch:
   {
     url: '/tasks/user_team.json' 
   }
@@ -61,6 +61,7 @@ $(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
 
 $('#remote .typeahead').typeahead(null, {
   name: 'best-pictures',
+  display: 'name',
   source: bestPictures
 });
 
