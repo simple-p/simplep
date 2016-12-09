@@ -25,8 +25,7 @@
                                             <h4 class="title">
                     Stats
                   </h4>
-                                            <p class="title-description"> Website metrics for <a href="http://modularteam.github.io/modularity-free-admin-dashboard-theme-html/">
-                      your awesome project
+                                            <p class="title-description"> Your projects statuses
                     </a> </p>
                                         </div>
                                         <div class="row row-sm stats-container">
@@ -94,24 +93,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col col-xs-12 col-sm-12 col-md-6 col-xl-7 history-col" style="height:305px;overflow:auto">
-                                <div class="card sameheight-item" data-exclude="xs">
+                            <div class="col col-xs-12 col-sm-12 col-md-6 col-xl-7 history-col">
+                                <div class="card sameheight-item" data-exclude="xs"  style="height:305px;overflow:auto">
                                     <div class="card-header card-header-sm bordered">
                                         <div class="header-block">
                                             <h3 class="title">Reporting</h3> </div>
-                                        <ul class="nav nav-tabs pull-right" role="tablist">
-                                            <li class="nav-item"> <a class="nav-link active" href="#visits" role="tab" data-toggle="tab">Visits</a> </li>
-                                            <li class="nav-item"> <a class="nav-link" href="#downloads" role="tab" data-toggle="tab">Downloads</a> </li>
-                                        </ul>
-                                    </div>
+                                        </div>
                                     <div class="card-block">
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane active fade in" id="visits">
                                               <%  @notifications.each do |notification| %>
                                                 <% if notification.activities.count > 0 %>
                                                 <div class="title-description">
+                                                  <ul>
                                                   <li>
-                                                      <a href="" class="notification-item">
+                                                      <a href="#" class="notification-item">
                                                           <div class="img-col">
                                                               <div class="img" style="background-image: url('assets/faces/3.jpg')"></div>
                                                           </div>
@@ -120,14 +114,10 @@
                                                           </div>
                                                       </a>
                                                   </li>
+                                                </ul>
                                                 </div>
                                                 <% end %>
                                               <% end %>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane fade" id="downloads">
-                                                <p class="title-description"> Number of downloads last 30 days </p>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +190,7 @@
                                                 </div>
                                                 <div class="item-col item-col-date">
                                                     <div class="item-heading">Published</div>
-                                                    <div> <%= task.due_date %> </div>
+                                                    <div> <%= deadline_warning(task) %> </div>
                                                 </div>
                                             </div>
                                         </li>

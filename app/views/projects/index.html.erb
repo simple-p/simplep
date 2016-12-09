@@ -3,7 +3,7 @@
     <div class="card sameheight-item items">
       <div class="card-header bordered">
           <% if current_team %>
-            <h1><%= current_team.name %> Projects</h1>
+            <h3><%= current_team.name %> Projects</h3>
           <% end %>
             <div class="header-block pull-right">
               <%= link_to 'New Project', new_project_path, remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary'%>

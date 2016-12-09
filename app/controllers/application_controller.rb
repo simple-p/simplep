@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_team
   helper_method :notification_count
   helper_method :notificationBell
+
+  before_filter :build_search
+
 # Notifications for navbar
 
   def set_notifications
@@ -152,6 +155,11 @@ class ApplicationController < ActionController::Base
 
     return notification.id
   end
+
+  private
+    def build_search
+      @search = Task.search(params[:q])
+    end
 
   protected
 
