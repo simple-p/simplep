@@ -17,10 +17,10 @@ class NotificationsController < ApplicationController
   # end
   #
   #
-  # def new_feeds
-  #   @new_feeds = NotificationReader.where(user: current_user, read_at: nil)
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
+# def new_feeds
+#   @new_feeds = NotificationReader.where(user: current_user, read_at: nil)
+#   respond_to do |format|
+#     format.js
+#   end
+# end
 end
