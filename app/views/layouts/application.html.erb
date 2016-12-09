@@ -27,9 +27,10 @@
             <div id="navbar">
               <ul class="nav navbar-nav">
                 <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
-                <a class="navbar-brand" href="/dashboard"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
-                <a class="navbar-brand" href="/tasks"><i class="fa fa-tasks fa-lg" aria-hidden="true"></i></a>
-                <a class="navbar-brand" href="/search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
+                  <%= search_form_for @search, :html => { :class => "nav navbar-brand" }  do |f| %>
+                    <%= f.text_field :name_cont, :class=> "form-control", :placeholder=>"Search" %>
+                  <% end %>
+
                 <div class="btn-group float-xs-right">
                   <li class="navbar-brand notifications new">
 
@@ -50,31 +51,11 @@
                             </li>
                         <% end %>
                       <% end %>
-                            <li>
-                                <a href="" class="notification-item">
-                                    <div class="img-col">
-                                        <div class="img" style="background-image: url('assets/faces/5.jpg')"></div>
-                                    </div>
-                                    <div class="body-col">
-                                        <p> <span class="accent">Amaya Hatsumi</span> started new task: <span class="accent">Dashboard UI design.</span>. </p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="notification-item">
-                                    <div class="img-col">
-                                        <div class="img" style="background-image: url('assets/faces/8.jpg')"></div>
-                                    </div>
-                                    <div class="body-col">
-                                        <p> <span class="accent">Andy Nouman</span> deployed new version of <span class="accent">NodeJS REST Api V3</span> </p>
-                                    </div>
-                                </a>
-                            </li>
                         </ul>
 
                         <footer>
                             <ul>
-                                <li> <a href="">View All</a> </li>
+                                <li> <a href="<%= notifications_path %>">View All</a> </li>
                             </ul>
                         </footer>
                     </div>
@@ -108,17 +89,18 @@
                 <div id = "sidebar-wrapper">
                   <ul class="sidebar-nav" id="sidebar">
                     <li class="sidebar-brand"><a id="menu-toggle" href="#">Simple P<span class="fa fa-align-justify"></span></a></li>
-                    <li><%= link_to "Projects<i class='fa fa-product float-xs-right'></i>".html_safe, projects_path %></li>
+                    <li><%= link_to "Dashboard", dashboard_path %></li>
+                    <li><%= link_to "My Tasks", tasks_path %></li>
                     <% if current_team %>
                     <li><%= link_to current_team.name, projects_path %></li>
                       <% current_team.projects.each do |project| %>
-                        <li style="font-size:10px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">- <%= project.name %></li>
+                        <li class="list-unstyled" style="font-size:10px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">&nbsp;&nbsp;<%= project.name %></li>
                           <% end %>
                     <% else %>
                         <li><%= link_to "Project", projects_path %></li>
                     <% end %>
 
-                    <li><a href="<%= teams_path %>" id="teams-bar">Team &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
+                    <li><a href="<%= teams_path %>" id="teams-bar">Members &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
                         <%= image_tag(member.avatar, class: "round-image-16") %>

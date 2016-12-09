@@ -31,7 +31,7 @@
                         <div>
                             <a href="item-editor.html" class="">
                               <% if task.isCompleted? %>
-                                <h4 class="item-title"><strike><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4></strike> </a>
+                                <h4 class="item-title"><s><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4></s> </a>
                               <% else %>
                                 <h4 class="item-title"><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4> </a>
                               <% end %>
