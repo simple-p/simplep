@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'notifications/new_feeds', as: "new_feeds"
   resources :blogs
 
+  post 'tasks/sort'
   resources :activities
   resources :teams do
     resources :projects
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :comments
     resources :task_followers
-    post :sort, on: :collection
   end
 
   resources :homes

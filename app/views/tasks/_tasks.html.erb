@@ -16,7 +16,7 @@
                 </div>
             </li>
             <% tasks.each do |task| %>
-            <li class="item task" id="task_<%= task.id %>" data-item-id=<%= task.id %>>
+            <li class="item item-task" data-id="<%= task.id %>">
                 <div class="item-row">
                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 <%= task_completed_icon(task) %><span></span>

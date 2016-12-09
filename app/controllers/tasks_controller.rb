@@ -10,11 +10,11 @@ class TasksController < ApplicationController
   end
 
   def sort
-    params[:ids].each_with_index do |id, index|
-      Task.where(id: id).update(position: index + 1)
+    params[:postition].each do |key, value|
+      Task.find(value[:id]).update_attribute(:position, value[:position])
     end
 
-    render nothing: true
+    render :nothing => true
   end
 
   def index

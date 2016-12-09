@@ -1,7 +1,6 @@
 class Task < ApplicationRecord
 
-  include RankedModel
-  ranks :position
+  default_scope { order("position ASC") }
 
   belongs_to :project
   belongs_to :user, optional: true

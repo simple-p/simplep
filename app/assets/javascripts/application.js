@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/sortable
+//= require jquery-ui/effect-highlight
 //= require turbolinks
 //= require tether
 //= require bootstrap
@@ -46,4 +47,3 @@ toastr.options = {
 window.checkFeedsViaJS = function() {
   $.post({url: "/notifications/new_feeds.js"});
 }
-
