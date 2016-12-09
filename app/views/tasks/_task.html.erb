@@ -3,7 +3,7 @@
 <div class="card-block">
   <h5>Team Members:</h5>
   <div id="remote" style="display:inline-block; padding:3px">
-    <input class="typeahead owner_select" type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>">
+    <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>">
   </div>
 
   <input type="text" class="datepicker" style="display:inline-block" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
@@ -32,7 +32,7 @@
     <% if current_team %>
 
       <div id="remote">
-        <input class="typeahead follower_select" type="text" placeholder="Add followers" value="<%= task.owner.name if task.owner %>">
+        <input class="typeahead" id="follower_select" type="text" placeholder="Add followers" value="<%= task.owner.name if task.owner %>">
       </div>
     <% end %>
   </div>
@@ -47,6 +47,7 @@
 </div>
 <script>
 $(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
+
 var bestPictures = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -61,7 +62,7 @@ $('#remote .typeahead').typeahead(null, {
   source: bestPictures
 });
 
-$('.owner_select').bind('typeahead:select', function(ev, suggestion) {
+$('#owner_select').bind('typeahead:select', function(ev, suggestion) {
   console.log('Selection: ' + suggestion.email);
 
   url = '<%= project_task_owner_path(task.project, task)%>' + '.js';
@@ -73,7 +74,7 @@ $('.owner_select').bind('typeahead:select', function(ev, suggestion) {
 }
 );
   });
-$('.follower_select').bind('typeahead:select', function(ev, suggestion) {
+$('#follower_select').bind('typeahead:select', function(ev, suggestion) {
   console.log('Follower Selection: ' + suggestion.email);
 
   url = '<%= task_task_followers_path(task, TaskFollower.new)%>' + '.js';
