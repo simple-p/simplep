@@ -1,11 +1,13 @@
 <% task = notification.activities.first.subject %>
 <div class="inbox-thread-warper" data-request-url=<%=project_task_path(task.project, task)%>>
-  <h3>
+  <p>
     <i class="fa fa-tasks" aria-hidden="true"></i> 
-    <%= task.name %></h3>
+    <%= task.name %></p>
   <% comment_activities = notification.activities.select {|a| a.action == 'comment'}%>
   <% task_changes = notification.activities - comment_activities%>
-  <%= render partial: "tasks/task_comments", locals: {comments: comment_activities.map {|a| a.trackable }}%>
+  <% if comment_activities.count > 0 %>
+  <%= render comment_activities.last.trackable%>
+  <% end %>
   <% task_changes.each do |a| %>
     <% if a.action == 'completed'%>
       <i class='fa fa-2x fa-check-circle' style='color:#00AA00' aria-hidden='true'></i>

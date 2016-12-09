@@ -1,0 +1,7 @@
+ <div class="inbox-thread-warper">
+   <p>
+     <i class="fa fa-product-hunt" aria-hidden="true"></i>
+     <%= "New task on project: #{notification.activities.first.subject.name}"%>
+   </p>
+    <%= render partial: "tasks/tasks", locals: {tasks: notification.activities.map {|a| a.trackable } } %>
+  </div>

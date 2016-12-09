@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_params, if: :devise_controller?
   before_action :authenticate_user!
-  before_action :set_notifications, if: :user_signed_in?
 
   helper_method :current_team
   helper_method :notification_count
@@ -21,6 +20,8 @@ class ApplicationController < ActionController::Base
         feed.read_at = Time.now
         feed.save!
       end
+
+      respond_to {|format| format.js}
     end
   end
 
