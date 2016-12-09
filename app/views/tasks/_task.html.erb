@@ -1,12 +1,12 @@
 
 <h3><%= task.name %></h3>
 <div class="card-block">
-  <h5>Team Members:</h5>
-  <div id="remote" style="display:inline-block; padding:3px">
+  <h5>Config</h5>
+  <div id="remote" style="display:inline-block; padding:5px">
     <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>">
   </div>
 
-  <input type="text" class="datepicker" style="display:inline-block" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
+  <input type="text" class="datepicker tt-hint" style="display:inline-block; padding:5px" data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
   <hr>
   <%= task.description %>
 
@@ -46,19 +46,21 @@
   <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "btn btn-danger btn-sm rounded-s"%>
 </div>
 <script>
-$(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
 
-var bestPictures = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+bestPictures = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("name"),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  remote: {
-    url: '/tasks/user_team.json',
+  remote : 
+  {
+    url: '/tasks/user_team.json' 
   }
 });
 
+$(".datepicker").datepicker({dateFormat: 'dd-mm-yy'});
+
+
 $('#remote .typeahead').typeahead(null, {
   name: 'best-pictures',
-  display: 'name',
   source: bestPictures
 });
 
@@ -85,6 +87,5 @@ $('#follower_select').bind('typeahead:select', function(ev, suggestion) {
 }
 );
   });
-
 $('.chosen-select').chosen();
 </script>

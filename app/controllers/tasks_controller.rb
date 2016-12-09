@@ -4,11 +4,6 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
-  def search
-      @search = Task.search(params[:q])
-      @tasks = @search.result
-  end
-
   def sort
     params[:postition].each do |key, value|
       Task.find(value[:id]).update_attribute(:position, value[:position])
@@ -18,7 +13,9 @@ class TasksController < ApplicationController
   end
 
   def index
-    if current_user
+    if params[:q]
+      @tasks = @search.result
+    elsif current_user
       @tasks = current_user.tasks.order('position')
     end
   end
