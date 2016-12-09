@@ -1,0 +1,20 @@
+<%  notifications.each do |notification| %>
+  <% if notification.activities.count > 0 %>
+    <li>
+      <a class="notification-item">
+        <div class="body-col">
+          <p><%= renderNotification(notification) %></p>
+        </div>
+      </a>
+    </li>
+  <% end %>
+<% end %>
+
+<script>
+$('.inbox-thread-warper').click(function()
+    {
+      console.log("clicked")
+        url = $(this).data('request-url') + '.js'
+        $.getScript(url);
+    });
+</script>
