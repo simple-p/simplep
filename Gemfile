@@ -85,6 +85,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.2'
 gem 'toastr_rails', '~> 2.1', '>= 2.1.1'
 gem 'paperclip', '~> 5.1'
-gem 'identicon', '~> 0.0.5'
 gem 'acts_as_list', '~> 0.8.2'
 gem 'ranked-model'

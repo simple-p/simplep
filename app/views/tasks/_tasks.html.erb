@@ -1,6 +1,6 @@
 <article class="content items-list-page">
     <div class="card items">
-        <ul class="item-list striped">
+        <ul class="item-list striped" id="tasks_list">
             <li class="item item-list-header hidden-sm-down">
                 <div class="item-row">
                     <div class="item-col fixed item-col-check"></div>
@@ -16,7 +16,7 @@
                 </div>
             </li>
             <% tasks.each do |task| %>
-            <li class="item task" id="tasks_list" data-item-id="<%= task.id %>">
+            <li class="item task" id="task_<%= task.id %>" data-item-id=<%= task.id %>>
                 <div class="item-row">
                     <div class="item-col fixed item-col-check"> <label class="item-check" id="select-all-items">
 <%= task_completed_icon(task) %><span></span>
@@ -43,22 +43,3 @@
         </ul>
     </div>
 </article>
-
-<% if false %>
-<table class="table table-striped" id="tasks_list">
-  <tbody class="tasks">
-    <% tasks.each do |task| %>
-      <tr class="task" id="task_<%= task.id %>" data-item-id=<%= task.id %>>
-        <td id=<%="completed-icon-#{task.id}"%>><%= task_completed_icon(task) %> </td>
-        <td><%= link_to task.name, project_task_path(task.project, task), remote:true%></td>
-        <td id=<%="due-date-#{task.id}"%>><%= deadline_warning(task) %></td>
-        <td class="float-xs-right">
-          <% if task.owner %>
-            <%= image_tag(task.owner.avatar, class: "round-image-16") %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>

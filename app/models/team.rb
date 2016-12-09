@@ -23,4 +23,9 @@ class Team < ApplicationRecord
   def my_team_project
     Project.where(team_id: id)
   end
+
+  def is_default?
+    @default_team = Team.find_by_name("#{self.owner.name} Team")
+    true if @default_team == self
+  end
 end

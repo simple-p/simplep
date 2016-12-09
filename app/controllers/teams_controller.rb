@@ -49,12 +49,18 @@ class TeamsController < ApplicationController
 
   def destroy
     # load_project
-    @team.destroy
-    current_user.destroy_current_team
-    respond_to do |format|
-      format.html { redirect_to teams_path }
-      format.json { head :no_content }
+    if @team.is_default?
+      flash[:notice] = "Can't delete default team"
+      redirect_to teams_path
+    else
+      respond_to do |format|
+        current_user.destroy_current_team
+        @team.destroy
+        format.html { redirect_to teams_path }
+        format.json { head :no_content }
+      end
     end
+
   end
 
   private

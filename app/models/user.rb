@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  require 'identicon'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,7 +25,7 @@ class User < ApplicationRecord
   def default_avatar
     self.avatar = URI.parse("https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}").open
     @default_avatar = "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.downcase)}"
-    save!
+    save
   end
 
   def my_team
@@ -44,11 +43,14 @@ class User < ApplicationRecord
     save
   end
 
+  def default_team
+    @team = Team.create!(name: "#{self.name} Team", owner_id: self.id)
+    self.current_team = @team.id
+  end
+
   def destroy_current_team
     if my_team == []
-      Team.create(name: "Personal Team", owner_id: self.id)
-      @team = Team.last
-      self.current_team = @team.id
+      default_team
     else
       team = @my_team.first
       self.current_team = team.id
