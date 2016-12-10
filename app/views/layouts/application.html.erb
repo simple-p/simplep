@@ -25,11 +25,13 @@
             <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
             <div id="navbar">
               <ul class="nav navbar-nav">
+                <li>
                 <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
-                  <%= search_form_for @search, :html => { :class => "nav navbar-brand" }  do |f| %>
+                </li>
+                <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:60px"}  do |f| %>
                     <%= f.text_field :name_cont, :class=> "form-control", :placeholder=>"Search" %>
-                  <% end %>
 
+                <%end%>
                 <div class="btn-group float-xs-right">
                   <li class="navbar-brand notifications new">
 
@@ -79,23 +81,25 @@
                     <% if current_team %>
                     <li><%= link_to current_team.name, projects_path %></li>
                       <% current_team.projects.each do |project| %>
-                        <li class="list-unstyled" style="font-size:10px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">&nbsp;&nbsp;<%= project.name %></li>
+                        <li class="list-unstyled" style="font-size:10px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">&nbsp;&nbsp;<%= truncate(project.name,  :length => 25, :omission => '...') %></li>
                           <% end %>
                     <% else %>
                         <li><%= link_to "Project", projects_path %></li>
                     <% end %>
 
                     <li><a href="<%= teams_path %>" id="teams-bar">Members &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
+                    <li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
                         <%= image_tag(member.avatar, class: "round-image-16") %>
                       <% end %>
                     <% end %>
+                    </li>
                     <li><a href="/reports">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
                   </ul>
                 </div>
 
-                <div class="row">
+                <div class="row" style="margin-left:40px">
                   <div class="col-sm-12" style="padding-top:65px;">
                     <%= yield %>
                   </div>
