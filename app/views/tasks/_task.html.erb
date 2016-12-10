@@ -1,13 +1,13 @@
 
 <h3><%= task.name %></h3>
 <div class="card-block">
-  <h5>Owner</h5>
+  <h6>Owner</h6>
   <div id="remote" >
-    <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>">
+    <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
   </div>
 
-  <h5>Due Date</h5>
-  <input type="text" class="datepicker tt-hint"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
+  <h6>Due Date</h6>
+  <input type="text" class="datepicker tt-hint"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px;">
   <hr>
   <% if task.description %>
   <%= markdown(task.description) %>
@@ -28,13 +28,13 @@
     <hr>
 
     <div class="followers">
-      <h5>Followers</h5>
+      <h6>Followers</h6>
       <%= render "followers", task: task %>
     </div>
     <% if current_team %>
 
       <div id="remote">
-        <input class="typeahead" id="follower_select" type="text" placeholder="Add followers" style="padding:10px" value="<%= task.owner.name if task.owner %>">
+        <input class="typeahead" id="follower_select" type="text" placeholder="Add followers" style="padding:10px; font-size: 15px;" value="<%= task.owner.name if task.owner %>">
       </div>
     <% end %>
   </div>
@@ -54,7 +54,7 @@ var bestPictures = new Bloodhound({
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   prefetch:
   {
-    url: '/tasks/user_team.json' 
+    url: '/tasks/user_team.json'
   }
 });
 
