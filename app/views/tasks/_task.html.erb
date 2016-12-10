@@ -1,17 +1,17 @@
 
-<h3><%= task.name %></h3>
+<u><h3><%= task.name %></h3></u>
 <div class="card-block">
-  <h5>Owner</h5>
+  <h5>Owner:</h5>
   <div id="remote" >
     <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>">
   </div>
-
-  <h5>Due Date</h5>
+  <hr>
+  <h5>Due Date:</h5>
   <input type="text" class="datepicker tt-hint"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
   <hr>
-  <% if task.description %>
-  <%= markdown(task.description) %>
-  <% end %>
+    <% if task.description %>
+    <tab><%= markdown(task.description) %></tab>
+    <% end %>
   <hr>
 
   <div class="comments-wrapper">
@@ -28,7 +28,7 @@
     <hr>
 
     <div class="followers">
-      <h5>Followers</h5>
+      <h5>Followers:</h5>
       <%= render "followers", task: task %>
     </div>
     <% if current_team %>
@@ -54,7 +54,7 @@ var bestPictures = new Bloodhound({
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   prefetch:
   {
-    url: '/tasks/user_team.json' 
+    url: '/tasks/user_team.json'
   }
 });
 

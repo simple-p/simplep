@@ -22,8 +22,14 @@
 
 html,
 body {
+
   width: 100%;
   height: 100%;
+}
+#map {
+  width: 800px;
+  height: 400px;
+  background-color: grey;
 }
 
 body {
@@ -372,6 +378,10 @@ footer h4, footer h6 {
       -o-background-size: cover;
       background-size: cover;
     }
+    .col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
     </style>
 
@@ -649,6 +659,16 @@ footer h4, footer h6 {
             </div>
           </aside>
 
+          <!-- Google Maps-->
+          <div class="row">
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-10">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.501914557798!2d105.86102931431805!3d21.012593993707252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abf0be48433b%3A0xbdacc2cdc6079fe!2sUP+Coworking+Space!5e0!3m2!1sen!2s!4v1481396054228" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
           <!-- CONTACT US-->
 
           <section id="last">
@@ -814,6 +834,18 @@ footer h4, footer h6 {
           </div>
 
           <!--scripts loaded here-->
+
+          <script>
+            var map;
+            function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+              });
+            }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCla-i8ZlRefGRF40IiV1dZ2h1dIiCAfEY&callback=initMap"
+          async defer></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
           <script>
