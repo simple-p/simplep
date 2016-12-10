@@ -128,18 +128,9 @@
                     <div class="header-block">
                       <h3 class="title">
                         Tasks
-                      </h3> <a href="item-editor.html" class="btn btn-primary btn-sm rounded">
-                        Add new
+                      </h3> <a href="<%= tasks_path %>" class="btn btn-primary btn-sm rounded">
+                        My Tasks
                       </a> </div>
-                      <div class="header-block pull-right"> <label class="search">
-                          <input class="search-input" placeholder="search...">
-                          <i class="fa fa-search search-icon"></i>
-                        </label>
-                        <div class="pagination">
-                          <a href="" class="btn btn-primary btn-sm rounded"> <i class="fa fa-angle-up"></i> </a>
-                          <a href="" class="btn btn-primary btn-sm rounded"> <i class="fa fa-angle-down"></i> </a>
-                        </div>
-                      </div>
                   </div>
                   <ul class="item-list striped">
                     <li class="item item-list-header hidden-sm-down">
@@ -239,7 +230,7 @@
                       <h3 class="title">
                         My Activities
                       </h3> </div>
-                      <div class="header-block pull-right"> <a href="" class="btn btn-primary btn-sm rounded pull-right">
+                      <div class="header-block pull-right"> <a href="<%= activities_path %>" class="btn btn-primary btn-sm rounded pull-right">
                           See All
                         </a> </div>
                   </div>
