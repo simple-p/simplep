@@ -1,8 +1,8 @@
 <%= form_for([@project, @task]) do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control', placeholder: 'what you need to do?'%>
+  <%= f.text_field :name, class: 'form-control', placeholder: 'What is the Task?'%>
   <%= f.label :description %>
-  <%= f.text_area :description, class: 'form-control', rows: 3, placeholder: 'describe what is it or how to do it' %>
+  <%= f.text_area :description, class: 'form-control', rows: 3, placeholder: 'Task Description' %>
 
   <hr>
   <%= f.submit 'Add', class: 'btn btn-primary'%>
