@@ -2,8 +2,8 @@
   <% if notification.activities.count > 0 %>
     <li>
       <a class="notification-item">
-        <div class="body-col">
-          <p><%= renderNotification(notification) %></p>
+        <div class="body-col list-group-item">
+         <%= renderNotification(notification, true) %>
         </div>
       </a>
     </li>
