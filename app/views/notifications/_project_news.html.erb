@@ -4,6 +4,7 @@
      <%= "New task on project: #{notification.activities.first.subject.name}"%>
    </p>
 
+   <% if compact %>
     <% tasks = notification.activities.map {|a| a.trackable }%>
           <ul>
             <% tasks.each do |task| %>
@@ -14,4 +15,7 @@
             </li>
             <% end %>
         </ul>
+   <% else %>
+     <%= render partial: 'tasks/tasks', locals: {tasks:notification.activities.map {|a| a.trackable } }%>
+     <%end %>
   </div>

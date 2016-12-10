@@ -83,7 +83,9 @@
 }
 .notifications-container
 {
-  width: 300px;
+  overflow-y: scroll;
+  width: 400px;
+  height: 600px;
 }
 .dropdown-menu .dropdown-item {
   display: block;
