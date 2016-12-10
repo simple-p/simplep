@@ -1,8 +1,9 @@
-<div class="inbox-thread-warper">
-  <h5>
-    <i class="fa fa-tasks" aria-hidden="true"></i>
-    <%= "#{notification.activities.first.subject.name}"%>
-  </h5>
+<% task= notification.activities.first.subject%>
+<div class="inbox-thread-warper" data-request-url=<%=project_task_path(task.project, task)%>
+  <p>
+    <i class="fa fa-tasks" aria-hidden="true"></i> 
+    <%= "#{task.name}"%>
+  </p>
 
   <% notification.activities.each do |a| %>
     <i class="fa fa-user-plus" aria-hidden="true"></i>

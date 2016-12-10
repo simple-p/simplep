@@ -11,6 +11,10 @@ class DashboardsController < ApplicationController
       @options =  {responsive: true, width: 759, height: 400}
     end
 
+    if current_user
+      load_notifications
+    end
+
   end
 
   def load_project(task)

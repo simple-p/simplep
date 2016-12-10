@@ -1,4 +1,24 @@
 module ApplicationHelper
+  def markdown(text)
+    options = {
+      filter_html:     true,
+      hard_wrap:       true,
+      link_attributes: { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true,
+      fenced_code_blocks: true
+    }
+
+    extensions = {
+      autolink:           true,
+      superscript:        true,
+      disable_indented_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown_to_html = Redcarpet::Markdown.new(renderer, extensions)
+
+    markdown_to_html.render(text).html_safe
+  end
   def li_link_to (name, url, options = {})
     options[:class] ||= ""
     options[:class] << " nav-link"

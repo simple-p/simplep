@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_params, if: :devise_controller?
   before_action :authenticate_user!
-  before_action :set_notifications, if: :user_signed_in?
 
   helper_method :current_team
   helper_method :notification_count
@@ -12,9 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :build_search
 
 # Notifications for navbar
-
-  def set_notifications
-    if current_user
+  def load_notifications
       # reload user data
       user = User.find current_user.id
       @notifications = user.notifications.order("updated_at DESC")
@@ -24,6 +21,13 @@ class ApplicationController < ActionController::Base
         feed.read_at = Time.now
         feed.save!
       end
+  end
+
+  def set_notifications
+    if current_user
+      load_notifications
+
+      respond_to {|format| format.js}
     end
   end
 
