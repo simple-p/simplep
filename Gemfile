@@ -27,6 +27,7 @@ gem 'twitter-typeahead-rails', '~> 0.11.1'
 gem 'handlebars_assets'
 gem 'chosen-rails'
 gem 'chartjs-ror'
+gem 'redcarpet'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -9,8 +9,7 @@
   <h5>Due Date</h5>
   <input type="text" class="datepicker tt-hint"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>">
   <hr>
-  <%= task.description %>
-
+  <%= markdown(task.description) %>
   <hr>
 
   <div class="comments-wrapper">
