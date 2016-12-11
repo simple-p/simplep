@@ -1,0 +1,28 @@
+
+<li class="item item-task" data-id="<%= task.id %>">
+  <div class="item-row">
+    <div class="item-col fixed item-col-check"> <label class="item-check" id="<%="completed-icon-#{task.id}"%>">
+        <%= task_completed_icon(task) %><span></span>
+      </label> </div>
+      <div class="item-col fixed item-col-stats">
+        <% if task.owner %>
+          <%= image_tag(task.owner.avatar, class: "round-image-16",:align=> "middle") %>
+        <% end %>
+      </div>
+      <div class="item-col fixed pull-left item-col-title">
+        <div class="item-heading">Name</div>
+        <div>
+          <a href="item-editor.html" class="">
+            <% if task.isCompleted? %>
+              <h4 class="item-title"><s><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4></s> </a>
+        <% else %>
+          <h4 class="item-title"><%= link_to task.name, project_task_path(task.project, task), remote:true%></h4> </a>
+      <% end %>
+        </div>
+      </div>
+      <div class="item-col item-col-date">
+        <div class="item-heading">Due Date</div>
+        <div class="no-overflow" id="<%="due-date-#{task.id}"%>"><%= deadline_warning(task) %></div>
+      </div>
+  </div>
+</li>
