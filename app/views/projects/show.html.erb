@@ -2,20 +2,18 @@
   <div class="row sameheight-container">
     <div class="card sameheight-item items">
       <div class="card-header bordered">
-        <h3> <%= @project.name %> &nbsp;</h3>
-      <%= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary btn-sm rounded-s'%>
-        <div class="header-block pull-right">
-          <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-secondary" %>
-        </div>
+        <h3><strong> <%= @project.name %> &nbsp;</strong></h3>
+          <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-warning btn-sm rounded-s" %>
       </div>
       <div class="row placeholders">
         <div class="center-container col-md-6" id=<%= @project.id %> >
           <%= render partial: "tasks/tasks", locals: {tasks: @tasks} %>
+          <%= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary btn-sm rounded-s'%>
         </div>
         <div class="right-container col-md-6">
           <% if flash[:task]%>
             <%= render Task.find(flash[:task])%>
-            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
