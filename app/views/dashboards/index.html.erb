@@ -127,10 +127,8 @@
                   <div class="card-header bordered">
                     <div class="header-block">
                       <h3 class="title">
-                        Tasks
-                      </h3> <a href="<%= tasks_path %>" class="btn btn-primary btn-sm rounded">
-                        My Tasks
-                      </a> </div>
+                        Recent Tasks
+                      </h3>  </div>
                   </div>
                   <ul class="item-list striped">
                     <li class="item item-list-header hidden-sm-down">
@@ -150,13 +148,12 @@
                         </div>
                       </div>
                     </li>
-                    <% @tasks.each do |task|%>
+                    <% @tasks.take(5).each do |task|%>
                       <% load_project(task) %>
                       <li class="item">
                         <div class="item-row">
                           <div class="item-col fixed item-col-img xs">
-                            <input class="checkbox" type="checkbox"
-                                                    checked="checked"><span></span>
+                            <%= task_completed_icon(task) %>
                           </div>
                           <div class="item-col item-col-title no-overflow">
                             <div>
@@ -237,7 +234,7 @@
                   <div class="card-block">
                     <div class="tasks-block">
                       <ul class="item-list">
-                        <% @task_news.each do |new| %>
+                        <% @task_news.take(10).each do |new| %>
                           <div class="alert alert-success">
                             <button data-dismiss="alert" class="close close-sm" type="button">
                               <i class="fa fa-times"></i>
