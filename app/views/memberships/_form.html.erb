@@ -1,5 +1,17 @@
 <%= form_tag team_add_member_path(@team) do %>
-	<%= text_field_tag :email, params[:email]%>
-	<%= hidden_field_tag :team, value: @team.id%>
-	<%= submit_tag "add member"%>
+  <%= hidden_field_tag :team, value: @team.id%>
+  <%= submit_tag "add member"%>
 <% end %>
+
+<script type="text/javascript">
+  var config = {
+    '.chosen-select' : {},
+    '.chosen-select-deselect' : {allow_single_deselect: true},
+    '.chosen-select-no-single' : {disable_search_threshold: 10},
+    '.chosen-select-no-results' : {no_results_text: 'No tags found'},
+    '.chosen-select-width' : {width:'95%'}
+  }
+  for (var selector in config) {
+    $(selector).chosen(config[selector]);
+  }
+</script>

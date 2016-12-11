@@ -18,6 +18,11 @@
             <% tasks.each do |task| %>
             <li class="item item-task" data-id="<%= task.id %>">
                 <div class="item-row">
+                  <% if task.name.last == ":" %>
+                    <div class="item-col fixed">
+                      <h3><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></h3>
+                    </div>
+                  <% else %>
                     <div class="item-col fixed item-col-check"> <label class="item-check" id="<%="completed-icon-#{task.id}"%>">
 <%= task_completed_icon(task) %><span></span>
 </label> </div>
@@ -41,6 +46,7 @@
                         <div class="item-heading">Due Date</div>
                         <div class="no-overflow" id="<%="due-date-#{task.id}"%>"><%= deadline_warning(task) %></div>
                     </div>
+                  <% end %>
                 </div>
             </li>
             <% end %>
