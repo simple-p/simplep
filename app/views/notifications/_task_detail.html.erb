@@ -1,5 +1,5 @@
 <% task = notification.activities.first.subject %>
-<div class="inbox-thread-warper" data-request-url=<%=project_task_path(task.project, task)%>>
+<div class="inbox-thread-warper" data-request-url=<%=project_task_path(task.project, task, :redirect => compact)%>>
   <p>
     <i class="fa fa-tasks" aria-hidden="true"></i> 
     <%= task.name %></p>

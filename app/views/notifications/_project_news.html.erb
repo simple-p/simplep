@@ -10,7 +10,7 @@
             <% tasks.each do |task| %>
             <li class="item item-task" data-id="<%= task.id %>">
                 <div class="item-row">
-                        <p class="item-title">  <%= link_to task.name, project_task_path(task.project, task), remote:true%></p> 
+                  <p class="item-title">  <%= link_to task.name, project_task_path(task.project, task, :redirect => compact), remote: !compact%></p> 
                 </div>
             </li>
             <% end %>
