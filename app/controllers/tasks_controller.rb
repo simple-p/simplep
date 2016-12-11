@@ -53,8 +53,9 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
 
     respond_to do |format|
+
       format.html {redirect_to @project}
-      if params[:redirect]
+      if params[:redirect] == "true"
         flash[:task] = @task.id
       else
         format.js

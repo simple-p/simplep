@@ -10,11 +10,3 @@
   <% end %>
 <% end %>
 
-<script>
-$('.inbox-thread-warper').click(function()
-    {
-      console.log("clicked")
-        url = $(this).data('request-url') + '.js'
-        $.getScript(url);
-    });
-</script>
