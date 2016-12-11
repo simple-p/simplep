@@ -1,18 +1,14 @@
-
-<u><h3><%= task.name %></h3></u>
-<div class="card-block">
-  <h6>Owner:</h6>
-  <div id="remote" >
-    <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
-  </div>
-  <h6>Due Date:</h6>
-  <input type="text" class="datepicker tt-hint"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px;">
-  <hr>
+<h4><strong><%= task.name %></strong></h4>
+    <div id="remote">
+      <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;<input class="typeahead form-control underlined" id="owner_select"  size="<%= task.owner.name.length if task.owner %>" type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
+    </div>
+    <div>
+      <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="text" class="datepicker tt-hint form-control underlined" size="10"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px; display:inline; color:black">
+    </div>
+  <br>
     <% if task.description %>
     <tab><%= markdown(task.description) %></tab>
     <% end %>
-  <hr>
-
   <div class="comments-wrapper">
     <div class="comments">
       <%= render "tasks/task_comments", comments: task.comments %>
@@ -20,11 +16,9 @@
 
     <%= form_for [task, Comment.new], remote: true do |f| %>
       <div class="form-group">
-        <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control" %><br />
-        <%= f.submit "Submit", class: "btn btn-primary btn-sm rounded-s" %>
+        <%= f.text_field :content, placeholder: "Comment", autocomplete: 'off', rows: 5, class: "form-control underlined" %><br />
       </div>
     <% end %>
-    <hr>
 
     <div class="followers">
       <h6>Followers:</h6>
@@ -33,7 +27,7 @@
     <% if current_team %>
 
       <div id="remote">
-        <input class="typeahead" id="follower_select" type="text" placeholder="Add followers" style="padding:10px; font-size: 15px;" value="<%= task.owner.name if task.owner %>">
+        <input class="typeahead form-control underlined" id="follower_select" type="text" size="10" placeholder="Add followers" style="padding:10px; font-size: 15px;">
       </div>
     <% end %>
   </div>
@@ -41,11 +35,10 @@
   <div class="form-check">
     <label class="form-check-label">
       <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
-      Mask as completed
+      Mark as completed
     </label>
   </div>
-  <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "btn btn-danger btn-sm rounded-s"%>
-</div>
+  <%= link_to " Delete", project_task_path(@project, task), :method => :delete, class: "btn btn-warning btn-sm rounded-s"%>
 <script>
 
 var bestPictures = new Bloodhound({

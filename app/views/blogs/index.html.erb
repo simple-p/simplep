@@ -127,7 +127,7 @@
   }
 </style>
 <div class="container">
-  <%= link_to "New Blog", new_project_blog_path(@project) %>
+  <%= link_to "New Blog", new_project_blog_path(@project), class: "btn btn-primary btn-sm rounded-s" %>
     <ul class="timeline">
       <% @blog.each do |b|%>
         <li>
@@ -144,5 +144,5 @@
         </li>
         <% end %>
     </ul>
-    <%= link_to "Back to Project", project_path(@project), class: "btn btn-primary" %>
+    <%= link_to "Back to Project", project_path(@project), class: "btn btn-primary btn-sm rounded-s" %>
 </div>
