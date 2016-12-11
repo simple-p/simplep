@@ -1,17 +1,16 @@
 
-<h3><%= task.name %></h3>
+<u><h3><%= task.name %></h3></u>
 <div class="card-block">
-  <h6>Owner</h6>
+  <h6>Owner:</h6>
   <div id="remote" >
     <input class="typeahead" id="owner_select"  type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
   </div>
-
-  <h6>Due Date</h6>
+  <h6>Due Date:</h6>
   <input type="text" class="datepicker tt-hint"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px;">
   <hr>
-  <% if task.description %>
-  <%= markdown(task.description) %>
-  <% end %>
+    <% if task.description %>
+    <tab><%= markdown(task.description) %></tab>
+    <% end %>
   <hr>
 
   <div class="comments-wrapper">
@@ -28,7 +27,7 @@
     <hr>
 
     <div class="followers">
-      <h6>Followers</h6>
+      <h6>Followers:</h6>
       <%= render "tasks/followers", task: task %>
     </div>
     <% if current_team %>
