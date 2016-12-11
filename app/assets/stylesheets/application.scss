@@ -112,7 +112,7 @@
 
 // Toan Ngo Sidebar togglable block
 #wrapper {
-  padding-left: 70px;
+  padding-left: 0;
   transition: all .4s ease 0s;
   height: 100%
 }
@@ -237,12 +237,12 @@
 
 @media (max-width:767px) {
   #wrapper {
-    padding-left: 70px;
+    padding-left: 0;
     transition: all .4s ease 0s;
   }
 }
 #sidebar-wrapper {
-  left: 47px;
+  left: -3px;
 }
 #wrapper.active {
   padding-left: 150px;

@@ -28,7 +28,7 @@
                 <li>
                 <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
                 </li>
-                <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:60px"}  do |f| %>
+                <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:50px"}  do |f| %>
                     <%= f.text_field :name_cont, :class=> "form-control", :placeholder=>"Search" %>
 
                 <%end%>
@@ -57,7 +57,7 @@
                       <%= link_to "#", :class => 'dropdown-item' do %>
                         <i class="fa fa-user"></i> Profile
                       <% end %>
-                    <a class="dropdown-item" href="#"><i class="fa fa-envelope"></i> Messages</a>
+                    <a class="dropdown-item" href="<%= teams_path %>"><i class="fa fa-users"></i> Teams</a>
                     <div class="dropdown-divider"></div>
                     <% current_user.my_team.each do |team| %>
                       <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
@@ -75,9 +75,9 @@
               <div id="wrapper" class="active">
                 <div id = "sidebar-wrapper">
                   <ul class="sidebar-nav" id="sidebar">
-                    <li class="sidebar-brand"><a id="menu-toggle" href="#">Simple P<span class="fa fa-align-justify"></span></a></li>
-                    <li><%= link_to "Dashboard", dashboard_path %></li>
-                    <li><%= link_to "My Tasks", tasks_path %></li>
+                    <li class="sidebar-brand"><a id="menu-toggle" href="#">Simple P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-align-justify"></i></a></li>
+                    <li><a href="<%= dashboard_path %>">Dashboard     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-home fa-lg"></i></a></li>
+                    <li><a href="<%= tasks_path %>">My Tasks &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-list-ul fa-lg"></i></a></li>
                     <% if current_team %>
                     <li><%= link_to current_team.name, projects_path %></li>
                       <% current_team.projects.each do |project| %>
@@ -87,7 +87,6 @@
                         <li><%= link_to "Project", projects_path %></li>
                     <% end %>
 
-                    <li><a href="<%= teams_path %>" id="teams-bar">Members &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
                     <li>
                     <% if current_team %>
                       <% current_team.team_member.each do |member| %>
@@ -95,7 +94,7 @@
                       <% end %>
                     <% end %>
                     </li>
-                    <li><a href="/reports">Report&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-bar-chart"></span></a></li>
+                    <li><a href="/reports">Report     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bar-chart fa-lg"></i></a></li>
                   </ul>
                 </div>
 
