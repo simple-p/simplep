@@ -40,7 +40,7 @@
                           </div>
                         </progress> </div>
                         <div class="col-xs-12 col-sm-6 stat-col">
-                          <div class="stat-icon"> <i class="fa fa-shopping-cart"></i> </div>
+                          <div class="stat-icon"> <i class="fa fa-list-alt"></i> </div>
                           <div class="stat">
                             <div class="value"> <%= Task.count %> </div>
                             <div class="name"> Tasks </div>
@@ -50,7 +50,7 @@
                             </div>
                           </progress> </div>
                           <div class="col-xs-12 col-sm-6  stat-col">
-                            <div class="stat-icon"> <i class="fa fa-line-chart"></i> </div>
+                            <div class="stat-icon"> <i class="fa fa-tasks"></i> </div>
                             <div class="stat">
                               <div class="value"> <%= Task.count(:completed_at) %> </div>
                               <div class="name"> Completed Tasks </div>
@@ -70,7 +70,7 @@
                                 </div>
                               </progress> </div>
                               <div class="col-xs-12 col-sm-6  stat-col">
-                                <div class="stat-icon"> <i class="fa fa-list-alt"></i> </div>
+                                <div class="stat-icon"> <i class="fa fa-line-chart"></i> </div>
                                 <div class="stat">
                                   <div class="value"> <%= Blog.count %> </div>
                                   <div class="name"> Milestones </div>
@@ -80,7 +80,7 @@
                                   </div>
                                 </progress> </div>
                                 <div class="col-xs-12 col-sm-6 stat-col">
-                                  <div class="stat-icon"> <i class="fa fa-dollar"></i> </div>
+                                  <div class="stat-icon"> <i class="fa fa-clock-o"></i> </div>
                                   <div class="stat">
                                     <div class="value"> <%= Blog.where(status: "Late").count %> </div>
                                     <div class="name"> Late Milestones   </div>

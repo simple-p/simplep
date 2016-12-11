@@ -29,8 +29,8 @@
                 <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
                 </li>
                 <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:50px"}  do |f| %>
-                    <%= f.text_field :name_cont, :class=> "form-control", :placeholder=>"Search" %>
-
+                <i class="navbar-brand fa fa-search" style="margin-left:12px;"></i>
+                    <%= f.text_field :name_cont, style: 'border:none; background-color:transparent;margin-left:-13px;color:grey;', :placeholder=>"Search" %>
                 <%end%>
                 <div class="btn-group float-xs-right">
                   <li class="navbar-brand notifications new">
@@ -98,8 +98,8 @@
                   </ul>
                 </div>
 
-                <div class="row" style="margin-left:40px">
-                  <div class="col-sm-12" style="padding-top:65px;">
+                <div class="row" style="margin-left:30px">
+                  <div class="col-sm-12" style="padding-top:64px;">
                     <%= yield %>
                   </div>
                 </div>
