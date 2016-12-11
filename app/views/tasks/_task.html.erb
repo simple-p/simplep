@@ -16,7 +16,7 @@
 
   <div class="comments-wrapper">
     <div class="comments">
-      <%= render "task_comments", comments: task.comments %>
+      <%= render "tasks/task_comments", comments: task.comments %>
     </div>
 
     <%= form_for [task, Comment.new], remote: true do |f| %>
@@ -29,7 +29,7 @@
 
     <div class="followers">
       <h6>Followers</h6>
-      <%= render "followers", task: task %>
+      <%= render "tasks/followers", task: task %>
     </div>
     <% if current_team %>
 

@@ -13,6 +13,9 @@
           <%= render partial: "tasks/tasks", locals: {tasks: @tasks} %>
         </div>
         <div class="right-container col-md-6">
+          <% if flash[:notice]%>
+            <%= render Task.find(flash[:notice])%>
+            <% end %>
         </div>
       </div>
     </div>

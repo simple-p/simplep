@@ -162,7 +162,7 @@
                             <div>
                               <a href="" class="">
                                 <h4 class="item-title no-wrap">
-                                  <%= link_to task.name,project_task_path(load_project(task),task.id) %>
+                                  <%= link_to task.name,project_task_path(load_project(task),task.id, :redirect => true) %>
                                 </h4> </a>
                             </div>
                           </div>
