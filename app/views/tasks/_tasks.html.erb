@@ -1,13 +1,8 @@
-<style>
-  .item-col {
-
-  }
-</style>
 <article class="content items-list-page">
     <div class="card items">
-        <ul class="item-list striped"  id="tasks_list">
+        <ul class="item-list"  id="tasks_list">
             <li class="item item-list-header hidden-sm-down">
-                <div class="item-row">
+                <div class="item-row" style="border-bottom:0.5px solid #d7dde4;">
                     <div class="item-col fixed item-col-check"></div>
                     <div class="item-col item-col-header fixed item-col-stats">
                         <div> <span>Owner</span> </div>
@@ -22,10 +17,10 @@
             </li>
             <% tasks.each do |task| %>
             <li class="item item-task" data-id="<%= task.id %>">
-                <div class="item-row">
+                <div class="item-row" >
                   <% if task.name.last == ":" %>
-                    <div class="item-col">
-                      <h4><strong><u><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></u></strong></h4>
+                    <div class="item-col" style="border-bottom:0.5px solid #d7dde4;">
+                      <h4><strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong></h4>
                     </div>
                   <% else %>
                     <div class="item-col fixed item-col-check"> <label class="item-check" id="<%="completed-icon-#{task.id}"%>">
