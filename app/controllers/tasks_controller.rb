@@ -12,6 +12,11 @@ class TasksController < ApplicationController
     render :nothing => true
   end
 
+  def edit
+    load_project
+    @task = Task.find(params[:id])
+  end
+
   def index
     if params[:q]
       @tasks = @search.result
@@ -22,13 +27,13 @@ class TasksController < ApplicationController
 
   def create
     load_project
-    
+
     @task = @project.tasks.build task_params
     @task.owner = current_user
 
     if @task.save
       track_activity current_user, @project, @task
-      
+
       @project.reload
       respond_to do |format|
         format.html { redirect_to @project }
