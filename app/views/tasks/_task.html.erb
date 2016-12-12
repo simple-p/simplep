@@ -29,13 +29,12 @@
       </div>
     <% end %>
 
-    <div class="followers">
+    <div class="followers" style="display:inline">
       <h6>Followers:</h6>
       <%= render "tasks/followers", task: task %>
     </div>
     <% if current_team %>
-
-      <div id="remote">
+      <div id="remote" style="display:inline">
         <input class="typeahead form-control underlined" id="follower_select" type="text" size="10" placeholder="Add followers" style="padding:10px; font-size: 15px;">
       </div>
     <% end %>
