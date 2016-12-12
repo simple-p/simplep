@@ -7,23 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-
-    ion-ios-home
-
   </head>
+  <body class="bg-faded">
 
 <!-- STYLING -->
 
-  <body class="bg-faded">
-    <style>
+<style>
 
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 
 html,
 body {
+
   width: 100%;
   height: 100%;
+}
+#map {
+  width: 800px;
+  height: 400px;
+  background-color: grey;
 }
 
 body {
@@ -366,12 +369,16 @@ footer h4, footer h6 {
       background-image: url("http://hdwallpaperia.com/wp-content/uploads/2013/12/Best-Quality-Wallpaper-Widescreen.jpg");
     }
     #last {
-      background: url("/assets/OF16840.jpg") no-repeat center center fixed;
+      /*background: url("/assets/OF16840.jpg") no-repeat center center fixed;*/
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
     }
+    .col-centered{
+    float: none;
+    margin: 0 auto;
+}
 
     </style>
 
@@ -381,7 +388,9 @@ footer h4, footer h6 {
       <div class="header-content">
         <div class="inner" style="color:white;">
           <h1>Simple P</h1>
-          <h5 class="wow fadeIn text-normal wow fadeIn">Making Work Great Again</h5>
+          <br />
+          <h5 class="wow fadeIn text-normal wow fadeIn">Leave email behind and start your new journey</h5>
+          <br />
           <a class="btn btn-outline-primary btn-xl page-scroll wow fadeInUp m-t-3" data-toggle="modal" href="#signUpModal"><span style="color:white">Get Started</span></a>
         </div>
       </div>
@@ -391,11 +400,11 @@ footer h4, footer h6 {
         <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
           ☰
         </button>
-        <a class="navbar-brand page-scroll" href="#first"><img src="/assets/logo.png" style="display:inline-block;height:40px;">Simple P</a>
+        <a class="navbar-brand page-scroll" href="#first"><img src="/assets/logo.png" style="display:inline-block;height:40px;"> Simple P</a>
         <div class="collapse navbar-toggleable-sm" id="collapsingNavbar">
           <ul class="nav navbar-nav">
             <li class="nav-item">
-              <a class="nav-link page-scroll" href="#one">Core</a>
+              <a class="nav-link page-scroll" href="#one">Features</a>
             </li>
             <li class="nav-item">
               <a class="nav-link page-scroll" href="#two">Statistics</a>
@@ -429,9 +438,11 @@ footer h4, footer h6 {
 
     <section id="one" style="">
       <div class="container wow fadeInUp">
-        <h2>Core</h2>
+        <h2 class="text-primary text-xs-center">Features</h2>
+        <hr class="primary">
+        <h2>Teamwork & collaboration just got simpler and more effective</h2>
         <p class="lead">
-        All your tasks and notifications in one place, giving it the only app you need to use in your work day.
+          Try SimpleP in your team today and start getting things done, together.
         </p>
 
         <!-- CARD GROUPS -->
@@ -439,26 +450,26 @@ footer h4, footer h6 {
 
           <!-- card -->
           <div class="card">
-            <img class="card-img-top img-fluid" src="https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg?w=940&h=650&auto=compress&cs=tinysrgb" alt="Card image cap" style="width:369px; height:268px;">
+            <img class="card-img-top img-fluid" src="http://i.imgur.com/AnSX73q.png" alt="Card image cap" style="width:369px; height:268px;border:1px solid #0275d8;">
             <div class="card-block">
-              <h4 class="card-title">Team Centric</h4>
-              <p class="card-text">Grant users with the tools to <strong>work together effectively.</strong></p>
+              <h4 class="card-title">Dashboard</h4>
+              <p class="card-text">A single page dashboard contains all neccessary information to start your workday.</strong></p>
             </div>
           </div>
           <!-- card -->
           <div class="card">
-            <img class="card-img-top img-fluid" src="http://www.economie.gouv.fr/files/files/directions_services/dgccrf/imgs/manifestations/atelier130222.jpg" alt="Card image cap" style="width:369px; height:268px;">
+            <img class="card-img-top img-fluid" src="http://imgur.com/9rj6Yic.png" alt="Card image cap" style="width:369px; height:268px;border:1px solid #0275d8;">
             <div class="card-block">
-              <h4 class="card-title">Information</h4>
-              <p class="card-text">Provide <strong>required</strong> information for users in one place; <strong>clearly and concisely.</strong></p>
+              <h4 class="card-title">Projects & Tasks</h4>
+              <p class="card-text">Projects contain clearly organized tasks. Each project has a blog that show current and past project statuses.</p>
             </div>
           </div>
         <!-- card -->
           <div class="card">
-            <img class="card-img-top img-fluid" src="http://thebaconandicecreamblog.com/wp-content/uploads/2016/10/stone-balance.png" style="width:369px; height:268px;">
+            <img class="card-img-top img-fluid" src="http://imgur.com/h00Waw3.png" style="width:369px; height:268px;border:1px solid #0275d8;">
             <div class="card-block">
-              <h4 class="card-title">Balance</h4>
-              <p class="card-text">We've <strong>balanced</strong> the need for complicated tools with simplicity.</p>
+              <h4 class="card-title">Reporting</h4>
+              <p class="card-text">All your project reports on one place, giving you all necessary information about the team progress.</p>
             </div>
           </div>
 
@@ -649,9 +660,21 @@ footer h4, footer h6 {
             </div>
           </aside>
 
+          <!--GOOGLE MAPS-->
+
+          <div class="row" style="margin-top:60px">
+            <h1 style="text-align:center">Location:</h1>
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-10">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.501914557798!2d105.86102931431805!3d21.012593993707252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abf0be48433b%3A0xbdacc2cdc6079fe!2sUP+Coworking+Space!5e0!3m2!1sen!2s!4v1481396054228" width="1000" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <hr />
+
           <!-- CONTACT US-->
 
-          <section id="last">
+          <section id="last" style="background-color:#edf2f9;">
             <div class="container">
               <div class="row">
                 <div class="col-lg-8 offset-lg-2 text-xs-center">
@@ -660,7 +683,7 @@ footer h4, footer h6 {
                     <div class="row control-group">
                       <div class="form-group col-xs-12">
                         <label>Full Name</label>
-                        <input type="text" class="form-control" placeholder="Name" id="name" required="" data-validation-required-message="Please   enter your name.">
+                        <input type="text" class="form-control" placeholder="Name" id="name" required="" data-validation-required-message="Please enter your name.">
                         <label>Phone Number</label>
                         <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number.">
                       </div>
@@ -691,9 +714,7 @@ footer h4, footer h6 {
             </div>
           </section>
 
-
           <!-- FOOTER LINKS -->
-
 
           <footer id="footer">
             <div class="container">
@@ -704,16 +725,7 @@ footer h4, footer h6 {
                 </div>
                 <div class="col-xs-6 col-sm-3 column">
                 </div>
-
-                <div class="col-xs-12 col-sm-3 text-xs-center">
-                  <h6 class="text-uppercase">Check out our Repo</h6>
-                  <ul class="list-inline">
-                    <li class="list-inline-item"><a rel="nofollow" href="https://github.com/simple-p/simplep" title="GitHub"><i class="icon-lg ion-social-github"></i></a>&nbsp;</li>
-                  </ul>
-                </div>
-              </div>
-              <br>
-              <span class="pull-right text-muted small">Created by CoderSchool Alumni © 2016</span>
+              <span class="pull-right text-muted small">Built with love by CoderSchool Simple P Team © 2016</span>
             </div>
           </footer>
           <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -730,9 +742,7 @@ footer h4, footer h6 {
             </div>
           </div>
 
-
           <!-- Login and Sign Up Modal -->
-
 
           <div id="logInModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-sm">
@@ -814,6 +824,18 @@ footer h4, footer h6 {
           </div>
 
           <!--scripts loaded here-->
+
+          <script>
+            var map;
+            function initMap() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 100
+              });
+            }
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCla-i8ZlRefGRF40IiV1dZ2h1dIiCAfEY&callback=initMap"
+          async defer></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
           <script>

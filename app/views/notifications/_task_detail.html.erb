@@ -2,7 +2,8 @@
 <div class="inbox-thread-warper" data-request-url=<%=project_task_path(task.project, task, :redirect => compact)%>>
   <p>
     <i class="fa fa-tasks" aria-hidden="true"></i> 
-    <%= task.name %></p>
+    <%= link_to task.name, project_task_path(task.project, task, :redirect => compact), remote: !compact%>
+  </p>
   <% comment_activities = notification.activities.select {|a| a.action == 'comment'}%>
   <% task_changes = notification.activities - comment_activities%>
   <% if comment_activities.count > 0 %>

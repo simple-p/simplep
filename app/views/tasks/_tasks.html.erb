@@ -32,7 +32,7 @@
                           <% end %>
                     </div>
                     <div class="item-col fixed pull-left item-col-title">
-                        <div class="item-heading">Name</div>
+                        <!-- <div class="item-heading">Name</div> -->
                         <div>
                             <a href="item-editor.html" class="">
                               <% if task.isCompleted? %>
@@ -43,12 +43,13 @@
                         </div>
                     </div>
                     <div class="item-col item-col-date">
-                        <div class="item-heading">Due Date</div>
+                        <!-- <div class="item-heading">Due Date</div> -->
                         <div class="no-overflow" id="<%="due-date-#{task.id}"%>"><%= deadline_warning(task) %></div>
                     </div>
                   <% end %>
                 </div>
             </li>
+              <!-- <%= render 'tasks/task_item', task: task%> -->
             <% end %>
         </ul>
     </div>

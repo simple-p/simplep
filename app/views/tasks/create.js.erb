@@ -1,2 +1,3 @@
 $('#dialog').modal('toggle');
-$('.tasks').append('<%= j render (@tasks) %>')
+$('<%= j render partial: "tasks/task_item", locals: {task: @task} %>').insertAfter('.item-list-header');
+$(".right-container").html("<%= j render @task %>");

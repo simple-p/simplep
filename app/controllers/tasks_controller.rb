@@ -22,11 +22,14 @@ class TasksController < ApplicationController
 
   def create
     load_project
+    
     @task = @project.tasks.build task_params
     @task.owner = current_user
 
     if @task.save
       track_activity current_user, @project, @task
+      
+      @project.reload
       respond_to do |format|
         format.html { redirect_to @project }
         format.json { render json: @project }
@@ -53,8 +56,9 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
 
     respond_to do |format|
+
       format.html {redirect_to @project}
-      if params[:redirect]
+      if params[:redirect] == "true"
         flash[:task] = @task.id
       else
         format.js
