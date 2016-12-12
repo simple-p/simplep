@@ -49,12 +49,11 @@
                 </li>
 
                   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=30" alt=""> <%= current_user.name %>
+                    <img src="<%= current_user.avatar%>" class="round-image-16" alt=""> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right animated flipInX">
-                      <div style="display:flex;justify-content:center;align-items:center;"><%= image_tag(current_user.avatar, class: 'round-image')%></div><br />
-                      <%= link_to "#", :class => 'dropdown-item' do %>
+                      <%= link_to edit_user_registration_path(current_user), class: 'dropdown-item' do %>
                         <i class="fa fa-user"></i> Profile
                       <% end %>
                     <a class="dropdown-item" href="<%= teams_path %>"><i class="fa fa-users"></i> Teams</a>
