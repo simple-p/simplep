@@ -1074,7 +1074,7 @@ label,
           flex-direction: column; }
 
 .item-list .item-row {
-  height: 60px;
+  height: 50px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

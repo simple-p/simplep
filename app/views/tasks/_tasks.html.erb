@@ -1,5 +1,6 @@
 <style>
   .item-col {
+
   }
 </style>
 <article class="content items-list-page">
@@ -48,7 +49,7 @@
                     </div>
                     <div class="item-col item-col-date">
                         <!-- <div class="item-heading">Due Date</div> -->
-                        <div class="no-overflow" id="<%="due-date-#{task.id}"%>"><%= deadline_warning(task) %></div>
+                        <div class="no-overflow" id="<%="due-date-#{task.id}"%>" style="font-size:12px;"><%= deadline_warning(task) %></div>
                     </div>
                   <% end %>
                 </div>
