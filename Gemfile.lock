@@ -326,7 +326,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   listen (~> 3.0.5)
-  paperclip (~> 5.1)
+  paperclip
   pg (~> 0.18)
   pry (~> 0.10.3)
   pry-rails

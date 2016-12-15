@@ -1,3 +1,3 @@
   <%= render task_follower.user %>
-  <strong> <image_tag (task_follower.user.avatar, class: 'round-image') %></strong>
+  <strong> <image_tag (task_follower.user.avatar, class: 'round-image') %><%= task_follower.user.name %></strong>
   <%= link_to "", task_task_follower_path(task_follower.task, task_follower), :method => :delete, class: "fa fa-times", remote: true %>
