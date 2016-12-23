@@ -2,10 +2,6 @@
  *= require jquery-ui/datepicker
  *= require_self
  */
-@import "bootstrap";
-@import "font-awesome";
-@import "toastr";
-@import "chosen";
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 #topNav {
@@ -108,6 +104,14 @@
   text-align: center;
   width: 14px;
 }
+
+.animated {
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
+  -webkit-animation-delay: .1s;
+          animation-delay: .1s;
+        }
+
 // End General Application scss
 
 // Toan Ngo Sidebar togglable block
@@ -309,3 +313,8 @@
   font-size: 19px;
   color: #fff;
 }
+@import "bootstrap";
+@import "font-awesome";
+@import "toastr";
+@import "chosen";
+@import "http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css";
