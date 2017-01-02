@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :load_project, only: [:edit, :create, :show, :completed, :update, :destroy]
   def new
     @project = Project.find(params[:project_id])
     @task = Task.new
@@ -13,7 +14,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    load_project
     @task = Task.find(params[:id])
   end
 
@@ -26,7 +26,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    load_project
 
     @task = @project.tasks.build task_params
     @task.owner = current_user
@@ -57,7 +56,6 @@ class TasksController < ApplicationController
 
   end
   def show
-    load_project
     @task = Task.find params[:id]
 
     respond_to do |format|
@@ -72,7 +70,6 @@ class TasksController < ApplicationController
   end
 
   def completed
-    load_project
     @task = Task.find params[:id]
     if params[:completed] == "true"
       @task.completed_at = Time.now
@@ -131,7 +128,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @project = Project.find params[:project_id]
     @task = Task.find params[:id]
     @task.destroy
     redirect_to project_path(@project)

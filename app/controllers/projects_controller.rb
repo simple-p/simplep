@@ -29,7 +29,13 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @tasks = @project.tasks.order('position desc')
+    if params[:completed] == "0"
+      @tasks = @project.tasks.where("completed_at IS NULL")
+    elsif params[:completed] == "1"
+      @tasks = @project.tasks.where("completed_at IS NOT NULL")
+    else
+      @tasks = @project.tasks.order('position desc')
+    end
   end
 
   def update

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :projects
   end
   resources :projects do
+
     resources :tasks
     post 'tasks/:id/owner' => "tasks#owner", as: "task_owner"
     post 'tasks/:id/deadline' => "tasks#deadline", as: "task_deadline"
