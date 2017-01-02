@@ -12,7 +12,7 @@
       <i class="fa fa-user fa-lg"></i>&nbsp;&nbsp;<input class="typeahead form-control underlined" id="owner_select"  size="<%= task.owner.name.length if task.owner %>" type="text" placeholder="Type to find team members" value="<%= task.owner.name if task.owner %>" style="font-size:15px;">
     </div>
     <div>
-      <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="text" class="datepicker tt-hint form-control underlined" size="10"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px; display:inline; color:black">
+      <i class="fa fa-calendar fa-lg"></i>&nbsp;<input type="text" class="datepicker tt-hint form-control underlined" size="10"  data-request-url="<%= project_task_deadline_path(task.project, task)%>" onchange="handleDueDateChange(this)" value="<%= task.due_date.to_date.to_s if task.due_date%>" style="font-size:15px; display:inline; color:black; width:14%;">
     </div>
   <br>
     <% if task.description %>
