@@ -12,14 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/sortable
-//= require jquery-ui/effect-highlight
+//= require jquery-ui/widgets/sortable
+//= require jquery-ui/effects/effect-highlight
 //= require turbolinks
 //= require tether
 //= require bootstrap
 //= require 'toastr'
 //= require Chart.min
-//= require jquery-ui/datepicker
+//= require jquery-ui/widgets/datepicker
 //= require twitter/typeahead.min
 //= require chosen-jquery
 //= require handlebars
