@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :notification_count
   helper_method :notificationBell
 
-  before_filter :build_search
+  before_action :build_search
 
 # Notifications for navbar
   def load_notifications

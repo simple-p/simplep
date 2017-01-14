@@ -20,18 +20,18 @@
       <div class="container-fluid">
         <div class="row">
 
-          <nav id="topNav" class="navbar nav navbar-default navbar-fixed-top" style="background-color: rgb(252, 252, 253)">
+          <nav id="topNav" class="navbar nav navbar-default navbar-fixed-top" style="background-color: rgb(252, 252, 253);">
                    <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
                    <div id="navbar">
                      <ul class="nav navbar-nav">
                        <li>
-                       <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
+                       <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:20px;"></a>
                        </li>
-                       <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:50px"}  do |f| %>
+                       <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:150px"}  do |f| %>
                        <i class="navbar-brand fa fa-search" style="margin-left:12px;"></i>
                            <%= f.text_field :name_cont, style: 'border:none; background-color:transparent;margin-left:-13px;color:grey;', :placeholder=>"Search" %>
                        <%end%>
-                       <div class="btn-group float-xs-right">
+                       <div class="btn-group pull-right">
                          <li class="navbar-brand notifications new">
 
                            <a href="/notifications/set_notifications.js" data-method='POST' data-remote="true" data-toggle="dropdown"><i class="fa fa-bell-o"></i><sup><span class="counter"><%= new_feeds_icon(notification_count) %></span></sup></a>
@@ -46,7 +46,7 @@
                                </footer>
                            </div>
                        </li>
-                       
+
                   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="<%= current_user.avatar%>" class="round-image-16" alt=""> <%= current_user.name %>
                   <span class="sr-only">Toggle Dropdown</span>
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="row" style="margin-left:30px">
-                  <div class="col-sm-12" style="padding-top:64px;">
+                  <div class="col-sm-12" style="padding-top:69px;">
                     <%= yield %>
                   </div>
                 </div>

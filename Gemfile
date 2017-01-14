@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'record_tag_helper', '~> 1.0'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
+  gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 #ransack gem for advanced search
