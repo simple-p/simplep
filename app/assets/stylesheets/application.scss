@@ -2,10 +2,10 @@
  *= require jquery-ui/datepicker
  *= require_self
  */
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 #topNav {
-  font-family: 'Montserrat','Helvetica Neue',Arial,sans-serif;
+  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
 .typeahead,
@@ -138,7 +138,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
+  font-family: Open Sans;
 }
 #page-content-wrapper {
   padding-left: 0;

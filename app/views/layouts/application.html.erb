@@ -79,7 +79,7 @@
                     <% if current_team %>
                     <li><%= link_to current_team.name, projects_path %></li>
                       <% current_team.projects.each do |project| %>
-                        <li class="list-unstyled" style="font-size:10px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">&nbsp;&nbsp;<%= truncate(project.name,  :length => 25, :omission => '...') %></li>
+                        <li class="list-unstyled" style="font-size:10px;"><%= link_to truncate(project.name,  :length => 25, :omission => '...'), project_path(project,completed: "0")%></li>
                           <% end %>
                     <% else %>
                         <li><%= link_to "Project", projects_path %></li>
