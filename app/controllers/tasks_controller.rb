@@ -130,7 +130,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find params[:id]
     @task.destroy
-    redirect_to project_path(@project)
+    redirect_back fallback_location: project_path(@project)
   end
   private
   def task_params
