@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
       new_feeds = user.notification_readers.select {|feed| !feed.isRead?}
       new_feeds.each do |feed|
-        feed.read_at = Time.now
+        feed.read_at = Time.zone.now
         feed.save!
       end
   end
@@ -114,7 +114,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    notification.updated_at = Time.now
+    notification.updated_at = Time.zone.now
     notification.save!
 
     activity.notification_id = notification.id
@@ -136,7 +136,7 @@ class ApplicationController < ActionController::Base
       activity.save!
 
       notification = Notification.find(activity.notification_id)
-      notification.updated_at = Time.now
+      notification.updated_at = Time.zone.now
       notification.notification_readers.each do |feed|
         feed.read_at = nil
         feed.save!

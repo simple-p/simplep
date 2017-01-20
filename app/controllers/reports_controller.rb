@@ -64,7 +64,7 @@ class ReportsController < ApplicationController
       total_task_count << total_count
       completed_task_count << completed_count
 
-    end until end_date > Time.now
+    end until end_date > Time.zone.now
 
     return labels, total_task_count, completed_task_count
   end
@@ -87,7 +87,7 @@ class ReportsController < ApplicationController
       total_task_count << tasks.count
       completed_task_count << completed_tasks.count
 
-    end until end_date > Time.now
+    end until end_date > Time.zone.now
 
     return labels, total_task_count, completed_task_count
   end
