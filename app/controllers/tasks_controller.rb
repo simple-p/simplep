@@ -120,7 +120,7 @@ class TasksController < ApplicationController
     end
 
     respond_to do |format|
-#      format.html {redirect_to project_path(@project)}
+      #format.html {redirect_to project_path(@project)}
       format.js
     end
   end

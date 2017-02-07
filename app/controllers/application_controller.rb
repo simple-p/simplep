@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
   helper_method :notification_count
   helper_method :notificationBell
 
+  # Search for Ransack
   before_action :build_search
+
+  # Set locale to Vietnamese
+  # before_action :set_locale
+
 
 # Notifications for navbar
   def load_notifications
@@ -159,6 +164,11 @@ class ApplicationController < ActionController::Base
 
     return notification.id
   end
+
+# Define set locale for I18n
+  # def set_locale
+  #   I18n.locale = params[:locale] || I18n.default_locale
+  # end
 
   private
     def build_search

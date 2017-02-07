@@ -14,5 +14,8 @@ module Simplep
 
     #NOTE: config time zone for Hanoi
     config.time_zone = "Hanoi"
+
+    # Set default locale for the application
+    # config.i18n.default_locale = :vi
   end
 end
