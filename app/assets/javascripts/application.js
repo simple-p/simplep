@@ -23,8 +23,6 @@
 //= require twitter/typeahead.min
 //= require chosen-jquery
 //= require handlebars
-//= require_tree .
-
 
 // Toastr config
 toastr.options = {
