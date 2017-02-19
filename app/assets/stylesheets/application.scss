@@ -1,3 +1,7 @@
+// Import Montserrat font
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 html, body{
   height: 100%;
   width: 100%;
@@ -7,6 +11,7 @@ html, body{
 body {
   background: url("http://hunterxx.com/resources/images/btv0k50c_4m-siamak-djamei.jpg") no-repeat;
   background-size: cover;
+  font-family: 'Open Sans';
 }
 @import "dashboards.scss";
 @import "bootstrap";

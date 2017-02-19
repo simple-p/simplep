@@ -9,9 +9,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <!-- If user signed in then show the dashboard and everything -->
-    <% if user_signed_in? %>
-      <%= yield %>
-    <% end %>
+    <%= yield %>
   </body>
 </html>

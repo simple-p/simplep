@@ -1,16 +1,14 @@
 
-<nav style="height: 75px; position: absolute; right: 0px;">
-  <div>
-    <a href="/html/">HTML</a> |
-    <a href="/css/">CSS</a> |
-    <a href="/js/">JavaScript</a> |
-    <a href="/jquery/">jQuery</a>
+<nav class="navbar navbar-toggleable-md" style="height: 75px; position: absolute; right: 10px; top: 10px;">
+  <div class="rightNavbar">
+    <a href="/html/"><%= current_user.name %></a>
+    <a href="/html/">Notifications</a>
   </div>
 </nav>
 
 <!-- Bootstrap Sidebar -->
 <section class="nav-side-menu">
-  <div class="brand"><img src="/assets/logo.png" style="height:40px;"> SimpleP Project Management</div>
+  <div class="brand"><img src="/assets/logo.png" style="height:40px;"> <%= current_user.name %></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
         <div class="menu-list">
@@ -22,27 +20,21 @@
                 </li>
 
                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                  <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                  <a href="#"><i class="fa fa-rocket fa-lg"></i> Dự Án <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="products">
-                    <li class="active"><a href="#">CSS3 Animation</a></li>
-                    <li><a href="#">General</a></li>
-                    <li><a href="#">Buttons</a></li>
-                    <li><a href="#">Tabs & Accordions</a></li>
-                    <li><a href="#">Typography</a></li>
-                    <li><a href="#">FontAwesome</a></li>
-                    <li><a href="#">Slider</a></li>
-                    <li><a href="#">Panels</a></li>
-                    <li><a href="#">Widgets</a></li>
-                    <li><a href="#">Bootstrap Model</a></li>
+                  <%# add links to project name. TODO: add active state to links that are clicked %>
+                  <% if current_team %>
+                    <% @myProjects.each do |project| %>
+                      <li><%= link_to project.name, project_path(project)%></li>
+                    <% end %>
+                  <% end %>
                 </ul>
-
-
                 <li data-toggle="collapse" data-target="#service" class="collapsed">
                   <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="service">
-                  <li>New Service 1</li>
+                  <li class="active"><a href="#">CSS3 Animation</a></li>
                   <li>New Service 2</li>
                   <li>New Service 3</li>
                 </ul>
@@ -75,9 +67,9 @@
 
 <section class="dashboardGreeting">
   <div class="dashboardClock">
-    <%= Time.zone.now.strftime("%I:%M:%S")%>
+    <%= Time.zone.now.strftime("%I:%M")%>
   </div>
-  <h1>Good Morning, Toan</h1>
+  <h1>Chào buổi sáng, Toan</h1>
   <blockquote>
     “Once a year, go some place you've never been before.“ — Dalai Lama
   </blockquote>

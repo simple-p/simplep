@@ -1,5 +1,3 @@
-// Import Lato font
-@import url('https://fonts.googleapis.com/css?family=Lato:900');
 
 // Bootstrap Sidebar
 .nav-side-menu {
@@ -13,8 +11,15 @@
   width: 300px;
   height: 100%;
   color: #e1ffff;
-  opacity: 0.8;
+  opacity: 0.6;
+  transition: all 0.4s ease;
 }
+
+.nav-side-menu:hover {
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
 .nav-side-menu .brand {
   background-color: #23282e;
   line-height: 50px;
@@ -119,6 +124,11 @@
     width: 100%;
     margin-bottom: 10px;
   }
+// Hide greeting and right navbar at phone screen: ;
+  .dashboardGreeting, .rightNavbar{
+    display: none;
+  }
+
   .nav-side-menu .toggle-btn {
     display: block;
     cursor: pointer;
@@ -153,17 +163,44 @@ body {
 // End Bootstrap Sidebar
 
 // Dashboard Greeting
+.dashboardGreeting::before{
+  background-image: url('http://hunterxx.com/resources/images/btv0k50c_4m-siamak-djamei.jpg');
+  -webkit-filter: url('#blur');
+  filter: url('#blur');
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  background-size: cover;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
 .dashboardGreeting{
   position: absolute;
   left: 320px;
   bottom:0;
   color: #ffffff;
+
+// NOTE: remove the border and border radius soon
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 10px;
 }
 
 .dashboardClock {
-  font-family: "Arial", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight:400;
   font-size: 90px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 // End Dashboard Greeting
+
+// Right navbar
+.rightNavbar {
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px white solid;
+}
+// End right navbar
