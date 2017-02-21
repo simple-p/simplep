@@ -1,137 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>SimpleP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <title>Simple P Project Management</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <link rel="icon" type="image/png" href="assets/logo.png">
-    <% if user_signed_in? %>
-      <link rel="stylesheet" href="/assets/dashboards.css">
-      <link rel="stylesheet" href="/assets/comments.css">
-    <% end %>
-
   </head>
-
   <body>
-    <% if user_signed_in? %>
-      <div class="container-fluid">
-        <div class="row">
+    <% if current_user %>
+      <%= flash_toastr %>
+      <% content_for :sidebar do %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
 
-          <nav id="topNav" class="navbar nav navbar-default navbar-fixed-top" style="background-color: rgb(252, 252, 253)">
-            <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
-            <div id="navbar">
-              <ul class="nav navbar-nav">
-                <li>
-                <a class="navbar-brand" href="/"><img src="/assets/logo.png" style="height:30px;"> Simple P</a>
-                </li>
-                <%= search_form_for @search, :html => { :class => "nav navbar-brand search-form", :style => "margin-left:50px"}  do |f| %>
-                <i class="navbar-brand fa fa-search" style="margin-left:12px;"></i>
-                    <%= f.text_field :name_cont, style: 'border:none; background-color:transparent;margin-left:-13px;color:grey;', :placeholder=>"Search" %>
-                <%end%>
-                <div class="btn-group float-xs-right">
-                  <li class="navbar-brand notifications new">
-
-                    <a href="/notifications/set_notifications.js" data-method='POST' data-remote="true" data-toggle="dropdown"><i class="fa fa-bell-o"></i><sup><span class="counter"><%= new_feeds_icon(notification_count) %></span></sup></a>
-                    <div class="dropdown-menu dropdown-menu-right animated flipInX">
-                        <ul class="notifications-container list-group">
-                        </ul>
-
-                        <footer>
-                            <ul>
-                                <li> <a href="<%= notifications_path %>">View All</a> </li>
-                            </ul>
-                        </footer>
-                    </div>
-                </li>
-
-                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="<%= current_user.avatar%>" class="round-image-16" alt=""> <%= current_user.name %>
-                  <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right animated flipInX">
-                      <%= link_to edit_user_registration_path(current_user), class: 'dropdown-item' do %>
-                        <i class="fa fa-user"></i> Profile
-                      <% end %>
-                    <a class="dropdown-item" href="<%= teams_path %>"><i class="fa fa-users"></i> Teams</a>
-                    <div class="dropdown-divider"></div>
-                    <% current_user.my_team.each do |team| %>
-                      <%= link_to team.name, switch_path(:team_id => team.id), class: "dropdown-item" %>
-                    <% end %>
-                    <div class="dropdown-divider"></div>
-                    <%= link_to destroy_user_session_path, :method=>'delete', :class => 'dropdown-item' do %>
-                      <i class="fa fa-power-off"></i> Log out
-                    <% end %>
-                  </div>
-              </ul>
-                </div>
-          </nav>
-        </div>
-            <%= flash_toastr %>
-              <div id="wrapper" class="active">
-                <div id = "sidebar-wrapper">
-                  <ul class="sidebar-nav" id="sidebar">
-                    <li class="sidebar-brand"><a id="menu-toggle" href="#" class="active">Simple P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-align-justify"></i></a></li>
-                    <li><a href="<%= dashboard_path %>">Dashboard     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-home fa-lg"></i></a></li>
-                    <li><a href="<%= tasks_path %>">My Tasks &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-list-ul fa-lg"></i></a></li>
-                    <% if current_team %>
-                    <li><%= link_to current_team.name, projects_path %></li>
-                      <% current_team.projects.each do |project| %>
-                        <li class="list-unstyled" style="font-size:10px;"><a href="<%= project_path (project)%>" id="project_<%= project.id %>">&nbsp;&nbsp;<%= truncate(project.name,  :length => 25, :omission => '...') %></li>
-                          <% end %>
-                    <% else %>
-                        <li><%= link_to "Project", projects_path %></li>
-                    <% end %>
-
-                    <li>
-                    <% if current_team %>
-                      <% current_team.team_member.each do |member| %>
-                        <%= image_tag(member.avatar, class: "round-image-16") %>
-                      <% end %>
-                    <% end %>
-                    </li>
-                    <li><a href="/reports">Report     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-bar-chart fa-lg"></i></a></li>
-                  </ul>
-                </div>
-
-                <div class="row" style="margin-left:30px">
-                  <div class="col-sm-12" style="padding-top:64px;">
-                    <%= yield %>
-                  </div>
-                </div>
-                <% else %>
-                  <%= yield %>
-                <% end %>
-
+      <section class="container" id="main">
+          <%= yield(:sidebar) %>
+          <%= yield %>
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
               </div>
             </div>
-        <%= render 'projects/dialog' %>
-        <script>
-        $(document).on('turbolinks:load', function() {
-          if (localStorage.getItem('status')==='inactive'){
-            $('#wrapper').removeClass('active');
-          }
-          else {
-            $('#wrapper').addClass('active');
-          }
-        })
-          // Toggle the sidebar
-          $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            if (localStorage.getItem('status')==='inactive'){
-              $('#wrapper').addClass('active');
-              localStorage.setItem('status','active');
-            }
-            else {
-              $('#wrapper').removeClass('active');
-              localStorage.setItem('status','inactive');
-            }
-          });
-
-          $('#teams').on('click', function(){});
-          setInterval(checkFeedsViaJS, 10000);
-        </script>
+      <% else %>
+        <%= yield %>
+      <% end %>
+      </section>
   </body>
 </html>

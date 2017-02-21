@@ -28,11 +28,14 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+# TODO: fix positioning the task after adding it
+
   def show
+    # NOTE: define params to show completed/not completed tasks
     if params[:completed] == "0"
-      @tasks = @project.tasks.where("completed_at IS NULL")
+      @tasks = @project.tasks.where("completed_at IS NULL").order('position desc')
     elsif params[:completed] == "1"
-      @tasks = @project.tasks.where("completed_at IS NOT NULL")
+      @tasks = @project.tasks.where("completed_at IS NOT NULL").order('position desc')
     else
       @tasks = @project.tasks.order('position desc')
     end

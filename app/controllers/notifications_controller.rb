@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
 
       new_feeds = user.notification_readers.select {|feed| !feed.isRead?}
       new_feeds.each do |feed|
-        feed.read_at = Time.now
+        feed.read_at = Time.zone.now
         feed.save!
       end
     end

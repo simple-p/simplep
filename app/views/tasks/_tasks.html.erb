@@ -23,8 +23,11 @@
                       <h4><strong><%= link_to task.name, project_task_path(task.project, task), remote:true, class: 'header-task'%></strong></h4>
                     </div>
                   <% else %>
-                    <div class="item-col fixed item-col-check"> <label class="item-check" id="<%="completed-icon-#{task.id}"%>">
-<%= task_completed_icon(task) %><span></span>
+                    <div class="item-col fixed item-col-check">                         <div class="form-check">
+                                              <label class="form-check-label">
+                                                <input id="task_completed" data-request-url=<%=project_task_completed_path(task.project, task)%> onchange="handleChange(this);" class="form-check-input" type="checkbox" <%="checked" if task.isCompleted? %>>
+                                              </label>
+                                            </div>
 </label> </div>
                     <div class="item-col fixed item-col-stats">
                           <% if task.owner %>

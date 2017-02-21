@@ -11,8 +11,7 @@ class Task < ApplicationRecord
   has_many :activities, as: :subject, dependent: :destroy
   has_one :project_news, class_name: 'Activity', as: :trackable, dependent: :destroy
 
-  validates :name, presence: true,
-                    length: { minimum: 5 }
+  validates :name, presence: true
 
   def isCompleted?
     !!completed_at

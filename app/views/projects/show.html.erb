@@ -1,6 +1,6 @@
 <div class="col-xl-12">
   <div class="row sameheight-container">
-    <div class="card sameheight-item items">
+    <div class="card sameheight-item items col-sm-12">
       <div class="card-header bordered">
         <h3><strong> <%= @project.name %> &nbsp;</strong></h3>
           <%= link_to "Blog", project_blogs_path(@project), class: "btn btn-warning btn-sm rounded-s" %>
@@ -20,7 +20,15 @@
       <div class="row placeholders">
         <div class="center-container col-md-6" id=<%= @project.id %> >
           <%= render partial: "tasks/tasks", locals: {tasks: @tasks} %>
-          <%= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary btn-sm rounded-s'%>
+
+          <%#= link_to 'New Task', new_project_task_path(@project), remote: true, data: { toggle: "modal", target: "#ajax-modal-project" },class: 'btn btn-primary btn-sm rounded-s'%>
+
+          <%#= NOTE: you need label:false in the form below otherwise it won't work %>
+
+          <%= form_for([@project, Task.new], remote: true) do |f| %>
+            <%= f.text_field :name, class: 'form-control underlined', placeholder: 'New Task', label: false%>
+          <% end %>
+
         </div>
         <div class="right-container col-md-6">
           <% if flash[:task]%>

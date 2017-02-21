@@ -8,7 +8,11 @@ class ApplicationController < ActionController::Base
   helper_method :notification_count
   helper_method :notificationBell
 
-  before_filter :build_search
+  # Search for Ransack
+  before_action :build_search
+
+  # Set locale to Vietnamese
+  # before_action :set_locale
 
 # Notifications for navbar
   def load_notifications
@@ -18,7 +22,7 @@ class ApplicationController < ActionController::Base
 
       new_feeds = user.notification_readers.select {|feed| !feed.isRead?}
       new_feeds.each do |feed|
-        feed.read_at = Time.now
+        feed.read_at = Time.zone.now
         feed.save!
       end
   end
@@ -114,7 +118,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    notification.updated_at = Time.now
+    notification.updated_at = Time.zone.now
     notification.save!
 
     activity.notification_id = notification.id
@@ -136,7 +140,7 @@ class ApplicationController < ActionController::Base
       activity.save!
 
       notification = Notification.find(activity.notification_id)
-      notification.updated_at = Time.now
+      notification.updated_at = Time.zone.now
       notification.notification_readers.each do |feed|
         feed.read_at = nil
         feed.save!
@@ -159,6 +163,11 @@ class ApplicationController < ActionController::Base
 
     return notification.id
   end
+
+# Define set locale for I18n
+  # def set_locale
+  #   I18n.locale = params[:locale] || I18n.default_locale
+  # end
 
   private
     def build_search

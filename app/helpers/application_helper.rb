@@ -83,7 +83,7 @@ module ApplicationHelper
   def deadline_warning(task)
     if task.due_date
       if !task.isCompleted?
-        if task.due_date < Time.now
+        if task.due_date < Time.zone.now
           date_color = 'red'
         else
           date_color = 'green'

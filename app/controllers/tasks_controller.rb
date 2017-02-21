@@ -37,7 +37,9 @@ class TasksController < ApplicationController
       respond_to do |format|
         format.html { redirect_to @project }
         format.json { render json: @project }
-        format.js
+
+        #NOTE: adding format.js shows an uneccessary modal
+        #format.js
       end
     else
       flash[:error] = "#{ @project.errors.full_messages.to_sentence }"
@@ -72,7 +74,7 @@ class TasksController < ApplicationController
   def completed
     @task = Task.find params[:id]
     if params[:completed] == "true"
-      @task.completed_at = Time.now
+      @task.completed_at = Time.zone.now
       @task.save
       track_activity current_user, @task, nil, 'completed'
     elsif params[:completed] == "false"
@@ -118,7 +120,7 @@ class TasksController < ApplicationController
     end
 
     respond_to do |format|
-#      format.html {redirect_to project_path(@project)}
+      #format.html {redirect_to project_path(@project)}
       format.js
     end
   end
@@ -130,7 +132,7 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find params[:id]
     @task.destroy
-    redirect_to project_path(@project)
+    redirect_back fallback_location: project_path(@project)
   end
   private
   def task_params

@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
   def index
     @tasks = current_user.tasks
     @task_news = current_user.activities
+
     if current_team
       @myProjects = current_team.projects
   #chartjs reporting
@@ -17,9 +18,9 @@ class DashboardsController < ApplicationController
 
   end
 
-  def load_project(task)
-    @project = Project.find task.project_id
-  end
+  # def load_project(task)
+  #   @project = Project.find task.project_id
+  # end
 
 # Report Features
 
@@ -51,7 +52,7 @@ class DashboardsController < ApplicationController
       total_task_count << total_count
       completed_task_count << completed_count
 
-    end until end_date > Time.now
+    end until end_date > Time.zone.now
 
     return labels, total_task_count, completed_task_count
   end
