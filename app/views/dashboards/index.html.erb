@@ -6,71 +6,12 @@
   </div>
 </nav>
 
-<!-- Bootstrap Sidebar -->
-<section class="nav-side-menu">
-  <div class="brand"><img src="/assets/logo.png" style="height:40px;"> <%= current_user.name %></div>
-    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-
-        <div class="menu-list">
-            <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                  <a href="#">
-                  <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                  </a>
-                </li>
-
-                <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-                  <a href="#"><i class="fa fa-rocket fa-lg"></i> Dự Án <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="products">
-                  <%# add links to project name. TODO: add active state to links that are clicked %>
-                  <% if current_team %>
-                    <% @myProjects.each do |project| %>
-                      <li><%= link_to project.name, project_path(project)%></li>
-                    <% end %>
-                  <% end %>
-                </ul>
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                  <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="service">
-                  <li class="active"><a href="#">CSS3 Animation</a></li>
-                  <li>New Service 2</li>
-                  <li>New Service 3</li>
-                </ul>
-
-
-                <li data-toggle="collapse" data-target="#new" class="collapsed">
-                  <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
-                </li>
-                <ul class="sub-menu collapse" id="new">
-                  <li>New New 1</li>
-                  <li>New New 2</li>
-                  <li>New New 3</li>
-                </ul>
-                 <li>
-                  <a href="#">
-                  <i class="fa fa-user fa-lg"></i> Profile
-                  </a>
-                  </li>
-                 <li>
-                  <a href="#">
-                  <i class="fa fa-users fa-lg"></i> Users
-                  </a>
-                </li>
-                <!-- TODO: refactor this to CSS -->
-              <li style="position:absolute;bottom:0;left: 10px;right: 0px;"><i class="fa fa-rocket fa-lg"></i> New Project</li>
-            </ul>
-     </div>
-</section>
-<!-- End Bootstrap Sidebar -->
-
 <section class="dashboardGreeting">
   <div class="dashboardClock">
     <%= Time.zone.now.strftime("%I:%M")%>
   </div>
   <h1>Chào buổi sáng, Toan</h1>
-  <blockquote>
+  <blockquote style="margin-top: 30px">
     “Once a year, go some place you've never been before.“ — Dalai Lama
   </blockquote>
 </section>

@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   # Set locale to Vietnamese
   # before_action :set_locale
 
-
 # Notifications for navbar
   def load_notifications
       # reload user data

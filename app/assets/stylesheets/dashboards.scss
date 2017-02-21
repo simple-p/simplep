@@ -1,6 +1,7 @@
 
 // Bootstrap Sidebar
 .nav-side-menu {
+  margin-left: -315px;
   overflow: auto;
   font-family: verdana;
   font-size: 12px;
@@ -163,29 +164,16 @@ body {
 // End Bootstrap Sidebar
 
 // Dashboard Greeting
-.dashboardGreeting::before{
-  background-image: url('http://hunterxx.com/resources/images/btv0k50c_4m-siamak-djamei.jpg');
-  -webkit-filter: url('#blur');
-  filter: url('#blur');
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-  background-size: cover;
-  opacity: 0.4;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
 .dashboardGreeting{
+  background-color: rgba(0,0,0,0.2);
   position: absolute;
-  left: 320px;
-  bottom:0;
+  bottom:10px;
   color: #ffffff;
 
 // NOTE: remove the border and border radius soon
-  border: 1px solid white;
   border-radius: 12px;
   padding: 10px;
+  line-height: 1;
 }
 
 .dashboardClock {
@@ -201,6 +189,9 @@ body {
   color: #ffffff;
   font-size: 15px;
   border-radius: 8px;
-  border: 1px white solid;
+}
+
+.rightNavbar a {
+  color: #ffffff;
 }
 // End right navbar

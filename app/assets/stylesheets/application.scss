@@ -1,4 +1,8 @@
 // Import Montserrat font
+@import "dashboards.scss";
+@import "bootstrap";
+@import "font-awesome";
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
@@ -13,6 +17,8 @@ body {
   background-size: cover;
   font-family: 'Open Sans';
 }
-@import "dashboards.scss";
-@import "bootstrap";
-@import "font-awesome";
+
+#main {
+  margin-left: 300px;
+  height: 100%;
+}
